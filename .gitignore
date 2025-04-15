@@ -1,0 +1,23 @@
+# Node.js (pour FrontWeb et Mobile si React, React Native, etc.)
+node_modules/
+dist/
+.env
+.env.*
+
+# Python / Django (pour Backend si c’est du Django)
+__pycache__/
+*.py[cod]
+*.sqlite3
+.env
+venv/
+db.sqlite3
+
+# macOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
