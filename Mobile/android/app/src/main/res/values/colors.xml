@@ -1,0 +1,5 @@
+<resources>
+    <color name="white">#FFFFFF</color>
+    <!-- D’autres couleurs peuvent être ici aussi -->
+    <color name="background">#57CFC8</color>
+</resources>

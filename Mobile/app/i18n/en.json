@@ -1,0 +1,119 @@
+{
+    "ProfilHeader": {
+        "welcome": "Welcome back"
+
+    },
+    "Welcome": {
+        "title": "Welcome \nto Doctimob",
+        "description": "Your trusted companion for online and home care",
+        "getStarted": "Get started",
+        "login": "Log In"  
+    },
+    "Login": {
+        "title": "Log In to Your Account",
+        "description": "Access your consultations, records and more.",
+        "email": "Email address",
+        "password": "Password",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password ?",
+        "login": "Log In"
+    },
+    "ForgotPassword": {
+        "title": "Reset Your Password",
+        "description": "Enter your email to receive a reset link.",
+        "email": "Email address",
+        "sendEmail": "Send email"
+    },
+    "VerifyNumber": {
+        "title": "Verify Your Number",
+        "description": "Enter your phone number to securely create your account.",
+        "continue": "Continue",
+        "login": "Login",
+        "haveAccount": "Already have an account ?"
+    },
+    "OTP": {
+        "title": "Enter Your Code",
+        "description": "We’ve sent a 6 verification code to your phone.",
+        "notReceive": "Didn’t receive the code ?",
+        "resend": "Resend",
+        "verify": "Verify Code"
+    },
+    "CreatePassword": {
+        "title": "Create a Password",
+        "description": "Secure your account with a strong password.",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "createAccount": "Create Account"
+    },
+    "CreateNewPassword": {
+        "title": "Create New Password",
+        "description": "Please choose a new one to access your account.",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "confirm": "Confirm"
+    },
+    "RegistrationConfirm": {
+        "title": "🎉 \nYou’re All Set!",
+        "description": "Your account has been created successfully.",
+        "go": "Enter the App"
+    },
+    "CreateAccount": {
+        "title": "Create Your Account",
+        "description": "It only takes a few seconds to get started.",
+        "gender": "Gender",
+        "firstname": "Firstname",
+        "lastname": "Lastname",
+        "email": "Email address",
+        "location": "Location",
+        "birthday": "Date of Birth",
+        "continue": "Continue"
+    },
+    "Header": {
+        "welcome": "Welcome back"
+    },
+    "BlankHome" : {
+        "title": "Welcome 👋,",
+        "description": "You don’t have any consultations planned yet. Let’s get started by creating your first request.",
+        "create": "Create a",
+        "request": "New Request"
+
+    },
+    "Home" : {
+        "next" : "Next",
+        "appointments" : "Consultations",
+        "my" : "My",
+        "requests" : "Requests",
+        "viewAll" : "View all"
+    },
+    "MyRequestsList" : {
+        "title" : "My Requests",
+        "description" : "Track all your consultation requests.",
+        "active" : "Active",
+        "expired" : "Expired",
+        "cancelled" : "Cancelled"
+    },
+    "RequestDetails" : {
+        "title" : "Request Details",
+        "noResponse" : "No doctors have responded yet.",
+        "willNotify" : "You will be notified as soon as someone responds.",
+        "withResponse" : " Doctors Have Responded"
+    },
+    "ResponseCard" : {
+        "profil" : "Profile",
+        "select" : "Select Doctor" 
+    },
+    "SelectDoctor" : {
+        "title" : "Confirm Your Choice",
+        "description" : "You are about to book a consultation with :",
+        "select" : "Select Doctor",
+        "cancel" : "Cancel"
+    },
+    "DoctorProfile" : {
+        "title" : "Doctor's Profile",
+        "about" : "About",
+        "reviews" : "Reviews",
+        "experiences" : "Experiences",
+        "patients" : "Patients",
+        "work" : "Work Experience"
+    }
+}
