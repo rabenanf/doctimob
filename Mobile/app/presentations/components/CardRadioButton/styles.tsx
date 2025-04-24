@@ -3,9 +3,14 @@ import { Theme } from '../../../resources/themes';
 
 export const styles = StyleSheet.create({
     radioContainer: {
-        justifyContent: "flex-start",
+        justifyContent: "space-between",
         flexDirection: "row",
         alignItems: "center",
+        paddingHorizontal: 20,
+        paddingVertical: 0,
+        borderWidth: 1,
+        borderColor: "rgba(229, 231, 243, 1)",
+        borderRadius: 20
     },
     radioButtonIcon: {
         backgroundColor: "white",
@@ -14,7 +19,7 @@ export const styles = StyleSheet.create({
         height: 24,
         width: 24,
         borderRadius: 24 / 2,
-        marginRight: 10,
+        marginRight: 20,
         alignItems: "center",
         justifyContent: "center",
     },
@@ -30,9 +35,11 @@ export const styles = StyleSheet.create({
         height: 50,
         justifyContent: "center",
         paddingLeft: 10,
-        flexDirection : "row"
+        flexDirection : "row",
+        alignItems: "center",
     },
     radioButtonText: {
+        paddingLeft: 10,
         fontSize: 16,
         color: "#999"
     },

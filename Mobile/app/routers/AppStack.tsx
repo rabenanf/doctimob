@@ -12,7 +12,11 @@ import { RegistrationConfirmationScreen } from "../presentations/screens/authent
 import { CreateAccountScreen } from "../presentations/screens/authentication/CreateAccountScreen";
 import { RequestDetailsScreen } from "../presentations/screens/requests/MyRequests/RequestDetailsScreen";
 import { DoctorProfileScreen } from "../presentations/screens/requests/MyRequests/DoctorProfileScreen";
-import { PaymentCreditCardScreen } from "../presentations/screens/requests/MyRequests/PaymentCreditCardScreen";
+import { PaymentCreditCardScreen } from "../presentations/screens/requests/Payment/PaymentCreditCardScreen";
+import { AppointmentConfirmedScreen } from "../presentations/screens/requests/Payment/AppointmentConfirmedScreen";
+import { PaymentCashScreen } from "../presentations/screens/requests/Payment/PaymentCashScreen";
+import { PaymentQRCodeScreen } from "../presentations/screens/requests/Payment/PaymentQRCodeScreen";
+import { QRCodeScreen } from "../presentations/screens/requests/Payment/QRCodeScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -21,7 +25,7 @@ export const AppStack = () => {
     return (
         <Stack.Navigator
           screenOptions={{headerShown: false}}
-          initialRouteName="PaymentCreditCard">
+          initialRouteName="QRCode">
             <Stack.Screen name="TabHome" component={MainMenuTabs} />
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Login" component={LoginScreen} />
@@ -35,6 +39,10 @@ export const AppStack = () => {
             <Stack.Screen name="RequestDetails" component={RequestDetailsScreen} />
             <Stack.Screen name= "DoctorProfile" component={DoctorProfileScreen} />
             <Stack.Screen name= "PaymentCreditCard" component={PaymentCreditCardScreen} />
+            <Stack.Screen name= "AppointmentConfirmed" component={AppointmentConfirmedScreen} />
+            <Stack.Screen name= "PaymentCash" component={PaymentCashScreen} />
+            <Stack.Screen name= "PaymentQRCode" component={PaymentQRCodeScreen} />
+            <Stack.Screen name= "QRCode" component={QRCodeScreen} />
         </Stack.Navigator>
     )
-}
+} 

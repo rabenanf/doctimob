@@ -49,7 +49,7 @@ export const MainMenuTabs = () => {
                             ),
                     }}>
                     {({ navigation }) => (
-                        <HomeScreen
+                        <BlankScreen
                             navigation={navigation} 
                             route={{key: 'Home', name: 'Home'}}                        />
                     )} 

@@ -79,73 +79,75 @@ export const CreateAccountScreen = ({navigation}: Props): JSX.Element => {
                 end={{ x: 0.5, y: 1 }}
                 locations={[0, 0.78]}
                 >
-                <KeyboardAwareScrollView>
-                    <View style={styles.imageContainer}>
-                        <Image style={styles.image} resizeMode="contain" source={Logo}/> 
-                    </View>
-                    <View style={styles.formContainer}>
-                        <View style={styles.textContainer} >
-                            <Text style={styles.welcomeText}> {t('CreateAccount.title')} </Text>
-                            <Text style={styles.descriptionText}> {t('CreateAccount.description')} </Text>
+                <View style={{height : "88%"}}>
+                    <KeyboardAwareScrollView>
+                        <View style={styles.imageContainer}>
+                            <Image style={styles.image} resizeMode="contain" source={Logo}/> 
                         </View>
-                        <View style={styles.form}>
-                            <Text style={{color: "#999"}}>{t('CreateAccount.gender')}</Text>
-                            <RadioButtonContainer values={gender} onPress={onRadioButtonPress} />
-                            <InputWithIcon
-                                placeholder={t('CreateAccount.firstname')}
-                                iconName="person"
-                                iconLibrary="Ionicons"
-                            />
-                            <InputWithIcon
-                                placeholder={t('CreateAccount.lastname')}
-                                iconName="person"
-                                iconLibrary="Ionicons"
-                            />
-                            <InputWithIcon
-                                placeholder={t('CreateAccount.email')}
-                                iconName="mail"
-                                iconLibrary="Ionicons"
-                            />
-                            <InputWithIcon
-                                placeholder={t('CreateAccount.location')}
-                                iconName="location"
-                                iconLibrary="Ionicons"
-                            />                        
-                            <Text style={{color: "#999"}}>{t('CreateAccount.birthday')}</Text>
-                            <View style={styles.birthday}>
-                                <TextInput style={styles.inputStyle}
-                                    editable={false}
-                                    placeholder={'Day'}
-                                    placeholderTextColor="#999"
-                                    value={day}
-                                    onPress={() => showDatePicker()}
-                                />
-                                <TextInput style={styles.inputStyle}
-                                    editable={false}
-                                    placeholder={'Month'}
-                                    placeholderTextColor="#999"
-                                    value={month}
-                                    onPress={() => showDatePicker()}
-                                />
-                                <TextInput style={styles.inputStyle}
-                                    editable={false}
-                                    placeholder={'Year'}
-                                    placeholderTextColor="#999"
-                                    value={year}
-                                    onPress={() => showDatePicker()}
-                                />
-                                <View><View><DateTimePickerModal
-                                    isVisible={isDatePickerVisible}
-                                    date={birthday}
-                                    mode= {"date"}
-                                    onConfirm={handleConfirm}
-                                    onCancel={hideDatePicker}
-                                /> </View></View>
+                        <View style={styles.formContainer}>
+                            <View style={styles.textContainer} >
+                                <Text style={styles.welcomeText}> {t('CreateAccount.title')} </Text>
+                                <Text style={styles.descriptionText}> {t('CreateAccount.description')} </Text>
                             </View>
-                            
+                            <View style={styles.form}>
+                                <Text style={{color: "#999"}}>{t('CreateAccount.gender')}</Text>
+                                <RadioButtonContainer values={gender} onPress={onRadioButtonPress} />
+                                <InputWithIcon
+                                    placeholder={t('CreateAccount.firstname')}
+                                    iconName="person"
+                                    iconLibrary="Ionicons"
+                                />
+                                <InputWithIcon
+                                    placeholder={t('CreateAccount.lastname')}
+                                    iconName="person"
+                                    iconLibrary="Ionicons"
+                                />
+                                <InputWithIcon
+                                    placeholder={t('CreateAccount.email')}
+                                    iconName="mail"
+                                    iconLibrary="Ionicons"
+                                />
+                                <InputWithIcon
+                                    placeholder={t('CreateAccount.location')}
+                                    iconName="location"
+                                    iconLibrary="Ionicons"
+                                />                        
+                                <Text style={{color: "#999"}}>{t('CreateAccount.birthday')}</Text>
+                                <View style={styles.birthday}>
+                                    <TextInput style={styles.inputStyle}
+                                        editable={false}
+                                        placeholder={'Day'}
+                                        placeholderTextColor="#999"
+                                        value={day}
+                                        onPress={() => showDatePicker()}
+                                    />
+                                    <TextInput style={styles.inputStyle}
+                                        editable={false}
+                                        placeholder={'Month'}
+                                        placeholderTextColor="#999"
+                                        value={month}
+                                        onPress={() => showDatePicker()}
+                                    />
+                                    <TextInput style={styles.inputStyle}
+                                        editable={false}
+                                        placeholder={'Year'}
+                                        placeholderTextColor="#999"
+                                        value={year}
+                                        onPress={() => showDatePicker()}
+                                    />
+                                    <View><View><DateTimePickerModal
+                                        isVisible={isDatePickerVisible}
+                                        date={birthday}
+                                        mode= {"date"}
+                                        onConfirm={handleConfirm}
+                                        onCancel={hideDatePicker}
+                                    /> </View></View>
+                                </View>
+                                
+                            </View>
                         </View>
-                    </View>
-                </KeyboardAwareScrollView>
+                    </KeyboardAwareScrollView>
+                </View>
                 <View style={styles.btnContainer}>
                     <RoundedButton 
                         isPrimary={true}

@@ -4,7 +4,7 @@ import {Theme} from '../../../../resources/themes'
 export const styles = StyleSheet.create({
     container : {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
     },
     imageContainer : {
@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     },
     remeberStyle : {
         paddingLeft : 3,
-        color: Theme.TERTIARY_FONT_COLOR,
+        color: '#999',
         fontSize: 16,
     },
     form : {
@@ -61,5 +61,5 @@ export const styles = StyleSheet.create({
         left: 0,
         right: 0,
         paddingHorizontal: 30,
-    }    
+    } 
 })

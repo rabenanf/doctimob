@@ -14,6 +14,7 @@ export interface IOTPInputProps {
 export const CardRadioButton = (props: IOTPInputProps) => {
 
     const { isChecked, number, SvgIcon, onRadioButtonPress } = props;
+    const lastNumbers = number.slice(-4);
 
     const _renderCheckedView = () => {
         return isChecked ? (
@@ -23,13 +24,13 @@ export const CardRadioButton = (props: IOTPInputProps) => {
 
     return (
         <TouchableOpacity style={styles.radioContainer} onPress={onRadioButtonPress}>
-            <View style={[styles.radioButtonIcon]}>{_renderCheckedView()}</View>
             <View style={[styles.radioButtonTextContainer]}>
+                <View style={[styles.radioButtonIcon]}>{_renderCheckedView()}</View>
                 <Stars />
-                <Text style={styles.radioButtonText}>{number}</Text>
+                <Text style={styles.radioButtonText}>{lastNumbers}</Text>
             </View>
             <View style={[styles.radioButtonTextContainer]}>
-                <SvgIcon />
+                <SvgIcon width={24} height={24} />
             </View>    
         </TouchableOpacity>
     );

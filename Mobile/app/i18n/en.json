@@ -115,5 +115,30 @@
         "experiences" : "Experiences",
         "patients" : "Patients",
         "work" : "Work Experience"
+    },
+    "Payment" : {
+        "titleHeader" : "Payment",
+        "totalCost" : "Total Cost",
+        "title" : "Select a Payment \nMethod",
+        "description" : "Choose a saved card or add a new one to complete payment.",
+        "anotherCard" : "Pay with a different card",
+        "payNow" : "Pay now",
+        "addCard" : "Pay with New Card",
+        "addCardDescription" : "Enter your card details to securely complete payment.",
+        "cardNumber" : "Card Number",
+        "exxpirationDate" : "Expiration Date",
+        "cvv" : "CVV",
+        "holderName" : "Cardholder Name",
+        "confirmedTitle" : "Your consultation is \nsuccessfully booked !",
+        "myAppointments" : "My Appointments",
+        "confirmed" : "Appointment Confirmed",
+        "confirmAppointment" : "Confirm Appointment",
+        "selectedMethod" : "Payment Method Selected",
+        "cash" : "Cash",
+        "cashDescription" : "You will pay the doctor directly at the time of the consultation.",
+        "qrCode" : "QR CODE",
+        "qrCodeDescription" : "Scan the QR code below to complete your payment.",
+        "scanQRCode" : "Scan QR CODE",
+        "scanDescription" : "Scan this QR code to complete your payment."
     }
 }
