@@ -1,10 +1,10 @@
 import React, { JSX, useState } from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import CheckBox from '@react-native-community/checkbox';
+import { CheckBox } from '@rneui/themed';
 import { styles } from './styles';
 import { RootStackParamList } from '../../../../data/interface';
 import AppLayout from '../../../layout';
@@ -29,13 +29,18 @@ export const LoginScreen = ({navigation}: Props): JSX.Element => {
         <AppLayout>
             <LinearGradient 
                 style={styles.container} 
-                colors={[Theme.PRIMARY_COLOR, 'white']}
+                colors={[Theme.BACKGROUND_COLOR, 'white']}
                 start={{ x: 0.5, y: 0 }}
                 end={{ x: 0.5, y: 1 }}
-                locations={[0, 0.78]}
+                locations={[0, 0.40]}
                 >
-                <View style={{height : "88%"}}>  
-                    <KeyboardAwareScrollView style={styles.formContainer}>
+                <View style={{flex: 1}}>  
+                    <KeyboardAwareScrollView 
+                        style={styles.formContainer}
+                        contentContainerStyle={{ flexGrow: 1 }}
+                        enableOnAndroid={true}
+                        keyboardShouldPersistTaps="handled"
+                    >
                         <View style={styles.imageContainer}>
                             <Image style={styles.image} resizeMode="contain" source={Logo}/> 
                         </View>
@@ -53,32 +58,28 @@ export const LoginScreen = ({navigation}: Props): JSX.Element => {
                                 iconName="bag"
                                 placeholder={t('Login.password')}
                             />
+                            <View style={styles.footer}>
+                                <CheckBox
+                                    checked={checked}
+                                    onPress={() => setChecked(!checked)}
+                                    iconType="material-community"
+                                    checkedIcon="checkbox-marked"
+                                    uncheckedIcon="checkbox-blank-outline"
+                                    checkedColor="black"
+                                    title={t('Login.rememberMe')}
+                                    textStyle={styles.remeberStyle}
+                                    fontFamily="Rubik"
+                                    containerStyle={{ margin: 0, padding: 0, marginLeft: 0 }} 
+                                />
+                                <TouchableOpacity onPress={() => goToForgotPassword()}>
+                                    <Text style={styles.forgotStyle}>
+                                        {t('Login.forgotPassword')}
+                                    </Text>
+                                </TouchableOpacity>
 
-                        </View>
-                        <View style={styles.footer}>
-                            <View style={{flexDirection: 'row'}} >
-                                <View>
-                                    <CheckBox
-                                        value={checked}
-                                        onValueChange={(newValue) => setChecked(newValue)}
-                                        boxType='square'
-                                        onFillColor={Theme.SECONDARY_FONT_COLOR}
-                                        onCheckColor={'white'}
-                                        style={{flex : 1, height: 18}}
-                                        tintColors= {{ true: '#999', false: '#999' }}
-                                    />
-                                </View>
-                                <Text style={styles.remeberStyle}>
-                                    {t('Login.rememberMe')}
-                                </Text>
                             </View>
-                            <TouchableOpacity onPress={() => goToForgotPassword()}>
-                                <Text style={styles.forgotStyle}>
-                                    {t('Login.forgotPassword')}
-                                </Text>
-                            </TouchableOpacity>
-
                         </View>
+                        
                     </KeyboardAwareScrollView>
                 </View>  
                 <View style={styles.btnContainer}>

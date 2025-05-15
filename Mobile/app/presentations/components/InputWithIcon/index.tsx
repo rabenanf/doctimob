@@ -28,12 +28,11 @@ export const InputWithIcon: React.FC<Props> = ({
     iconPosition = 'left',
     onIconPress,
     error,
-    style,
     ...rest
 }) => {
     const getIcon = () => {
         const size = 20;
-        const color = '#888';
+        const color = '#152C2A';
         const IconComp =
             iconLibrary === 'Feather'
                 ? Feather
@@ -59,8 +58,9 @@ export const InputWithIcon: React.FC<Props> = ({
             <View style={styles.container}>
                 {iconPosition === 'left' && getIcon()}
                 <TextInput
-                    style={[styles.input, style]}
-                    placeholderTextColor="#999"
+                    style={[styles.input]}
+                    cursorColor={'#E5E7F3'}
+                    placeholderTextColor="#CCCEDB"
                     {...rest}
                 />
                 {iconPosition === 'right' && getIcon()}

@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
       marginBottom: 4,
     },
     name: {
-      fontWeight: 'bold',
+      fontWeight: 700,
       fontSize: 14,
       color: '#222',
     },

@@ -7,8 +7,7 @@ export const styles = StyleSheet.create({
         overflow: 'hidden',
         backgroundColor: '#fff',
         elevation: 4,
-        margin: 16,
-        width: 220
+        borderColor: "rgba(229, 231, 243, 1)",
     },
     image: {
         width: '100%',
@@ -48,7 +47,7 @@ export const styles = StyleSheet.create({
     },
     name: {
         fontSize: 12,
-        fontWeight: 'bold',
+        fontWeight: 700,
         color: '#333',
     },
     specialtyTag: {

@@ -34,14 +34,15 @@ export const  AppointmentConfirmedScreen = ({navigation}: Props): JSX.Element =>
                         </View>
                         <View style={styles.detailContainer}>
                             <View style={styles.detail}>
-                                <View style={styles.pill}>
-                                    <Icon name="calendar" size={16} color="#000" style={{ marginRight: 6 }} />
-                                    <Text style={styles.pillText}> {'March 17, 2025'} </Text>
-                                </View>
-                                <View style={styles.pill}>
-                                    <Icon name="time" size={16} color="#000" style={{ marginRight: 6 }} />
-                                    <Text style={styles.pillText}> {'09 : 30' } </Text>
-                                    <Text style={styles.highlightText}> {'AM' } </Text>
+                                <Icon name="calendar" size={16} color="#000" style={{ marginRight: 6 }} />
+                                <View style={{ flexDirection : 'column'}}>
+                                    <View style={styles.pill}>
+                                        <Text style={styles.pillText}> {'March 17, 2025'} </Text>
+                                    </View>
+                                    <View style={styles.pill}>
+                                        <Text style={styles.pillText}> {'09 : 30' } </Text>
+                                        <Text style={styles.highlightText}> {'AM' } </Text>
+                                    </View>
                                 </View>
                             </View>
                             <View style={styles.iconCircle}>
@@ -52,7 +53,7 @@ export const  AppointmentConfirmedScreen = ({navigation}: Props): JSX.Element =>
                 </View>
                 <RoundedButton 
                     isPrimary={true}
-                    onButtonPress={ () => {}} 
+                    onButtonPress={ () => { navigation.navigate('TabHome', {screen: 'AppointmentsList'}) }} 
                     textBtn={t('Payment.myAppointments')}
                 />
             </View>

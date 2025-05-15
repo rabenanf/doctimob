@@ -12,12 +12,13 @@ export interface RequestCardInputProps {
     title : string,
     date : string,
     time : string,
-    type : string  
+    type : string,
+    goToDetail : () => void  
 }    
 
 export const RequestCard = (Props : RequestCardInputProps) => {
 
-    let { nbSeen = 0, nbResponded = 0, title, date, time, type } = Props;
+    let { nbSeen = 0, nbResponded = 0, title, date, time, type, goToDetail } = Props;
 
     return (
         <View style={styles.requestContainer}>
@@ -54,7 +55,7 @@ export const RequestCard = (Props : RequestCardInputProps) => {
                     <Icon name="time" size={14} color="#000" />
                     <Text style={styles.typeText}>{time}</Text>
                 </View>
-                <TouchableOpacity style={styles.requestGo}>
+                <TouchableOpacity style={styles.requestGo} onPress={goToDetail}>
                     <Icon name="arrow-forward" size={18} color="#444" />
                 </TouchableOpacity>
             </View>

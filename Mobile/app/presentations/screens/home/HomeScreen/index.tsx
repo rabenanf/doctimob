@@ -17,6 +17,10 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
 
     const { t } = useTranslation();
 
+    const goToDetail = () => {
+        navigation.navigate('RequestDetails');
+    }
+
     return (
         <AppLayout>
             <ProfilHeader photo={Photo} name={'Therèse Rabe'} />
@@ -77,14 +81,16 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
                             time="09:30 AM"
                             nbSeen={15}
                             nbResponded={0} 
-                            type={'Video consultation'}                        />
+                            type={'Video consultation'}
+                            goToDetail={() => goToDetail()}                        />
                         <RequestCard
                             title="Skin rash consultation"
                             date="22 March 2025"
                             time="10:15 AM"
                             nbSeen={10}
                             nbResponded={2}
-                            type={'Video consultation'} 
+                            type={'Video consultation'}
+                            goToDetail={() => goToDetail()} 
                         />
                         <RequestCard
                             title="Digestive discomfort evaluation"
@@ -93,6 +99,7 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
                             nbSeen={5}
                             nbResponded={1}
                             type={'Video consultation'} 
+                            goToDetail={() => goToDetail()}
                         />
                     </ScrollView>
                 </View>

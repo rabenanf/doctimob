@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Theme } from "../../../../resources/themes";
+import { normalizeFont } from "../../../../services/utils/fontSize";
 
 export const styles = StyleSheet.create({
     container : {
@@ -9,12 +10,14 @@ export const styles = StyleSheet.create({
         flexDirection: 'column', 
     },
     imageContainer : {
-        paddingTop : 60,
         justifyContent: 'center',
         alignItems: 'center',
+        height:  `${normalizeFont(30)}%`,
+        marginTop: `${normalizeFont(30)}%`,
+        marginBottom: "10%"
     },
     image : {
-        width: 150,
+        height: "100%"
     },
     welcomeText : {
         textAlign: "left",

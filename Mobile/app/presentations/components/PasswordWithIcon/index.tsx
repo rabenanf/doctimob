@@ -22,7 +22,7 @@ export const PasswordWithIcon: React.FC<Props> = ({ placeholder = 'Password', er
 
   const getIcon = () => {
     const size = 20;
-    const color = '#888';
+    const color = '#152C2A';
     const iconElement = <Ionicons name={iconName as any} size={size} color={color} />;
 
     return (
@@ -37,7 +37,8 @@ export const PasswordWithIcon: React.FC<Props> = ({ placeholder = 'Password', er
         <TextInput
           placeholder={placeholder}
           secureTextEntry={!visible}
-          placeholderTextColor="#999"
+          cursorColor={'#E5E7F3'}
+          placeholderTextColor="#CCCEDB"
           style={styles.input}
           {...rest}
         />

@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import {Theme} from '../../../../resources/themes'
+import { normalizeFont } from "../../../../services/utils/fontSize";
 
 export const styles = StyleSheet.create({
     container : {
@@ -9,12 +10,14 @@ export const styles = StyleSheet.create({
     },
     imageContainer : {
         alignItems: 'center',
-        height: 220,
-        paddingTop: 20,
-        paddingBottom: 20
+        height:  `${normalizeFont(25)}%`,
+        marginTop: `${normalizeFont(20)}%`,
+        marginBottom: "10%"
     },
     image : {
-        height: 180
+        height: "100%",
+        resizeMode: "contain",
+        maxHeight: normalizeFont(223),
     },
     textContainer : {
         justifyContent: 'center',
@@ -37,6 +40,7 @@ export const styles = StyleSheet.create({
     formContainer : {
         paddingHorizontal: 30,
         flexDirection: 'column', 
+        
     },
     forgotStyle : {
         textAlign: "right",
@@ -50,8 +54,7 @@ export const styles = StyleSheet.create({
         fontSize: 16,
     },
     form : {
-        flex:1,
-        justifyContent: 'flex-start'
+        
     },
     footer : {
         flexDirection: 'row', 

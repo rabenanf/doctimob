@@ -58,7 +58,7 @@ export const  PaymentCreditCardScreen = ({navigation}: Props): JSX.Element => {
                     />
                     <RoundedButton 
                         isPrimary={true}
-                        onButtonPress={ () => {}} 
+                        onButtonPress={ () => {navigation.navigate('AppointmentConfirmed');}} 
                         textBtn={t('Payment.payNow')}
                     />
                 </View>
@@ -70,7 +70,10 @@ export const  PaymentCreditCardScreen = ({navigation}: Props): JSX.Element => {
                 visible={modalVisible}>
                 <AddCardModal 
                     closeModal={() => {setModalVisible(false)}} 
-                    pay={() => {setModalVisible(false)}} 
+                    pay={() => {
+                        setModalVisible(false);
+                        navigation.navigate('AppointmentConfirmed');
+                    }} 
                 />
             </Modal>
         </AppLayout> 

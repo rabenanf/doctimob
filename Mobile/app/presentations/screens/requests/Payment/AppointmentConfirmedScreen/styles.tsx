@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
         gap : 10
     },
     detail : {
-        flexDirection : 'column',
+        flexDirection : 'row',
         gap : 10
     },
     name : {
@@ -71,7 +71,6 @@ export const styles = StyleSheet.create({
     pill: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 12,
     },
     pillText: {
         fontWeight: '600',

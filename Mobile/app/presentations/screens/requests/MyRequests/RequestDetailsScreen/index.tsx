@@ -28,6 +28,10 @@ export const  RequestDetailsScreen = ({navigation}: Props): JSX.Element => {
         navigation.navigate('DoctorProfile');
     }
 
+    const goToPayment = () => {
+        navigation.navigate('PaymentCreditCard');
+    }
+
     return (
         <AppLayout>
             <TitleHeader title={t('RequestDetails.title')} />
@@ -123,11 +127,12 @@ export const  RequestDetailsScreen = ({navigation}: Props): JSX.Element => {
                             rate={'4.5'} 
                             id={1} 
                             seeProfil={(id: number) => {
-                               
+                                goToProfile();
                             } } 
                             selectDoctor={(id: number) => {
                                 setModalVisible(true);
                                 setSelectedDoctorId(id);
+                                goToPayment();
                             } } />
                         <ResponseCard 
                             message={'Hi, I regularly treat patients with chronic migraines and visual strain symptoms.   I believe I can help you better understand the causes and provide a tailored approach. Looking forward to helping you.'} 
@@ -142,6 +147,7 @@ export const  RequestDetailsScreen = ({navigation}: Props): JSX.Element => {
                             selectDoctor={(id: number) => {
                                 setModalVisible(true);
                                 setSelectedDoctorId(id);
+                                goToPayment();
                             } } />                    
                             
                     </ScrollView>

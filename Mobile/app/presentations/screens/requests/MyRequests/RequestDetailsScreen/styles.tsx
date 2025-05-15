@@ -92,7 +92,7 @@ export const styles = StyleSheet.create({
     valueBold: {
         color: '#14142B',
         fontSize: 15,
-        fontWeight: '700',
+        fontWeight: 700,
     },
     pill: {
         flexDirection: 'row',

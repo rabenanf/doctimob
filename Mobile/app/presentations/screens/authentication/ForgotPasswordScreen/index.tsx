@@ -22,33 +22,40 @@ export const ForgotPasswordScreen = ({navigation}: Props): JSX.Element => {
         <AppLayout>
             <LinearGradient 
                 style={styles.container} 
-                colors={[Theme.PRIMARY_COLOR, 'white']}
+                colors={[Theme.BACKGROUND_COLOR, 'white']}
                 start={{ x: 0.5, y: 0 }}
                 end={{ x: 0.5, y: 1 }}
-                locations={[0, 0.78]}
+                locations={[0, 0.40]}
                 >
-                <View style={styles.imageContainer}>
-                    <Image style={styles.image} resizeMode="contain" source={Logo}/> 
-                </View>
-                <KeyboardAwareScrollView style={styles.formContainer}>
-                    <View style={styles.textContainer} >
-                        <Text style={styles.welcomeText}> {t('ForgotPassword.title')} </Text>
-                        <Text style={styles.descriptionText}> {t('ForgotPassword.description')} </Text>
+                <View style={{ flex: 1}}>
+                    <View style={styles.imageContainer}>
+                        <Image style={styles.image} resizeMode="contain" source={Logo}/> 
                     </View>
-                    <View style={styles.form}>
-                        <InputWithIcon
-                            placeholder={t('ForgotPassword.email')}
-                            iconName="mail"
-                            iconLibrary="Ionicons"
+                    <KeyboardAwareScrollView 
+                        style={styles.formContainer}
+                        contentContainerStyle={{ flexGrow: 1 }}
+                        enableOnAndroid={true}
+                        keyboardShouldPersistTaps="handled"
+                    >
+                        <View style={styles.textContainer} >
+                            <Text style={styles.welcomeText}> {t('ForgotPassword.title')} </Text>
+                            <Text style={styles.descriptionText}> {t('ForgotPassword.description')} </Text>
+                        </View>
+                        <View style={styles.form}>
+                            <InputWithIcon
+                                placeholder={t('ForgotPassword.email')}
+                                iconName="mail"
+                                iconLibrary="Ionicons"
+                            />
+                        </View>
+                    </KeyboardAwareScrollView>
+                    <View style={styles.btnContainer}>
+                        <RoundedButton 
+                            isPrimary={true}
+                            onButtonPress={ () => {}} 
+                            textBtn={t('ForgotPassword.sendEmail')}
                         />
-                    </View>
-                </KeyboardAwareScrollView>
-                <View style={styles.btnContainer}>
-                    <RoundedButton 
-                        isPrimary={true}
-                        onButtonPress={ () => {}} 
-                        textBtn={t('ForgotPassword.sendEmail')}
-                    />
+                </View>
                 </View>
             </LinearGradient>
         </AppLayout>    

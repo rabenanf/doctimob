@@ -17,10 +17,20 @@ export type RootStackParamList = {
     CreatePassword: undefined;
     RegistrationConfirmation: undefined;
     CreateAccount: undefined;
+    ChooseAccountType: undefined;
     DoctorProfile: undefined;
     PaymentCreditCard: undefined;
     AppointmentConfirmed: undefined;
     PaymentCash: undefined;
     PaymentQRCode: undefined;
     QRCode: undefined;
+    AppointmentChat: undefined;
+    AppointmentCall: undefined;
+    AppointmentFeedback: undefined;
+    PaymentMethod: undefined;
+    ChangePassword: undefined;
+    FamilyMember: undefined;
+    Profile: undefined;
+    MedicalRecordList: undefined;
+    MedicalRecordDetail: undefined;
 }

@@ -25,10 +25,10 @@ export const RegistrationConfirmationScreen = ({navigation}: Props): JSX.Element
         <AppLayout>
             <LinearGradient 
                 style={styles.container} 
-                colors={[Theme.PRIMARY_COLOR, 'white']}
+                colors={[Theme.BACKGROUND_COLOR, 'white']}
                 start={{ x: 0.5, y: 0 }}
                 end={{ x: 0.5, y: 1 }}
-                locations={[0, 0.78]}
+                locations={[0, 0.40]}
                 >
                 <View style={styles.imageContainer}>
                     <Image style={styles.image} resizeMode="contain" source={Logo}/> 

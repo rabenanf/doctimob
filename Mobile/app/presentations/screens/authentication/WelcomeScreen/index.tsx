@@ -8,6 +8,7 @@ import { RootStackParamList } from '../../../../data/interface';
 import AppLayout from '../../../layout';
 import Logo from '../../../../resources/assets/images/logo.png'
 import { RoundedButton } from '../../../components/RoundedButton';
+import { Theme } from '../../../../resources/themes';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Welcome'>;
 
@@ -15,8 +16,8 @@ export const WelcomeScreen = ({navigation}: Props): JSX.Element => {
     
     const { t } = useTranslation();
     
-    const goToVerifyNumber = () => {
-        navigation.navigate('VerifyNumber');
+    const goToChooseAccountType = () => {
+        navigation.navigate('ChooseAccountType');
     }
 
     const goToLogin = () => {
@@ -27,10 +28,10 @@ export const WelcomeScreen = ({navigation}: Props): JSX.Element => {
         <AppLayout>
             <LinearGradient 
                 style={styles.container} 
-                colors={['#57CFC8', 'white']}
+                colors={[Theme.BACKGROUND_COLOR, 'white']}
                 start={{ x: 0.5, y: 0 }}
                 end={{ x: 0.5, y: 1 }}
-                locations={[0, 0.78]}
+                locations={[0, 0.40]}
                 >
                 <View style={styles.imageContainer}>
                     <Image style={styles.image} resizeMode="contain" source={Logo}/> 
@@ -42,7 +43,7 @@ export const WelcomeScreen = ({navigation}: Props): JSX.Element => {
                 <View style={styles.btnContainer}>
                     <RoundedButton 
                         isPrimary={true}
-                        onButtonPress={ () => goToVerifyNumber()} 
+                        onButtonPress={ () => goToChooseAccountType()} 
                         textBtn={t('Welcome.getStarted')}
                     />
                     <RoundedButton 

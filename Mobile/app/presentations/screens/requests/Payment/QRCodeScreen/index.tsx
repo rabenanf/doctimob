@@ -30,6 +30,7 @@ export const QRCodeScreen = ({ navigation }: Props): JSX.Element => {
             // Update the state with the latest scanned data
             setLatestScannedData(codes[0].value);
             console.log(codes[0].value);
+            navigation.navigate('AppointmentConfirmed');
         },
     });
 

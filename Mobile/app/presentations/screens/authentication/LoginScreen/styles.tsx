@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
-import {Theme} from '../../../../resources/themes'
+import {Theme} from '../../../../resources/themes';
+import {normalizeFont} from '../../../../services/utils/fontSize';
 
 export const styles = StyleSheet.create({
     container : {
@@ -10,42 +11,47 @@ export const styles = StyleSheet.create({
     imageContainer : {
         justifyContent: 'center',
         alignItems: 'center',
+        height:  `${normalizeFont(30)}%`,
+        marginTop: `${normalizeFont(20)}%`,
+        
     },
     image : {
-        width: 150,
+        height: "100%",
+        maxHeight: normalizeFont(223),
     },
     textContainer : {
         justifyContent: 'center',
-        alignItems: 'center',
-        paddingBottom: 30
+        alignItems: 'center', 
+        gap: 23, 
+        paddingVertical: 40,
     },
     welcomeText : {
         textAlign: "center",
         color: Theme.SECONDARY_FONT_COLOR,
-        fontSize: 40,
-        fontWeight: 800,
-        paddingBottom : 20
+        fontSize: normalizeFont(40),
+        fontWeight: 800,   
     },
     descriptionText : {
         textAlign: "center",
         color: Theme.TERTIARY_FONT_COLOR,
         fontSize: 16,
-        fontWeight: 400
+        fontWeight: 400, 
+        
     },
     formContainer : {
         paddingHorizontal: 30,
-        flexDirection: 'column', 
+        flexDirection: 'column'
     },
     forgotStyle : {
         textAlign: "right",
         color: Theme.PRIMARY_COLOR,
-        fontSize: 16,
+        fontSize: 12,
         fontWeight: 700,
     },
     remeberStyle : {
-        paddingLeft : 3,
-        color: '#999',
-        fontSize: 16,
+        color: '#152C2A',
+        fontSize: 12,
+        fontWeight: 400
     },
     form : {
         flex:1,
@@ -53,7 +59,8 @@ export const styles = StyleSheet.create({
     },
     footer : {
         flexDirection: 'row', 
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: "center"
     },
     btnContainer : {
         position: 'absolute',

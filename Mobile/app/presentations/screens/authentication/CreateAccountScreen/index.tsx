@@ -1,5 +1,5 @@
 import React, { JSX, useEffect, useState } from 'react';
-import { View, Text, Image, TextInput } from 'react-native';
+import { View, Text, Image, TextInput, ScrollView, Platform } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -74,13 +74,19 @@ export const CreateAccountScreen = ({navigation}: Props): JSX.Element => {
         <AppLayout>
             <LinearGradient 
                 style={styles.container} 
-                colors={[Theme.PRIMARY_COLOR, 'white']}
+                colors={[Theme.BACKGROUND_COLOR, 'white']}
                 start={{ x: 0.5, y: 0 }}
                 end={{ x: 0.5, y: 1 }}
-                locations={[0, 0.78]}
+                locations={[0, 0.40]}
                 >
                 <View style={{height : "88%"}}>
-                    <KeyboardAwareScrollView>
+                    <KeyboardAwareScrollView
+                        style={{ flex: 1 }}
+                        contentContainerStyle={{ flexGrow: 1, paddingBottom: 150 }}
+                        enableOnAndroid={true}
+                        extraScrollHeight={20}
+                        keyboardShouldPersistTaps="handled"
+                    >
                         <View style={styles.imageContainer}>
                             <Image style={styles.image} resizeMode="contain" source={Logo}/> 
                         </View>
@@ -135,14 +141,19 @@ export const CreateAccountScreen = ({navigation}: Props): JSX.Element => {
                                         value={year}
                                         onPress={() => showDatePicker()}
                                     />
-                                    <View><View><DateTimePickerModal
-                                        isVisible={isDatePickerVisible}
-                                        date={birthday}
-                                        mode= {"date"}
-                                        onConfirm={handleConfirm}
-                                        onCancel={hideDatePicker}
-                                    /> </View></View>
+                                    <View>
+                                        <View>
+                                            <DateTimePickerModal
+                                                isVisible={isDatePickerVisible}
+                                                date={birthday}
+                                                mode= {"date"}
+                                                onConfirm={handleConfirm}
+                                                onCancel={hideDatePicker}
+                                            /> 
+                                        </View>
+                                    </View>
                                 </View>
+                                
                                 
                             </View>
                         </View>

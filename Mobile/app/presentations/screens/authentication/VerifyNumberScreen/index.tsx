@@ -1,6 +1,5 @@
 import LinearGradient from "react-native-linear-gradient";
 import React, { JSX, useState } from "react";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -11,6 +10,11 @@ import AppLayout from "../../../layout";
 import { Theme } from "../../../../resources/themes";
 import Logo from '../../../../resources/assets/images/logo.png'
 import { RoundedButton } from "../../../components/RoundedButton";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import useUserStore from "../../../../services/redux/userStore";
+import { AuthenticationService } from "../../../../services/application/authentication.sa";
+import { CustomActivityIndicator } from "../../../components/CustomActivityIndicator";
+import { showToast } from "../../../../services/utils/toast";
 
 
 type Props = NativeStackScreenProps<RootStackParamList, 'VerifyNumber'>;
@@ -18,12 +22,25 @@ type Props = NativeStackScreenProps<RootStackParamList, 'VerifyNumber'>;
 export const VerifyNumberScreen = ({navigation}: Props): JSX.Element => {
 
     const { t } = useTranslation();
-    const [selected, setSelected] = useState('+91');
+    const [selected, setSelected] = useState('+33');
     const [country, setCountry] = useState('');
-    const [phone, setPhone] = useState('');
+    const [telephone, setTelephone] = useState('');
+    const { user, setPhone } = useUserStore(); 
+    const { verifyNumber } = AuthenticationService();
+    const [loading, setLoading] = useState(false);
 
-    const sendNumber = () => {
-        navigation.navigate('OTPVerification');
+    const sendNumber = async () => {
+        setPhone(selected + telephone);
+        setLoading(true);
+        const response = await verifyNumber(selected + telephone);
+        console.log('valiny : ', response);
+        if (response.success) {
+            navigation.navigate('OTPVerification');
+        }
+        else {
+            showToast('error', t('Global.error'), t('OTP.errorSend'));
+        }
+        setLoading(false);
     }
 
     const goToLogin = () => {
@@ -34,12 +51,16 @@ export const VerifyNumberScreen = ({navigation}: Props): JSX.Element => {
         <AppLayout>
             <LinearGradient 
                 style={styles.container} 
-                colors={[Theme.PRIMARY_COLOR, 'white']}
+                colors={[Theme.BACKGROUND_COLOR, 'white']}
                 start={{ x: 0.5, y: 0 }}
                 end={{ x: 0.5, y: 1 }}
-                locations={[0, 0.78]}
+                locations={[0, 0.40]}
                 >
-                <KeyboardAwareScrollView>
+                <KeyboardAwareScrollView
+                    contentContainerStyle={{ flexGrow: 1 }}
+                    enableOnAndroid={true}
+                    keyboardShouldPersistTaps="handled"
+                >
                     <View style={styles.imageContainer}>
                         <Image style={styles.image} resizeMode="contain" source={Logo}/> 
                     </View>
@@ -53,8 +74,8 @@ export const VerifyNumberScreen = ({navigation}: Props): JSX.Element => {
                                 selected={selected} 
                                 setSelected={setSelected}
                                 setCountryDetails={setCountry} 
-                                phone={phone} 
-                                setPhone={setPhone} 
+                                phone={telephone} 
+                                setPhone={setTelephone} 
                                 countryCodeTextStyles={{fontSize: 13}}
                             />
                         </View>
@@ -73,6 +94,7 @@ export const VerifyNumberScreen = ({navigation}: Props): JSX.Element => {
                         textBtn={t('VerifyNumber.continue')}
                     />
                 </View>
+                { loading && <CustomActivityIndicator /> }
             </LinearGradient>
         </AppLayout>    
 

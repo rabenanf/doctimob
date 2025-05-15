@@ -3,6 +3,9 @@
         "welcome": "Welcome back"
 
     },
+    "Global": {
+        "error": "Error"
+    },
     "Welcome": {
         "title": "Welcome \nto Doctimob",
         "description": "Your trusted companion for online and home care",
@@ -36,7 +39,9 @@
         "description": "We’ve sent a 6 verification code to your phone.",
         "notReceive": "Didn’t receive the code ?",
         "resend": "Resend",
-        "verify": "Verify Code"
+        "verify": "Verify Code",
+        "errorSend": "Error sending phone number",
+        "errorCode": "Error verifying code"
     },
     "CreatePassword": {
         "title": "Create a Password",
@@ -139,6 +144,139 @@
         "qrCode" : "QR CODE",
         "qrCodeDescription" : "Scan the QR code below to complete your payment.",
         "scanQRCode" : "Scan QR CODE",
-        "scanDescription" : "Scan this QR code to complete your payment."
+        "scanDescription" : "Scan this QR code to complete your payment.",
+        "expirationDate" : "Expiration Date"
+    },
+    "NewRequest" : {
+        "submittedHeader" : "Request Submitted Successfully",
+        "submittedTitle" : "Request Submitted Successfully",
+        "submittedDescription" : "Your consultation request has been posted !Doctors matching your criteria will review your request and respond based on their availability",
+        "myRequests" : "My Requests",
+        "title" : "New Request",
+        "description" : " Please fill in a few details to describe your concern.",
+        "createRequest" : "Create Request",
+        "medicalInfoTitle" : "Medical Information",
+        "creditCard" : "Bank Card",
+        "qrCode" : "QR Code",
+        "paymentTitle" : "Payment method",
+        "consultationTitle" : "Consultation Preferences",
+        "preferredDateTitle" : "Preferred Date & Time",
+        "homeVisit" : "Home Visit",
+        "online" : "Online",
+        "both" : "Both",
+        "vietnamese" : "Vietnamese",
+        "english" : "English",
+        "preferredLanguage" : "Preferred Language",
+        "chooseTime" : "Choose Time",
+        "chooseDay" : "Choose Day",
+        "No" : "No",
+        "Yes" : "Yes",
+        "insurance" : "Insurance",
+        "noPreference" : "No Preference",
+        "male" : "Male",
+        "female" : "Female",
+        "preferredGender" : "Preferred Caregiver Gender ",
+        "specialty" : "Medical Specialty",
+        "descriptionArea" : "Description",
+        "familyMember" : "Family member",
+        "shareHistory" : "Share medical history"
+    },
+    "Appointment" : {
+        "title" : "My Appointments",
+        "description" : "View your upcoming and past consultations in one place.",
+        "active" : "Active",
+        "cancelled" : "Cancelled",
+        "joinCall" : "Join the video call",
+        "startTime" : "Your appointment starts in",
+        "language" : "Language",
+        "chat" : "Chat with Doctor",
+        "chatInfo" : "Chat will open 20 minutes before the consultation.",
+        "chatPlaceholder" : "Enter your message"
+    },
+    "ChooseAccountType" : {
+        "title" : "Account Type",
+        "description" : "Please select the type of account you want to create.",
+        "continue" : "Continue",
+        "patient" : "I'm a Patient",
+        "patientDesc" : "Get medical help, book consultations, manage your family’s health.",
+        "doctor" : "I'm a Doctor",
+        "doctorDesc" : "Offer your services, receive requests, and help patients via Doctimob."
+    },
+    "AppointmentFeedback" : {
+        "titleHeader" : "Give Your Feedback",
+        "title" : "Rate your caregiver",
+        "description" : "Tell us how your consultation went and help others choose with confidence.",
+        "reviews" : "Reviews",
+        "feedback" : "Feedback",
+        "feedbackPlaceholder" : "Your appreciation",
+        "submit" : "Submit Feedback"
+    },
+    "Setting" : {
+        "title" : "Settings",
+        "description" : "Manage your preferences, security and account options.",
+        "logout" : "Logout",
+        "profile" : "Profile",
+        "changePassword" : "Change Password",
+        "language" : "Language",
+        "familyMember" : "Family Members",
+        "records" : "Medical Records",
+        "paymentMethods" : "Payment Methods",
+        "changePasswordTitle" : "Change Password",
+        "changePasswordDescription" : "Keep your account secure by updating your password regularly.",
+        "changePasswordSave" : "Save Changes",
+        "currentPassword" : "Current Password",
+        "newPassword" : "New Password",
+        "confirmPassword" : "Confirm Password",
+        "addTitle" : "Language",
+        "addDescription" : "Choose the language you want to use in the app.",
+        "english" : "English",
+        "vietnamese" : "Vietnamese",
+        "save" : "Save"
+    },
+    "PaymentMethod" : {
+        "title" : "Payment Methods",
+        "description" : "Manage your payment options quickly and securely.",
+        "addCard" : "Add new Card",
+        "saveCard" : "Save Card"
+    },
+    "FamilyMember" : {
+        "title" : "Family Members",
+        "description" : "Manage the people you care for and book consultations on their behalf.",
+        "add" : "Add a Family Member",
+        "birthday" : "Date of Birth",
+        "addTitle" : "Add Family Member",
+        "addDescription" : "Create a profile for a loved one to request medical care for them.",
+        "gender":   "Gender",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "address":  "Address",
+        "saveMember": "Save Member"
+    },
+    "Profile" : {
+        "headerTitle": "Profile",
+        "title": "Edit Profile",
+        "description": "Update your personal information and contact details.",
+        "saveChange": "Save Changes",
+        "gender": "Gender",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "address": "Address",
+        "phone": "Phone",
+        "email": "Email address",
+        "birthday": "Date of Birth"
+    },
+    "RecordList" : {
+        "headerTitle" : "Medical records",
+        "familyMember" : "Family members",
+        "medical" : "MEDICAL",
+        "records" : "Records",
+        "download" : "Download",
+        "reports" : "All reports" 
+    },
+    "RecordDetail" : {
+        "headerTitle" : "Medical Document",
+        "download" : "Download report",
+        "rateYour" : "Rate your experience with",
+        "giveFeedback" : "Give feedback"
     }
 }

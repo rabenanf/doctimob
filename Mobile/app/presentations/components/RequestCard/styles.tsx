@@ -71,7 +71,7 @@ export const styles = StyleSheet.create({
         gap: 8,
     },
     requestTitle: {
-        fontWeight: 'bold',
+        fontWeight: 700,
         fontSize: 15,
         color: '#1D2B2E',
     },

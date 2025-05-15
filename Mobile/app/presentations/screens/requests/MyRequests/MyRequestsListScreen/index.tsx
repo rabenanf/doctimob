@@ -9,6 +9,16 @@ import Photo from '../../../../../resources/assets/images/photo.png';
 import { useTranslation } from 'react-i18next';
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
 import { RequestCard } from '../../../../components/RequestCard';
+import { useNavigation } from '@react-navigation/native';
+import { navigationRef } from '../../../../../routers/NavigationService';
+
+const goToDetail = () => {
+    if (navigationRef.isReady()) {
+        navigationRef.navigate('RequestDetails');
+    }
+    
+    
+}
 
 const ActiveRoute = () => {
     return (
@@ -19,7 +29,8 @@ const ActiveRoute = () => {
             time="09:30 AM"
             nbSeen={15}
             nbResponded={0} 
-            type={'Video consultation'}                        />
+            type={'Video consultation'}  
+            goToDetail={() => goToDetail()}                       />
         <RequestCard
             title="Skin rash consultation"
             date="22 March 2025"
@@ -27,6 +38,7 @@ const ActiveRoute = () => {
             nbSeen={10}
             nbResponded={2}
             type={'Video consultation'} 
+            goToDetail={() => goToDetail()} 
         />
         <RequestCard
             title="Digestive discomfort evaluation"
@@ -34,7 +46,8 @@ const ActiveRoute = () => {
             time="11:00 AM"
             nbSeen={5}
             nbResponded={1}
-            type={'Video consultation'} 
+            type={'Video consultation'}
+            goToDetail={() => goToDetail()}  
         />
     </ScrollView>
     )
@@ -49,7 +62,8 @@ const ExpiredRoute = () => {
             time="09:30 AM"
             nbSeen={15}
             nbResponded={0} 
-            type={'Video consultation'}                        />
+            type={'Video consultation'}  
+            goToDetail={() => goToDetail()}                       />
         <RequestCard
             title="Skin rash consultation"
             date="22 March 2025"
@@ -57,6 +71,7 @@ const ExpiredRoute = () => {
             nbSeen={10}
             nbResponded={2}
             type={'Video consultation'} 
+            goToDetail={() => goToDetail()} 
         />
         <RequestCard
             title="Digestive discomfort evaluation"
@@ -65,12 +80,14 @@ const ExpiredRoute = () => {
             nbSeen={5}
             nbResponded={1}
             type={'Video consultation'} 
+            goToDetail={() => goToDetail()}
         />
     </ScrollView>
     )
 }
 
 const CancelledRoute = () => {
+
     return (
     <ScrollView contentContainerStyle={styles.requestListContainer}>
         <RequestCard
@@ -79,7 +96,8 @@ const CancelledRoute = () => {
             time="09:30 AM"
             nbSeen={15}
             nbResponded={0} 
-            type={'Video consultation'}                        />
+            type={'Video consultation'}
+            goToDetail={() => goToDetail()}                        />
         <RequestCard
             title="Skin rash consultation"
             date="22 March 2025"
@@ -87,6 +105,7 @@ const CancelledRoute = () => {
             nbSeen={10}
             nbResponded={2}
             type={'Video consultation'} 
+            goToDetail={() => goToDetail()}
         />
         <RequestCard
             title="Digestive discomfort evaluation"
@@ -94,7 +113,8 @@ const CancelledRoute = () => {
             time="11:00 AM"
             nbSeen={5}
             nbResponded={1}
-            type={'Video consultation'} 
+            type={'Video consultation'}
+            goToDetail={() => goToDetail()}
         />
     </ScrollView>
     )

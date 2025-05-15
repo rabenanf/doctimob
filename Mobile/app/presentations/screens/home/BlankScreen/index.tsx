@@ -21,7 +21,7 @@ export const  BlankScreen = ({navigation}: Props): JSX.Element => {
             <ProfilHeader photo={Photo} name={'Therèse Rabe'} />
             <View style={styles.homevideContainer}>
                 <View style={styles.imageFrame}>
-                    <Frame />
+                    <Frame height="100%" />
                 </View>
                 <View style={styles.welcomeContainer}>
                     <Text style={styles.welcome}> {t('BlankHome.title')} </Text>
@@ -33,7 +33,7 @@ export const  BlankScreen = ({navigation}: Props): JSX.Element => {
                     <Text style={styles.request}> {t('BlankHome.request')} </Text>
                 </View>
                 <View style={styles.imageArrow}>
-                    <Hand_Drawn_Arrow />
+                    <Hand_Drawn_Arrow height="100%" />
                 </View>
             </View>    
         </AppLayout>

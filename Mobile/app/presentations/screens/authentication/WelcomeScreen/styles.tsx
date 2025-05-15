@@ -26,13 +26,14 @@ export const styles = StyleSheet.create({
         color: Theme.SECONDARY_FONT_COLOR,
         fontSize: 40,
         fontWeight: 800,
-        paddingBottom : 20
+        paddingBottom : 20,
+        fontFamily : 'Rubik'
     },
     descriptionText : {
         textAlign: "center",
         color: Theme.TERTIARY_FONT_COLOR,
         fontSize: 16,
-        fontWeight: 400
+        fontWeight: 400,
     },
     btnContainer : {
         position: 'absolute',

@@ -6,7 +6,7 @@ import AppLayout from "../../../../layout";
 import { TitleHeader } from "../../../../components/TitleHeader";
 import { RootStackParamList } from "../../../../../data/interface";
 import { styles } from './styles';
-import QRIcon from "../../../../../resources/assets/icons/qr.svg";
+import QRIcon from "../../../../../resources/assets/icons/qr_scan.svg";
 import { RoundedButton } from "../../../../components/RoundedButton";
 
 type Props = NativeStackScreenProps<RootStackParamList, 'PaymentQRCode'>;

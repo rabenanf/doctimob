@@ -5,11 +5,12 @@ import {RadioButton} from "../RadioButton";
 export interface IOTPInputProps {
     values: any,
     onPress: (index: number) => void;
+    size?: number;
 }
 
 export const RadioButtonContainer = (props : IOTPInputProps) => {
 
-    const { values, onPress } = props;
+    const { values, onPress, size } = props;
 
     const [currentSelectedItem, setCurrentSelectedItem] = useState(0);
 
@@ -27,6 +28,7 @@ export const RadioButtonContainer = (props : IOTPInputProps) => {
                     onRadioButtonPress={() => _onPress(idx)}
                     isChecked={isChecked}
                     text={listItem.text}
+                    size={size}
                 />
             );
         });
