@@ -1,12 +1,12 @@
-import { Location } from "./Location"
+import { Location } from "./Location.type"
 
 export type User = {
     phone?: string,
     email?: string,
-    firstname?: string,
-    lastname?: string,
+    first_name?: string,
+    last_name?: string,
     address?: string,
-    birthday?: string,
+    birth_date?: string,
     gender?: string,
     role?: string,
     password?: string,

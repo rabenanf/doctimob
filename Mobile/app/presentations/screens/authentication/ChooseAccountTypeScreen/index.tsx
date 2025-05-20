@@ -22,8 +22,16 @@ export const ChooseAccountTypeScreen = ({navigation}: Props): JSX.Element => {
     const [isDoctor, setIsDoctor] = useState(false);
 
     const selectType = (type : string) => {
-        setRole(type);
         setIsDoctor(type == 'doctor');
+    }
+
+    const goToVerifyNumber = () => {
+        if (isDoctor)
+            setRole('doctor');
+        else
+            setRole('patient');
+        navigation.navigate('VerifyNumber');
+
     }
 
     return (
@@ -59,7 +67,7 @@ export const ChooseAccountTypeScreen = ({navigation}: Props): JSX.Element => {
                 <View style={styles.btnContainer}>
                     <RoundedButton 
                         isPrimary={true}
-                        onButtonPress={ () => { navigation.navigate('VerifyNumber')}} 
+                        onButtonPress={ () => { goToVerifyNumber() }} 
                         textBtn={t('ChooseAccountType.continue')}
                     />
                 </View>

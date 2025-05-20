@@ -3,16 +3,19 @@ import { View, Text, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import CheckBox from '@react-native-community/checkbox';
 import { styles } from './styles';
 import { RootStackParamList } from '../../../../data/interface';
 import AppLayout from '../../../layout';
 import Logo from '../../../../resources/assets/images/logo.png';
 import { RoundedButton } from '../../../components/RoundedButton';
-import { InputWithIcon } from '../../../components/InputWithIcon';
 import {PasswordWithIcon} from '../../../components/PasswordWithIcon';
 import {Theme} from '../../../../resources/themes'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import useUserStore from '../../../../services/redux/userStore';
+import { UserService } from "../../../../services/application/user.sa";
+import { showToast } from '../../../../services/utils/toast';
+import { User } from '../../../../data/dto/User.type';
+import { CustomActivityIndicator } from '../../../components/CustomActivityIndicator';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CreatePassword'>;
 
@@ -20,9 +23,45 @@ export const CreatePasswordScreen = ({navigation}: Props): JSX.Element => {
     
     const { t } = useTranslation();
 
-    const createAccount = () => {
-        navigation.navigate('RegistrationConfirmation');
+    const { user, updateUser } = useUserStore(); 
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const { createUserProfile } = UserService();
+
+
+    const form = {
+        password: password,
+        confirmPassword: confirmPassword
     }
+        
+    const [errors, setErrors] = useState<Partial<typeof form>>({});
+
+    const createAccount = async () => {
+        setLoading(true);
+        if (validate()) {
+            updateUser({password: password})
+            let response = await createUserProfile(user!);
+            if (response?.success) {
+                updateUser(response.user! as Partial<User>);
+                setLoading(false);
+                navigation.navigate('RegistrationConfirmation');
+            }
+            else {
+                showToast('error', t('Global.error'), t('CreatePassword.createUserError'));
+            }
+        }
+        setLoading(false);
+    }
+
+    const validate = () => {
+        const newErrors: Partial<typeof form> = {};
+        if (password.length < 6) newErrors.password = t('CreatePassword.passwordError');
+        if (confirmPassword != password) newErrors.confirmPassword = t('CreatePassword.confirmPasswordError');
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     return (
         <AppLayout>
@@ -51,10 +90,16 @@ export const CreatePasswordScreen = ({navigation}: Props): JSX.Element => {
                                 <PasswordWithIcon
                                     iconName="bag"
                                     placeholder={t('CreatePassword.password')}
+                                    value={password}
+                                    onChangeText={setPassword}
+                                    error={errors.password}
                                 />
                                 <PasswordWithIcon
                                     iconName="bag"
                                     placeholder={t('CreatePassword.confirmPassword')}
+                                    value={confirmPassword}
+                                    onChangeText={setConfirmPassword}
+                                    error={errors.confirmPassword}
                                 />
 
                             </View>
@@ -68,6 +113,7 @@ export const CreatePasswordScreen = ({navigation}: Props): JSX.Element => {
                         />
                     </View>
                 </View>
+                { loading && <CustomActivityIndicator /> }
             </LinearGradient>
 
         </AppLayout>

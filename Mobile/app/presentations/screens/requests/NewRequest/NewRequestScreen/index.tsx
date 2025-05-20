@@ -24,12 +24,19 @@ import { Times } from '../../../../../data/const/constants';
 import DaySelector from '../../../../components/DaySelector';
 import DropDown from '../../../../components/DropDown';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import useUserStore from '../../../../../services/redux/userStore';
+import { LanguageService } from '../../../../../services/application/language.sa';
+import { RequestService } from '../../../../../services/application/request.sa';
+import { showToast } from '../../../../../services/utils/toast';
+import { CustomActivityIndicator } from '../../../../components/CustomActivityIndicator';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'NewRequest'>;
 
 export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
 
     const { t } = useTranslation();
+    const { getLanguageIdByCode } = LanguageService();
+    const { createRequest } = RequestService();
 
     const formatDate = (date: Date): string => {
         return date.toLocaleDateString('en-US', {
@@ -39,6 +46,7 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
         });
     };
 
+    const { user } = useUserStore(); 
     const [paymentMethod, setPaymentMethod] = useState(PaymentMethod.CB);
     const [consultationMethod, setConsultationMethod] = useState(TypeConsultation.HOMEVISIT);
     const [preferredlanguage, setPreferredLanguage] = useState(Language.BOTH);
@@ -47,6 +55,7 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
     const [hasInsurance, setHasInsurance] = useState(false);
     const [preferredGender, setPreferredGender] = useState(Gender.NO);
     const [description, setDescription] = useState<string | undefined>(undefined);
+    const [loading, setLoading] = useState(false);
 
     const [familyMemberDropdownVisible, setFamilyMemberDropdownVisible] = useState(false);
     const familyMembers = [
@@ -67,8 +76,35 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
     }
 
 
-    const createRequest = () => {
-        navigation.navigate('NewRequestConfirm');
+    const createRequestAction = async () => {
+        setLoading(true);
+        const code = preferredlanguage == Language.ENGLISH ? 'en' : Language.VIET ? 'vn' : null,
+        const language_id = code !=  null ? await getLanguageIdByCode(code) : null;
+        let data = {
+            patient_id : user!.id,
+            description: description,
+            has_insurance: hasInsurance,
+            caregiver_gender_preference: preferredGender == Gender.MALE ? 'male' : preferredGender == Gender.FEMALE ? 'female' : 'both',
+            preferred_time: selectedTime,
+            preferred_date: selectedDay,
+            preferred_language: language_id,
+            consultation_type: consultationMethod == TypeConsultation.HOMEVISIT ? 'home_visit' : 'phone_call',
+            payment_method: paymentMethod == PaymentMethod.CB ? 'card' : paymentMethod == PaymentMethod.QR ? 'qr_code' : 'cash',
+            family_member: familyMember,
+            specialty_id: specialty,
+            share_medical_history: true
+        }
+
+        let response = await createRequest(data as Partial<Request>);
+        if (response.success) {
+            setLoading(false);
+            navigation.navigate('NewRequestConfirm');
+        }
+        else {
+            showToast('error', t('Global.error'), t('NewRequest.errorCreate'));
+        }
+        setLoading(false);
+        
     }
 
     return (
@@ -242,16 +278,15 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
                     </View>
 
                 </KeyboardAwareScrollView>
-                
+                { loading && <CustomActivityIndicator /> }
             </View>
             <View style={styles.btnContainer}>
                 <RoundedButton
                     isPrimary={true}
-                    onButtonPress={() => {createRequest()}}
+                    onButtonPress={() => {createRequestAction()}}
                     textBtn={t('NewRequest.createRequest')}
                 />
             </View>
-
         </AppLayout>
     )
 }

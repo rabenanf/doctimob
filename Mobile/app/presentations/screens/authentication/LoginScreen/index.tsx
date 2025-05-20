@@ -1,4 +1,4 @@
-import React, { JSX, useState } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +13,12 @@ import { RoundedButton } from '../../../components/RoundedButton';
 import { InputWithIcon } from '../../../components/InputWithIcon';
 import {PasswordWithIcon} from '../../../components/PasswordWithIcon';
 import {Theme} from '../../../../resources/themes'
+import { AuthenticationService } from '../../../../services/application/authentication.sa';
+import { Validator } from '../../../../services/utils/validator';
+import { UserService } from '../../../../services/application/user.sa';
+import useUserStore from '../../../../services/redux/userStore';
+import { User } from '../../../../data/dto/User.type';
+import { CustomActivityIndicator } from '../../../components/CustomActivityIndicator';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
@@ -21,8 +27,66 @@ export const LoginScreen = ({navigation}: Props): JSX.Element => {
     const { t } = useTranslation();
     const [checked, setChecked] = useState(false);
 
-    function goToForgotPassword(): void {
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);
+    const { login } = AuthenticationService();
+    const { getUserProfile } = UserService();
+    const { isValidEmail } = Validator(); 
+    const { user, updateUser } = useUserStore(); 
+
+    const form = {
+        password: password,
+        email: email
+    }
+        
+    const [errors, setErrors] = useState<Partial<typeof form>>({});
+
+    const validate = () => {
+        const newErrors: Partial<typeof form> = {};
+        if (!isValidEmail(email)) newErrors.email = t('Login.errorEmail');
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const goToForgotPassword = () => {
        navigation.navigate('ForgotPassword');
+    }
+
+    useEffect(() => {
+        if (errors['email']) setErrors({ ...errors, ['email']: undefined });
+    },[email]);
+
+    useEffect(() => {
+        if (errors['password']) setErrors({ ...errors, ['password']: undefined });
+    },[password]);
+    
+
+    const checkLogin = async() => {
+        setLoading(true);
+        if (validate()) {
+            let response = await login(email, password);
+            if (! response.success) {
+                let newErrors: Partial<typeof form> = {};
+                newErrors.password = t('Login.errorPassword');
+            }
+            else {
+                let userResponse = await getUserProfile(email);
+                if (userResponse.success) {
+                    if (userResponse.user) {
+                        updateUser(userResponse.user![0] as Partial<User>);
+                    }
+                    setLoading(false);
+                    navigation.navigate('TabHome');
+                }
+                else {
+                    let newErrors: Partial<typeof form> = {};
+                    newErrors.password = t('Login.errorPassword');
+                }
+            }
+        }
+        setLoading(false);
     }
 
     return (
@@ -53,10 +117,16 @@ export const LoginScreen = ({navigation}: Props): JSX.Element => {
                                 placeholder={t('Login.email')}
                                 iconName="mail"
                                 iconLibrary="Ionicons"
+                                value={email}
+                                onChangeText={setEmail}
+                                error={errors.email}
                             />
                             <PasswordWithIcon
                                 iconName="bag"
                                 placeholder={t('Login.password')}
+                                value={password}
+                                onChangeText={setPassword}
+                                error={errors.password}
                             />
                             <View style={styles.footer}>
                                 <CheckBox
@@ -85,10 +155,11 @@ export const LoginScreen = ({navigation}: Props): JSX.Element => {
                 <View style={styles.btnContainer}>
                     <RoundedButton 
                         isPrimary={true}
-                        onButtonPress={ () => {}} 
+                        onButtonPress={ () => {checkLogin()}} 
                         textBtn={t('Login.login')}
                     />
                 </View>
+                { loading && <CustomActivityIndicator /> }
             </LinearGradient>
 
         </AppLayout>

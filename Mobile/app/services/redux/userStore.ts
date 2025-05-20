@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { User } from '../../data/dto/User'; // ta classe User
+import { User } from '../../data/dto/User.type'; // ta classe User
 
 type UserStore = {
     user: User | null;

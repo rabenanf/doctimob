@@ -19,7 +19,9 @@
         "password": "Password",
         "rememberMe": "Remember me",
         "forgotPassword": "Forgot password ?",
-        "login": "Log In"
+        "login": "Log In",
+        "errorEmail": "Email format is invalid",
+        "errorPassword": "Email or password incorrect"
     },
     "ForgotPassword": {
         "title": "Reset Your Password",
@@ -48,7 +50,9 @@
         "description": "Secure your account with a strong password.",
         "password": "Password",
         "confirmPassword": "Confirm Password",
-        "createAccount": "Create Account"
+        "createAccount": "Create Account",
+        "passwordError": "Password must be at least 6 characters long",
+        "confirmPasswordError": "Passwords do not match"
     },
     "CreateNewPassword": {
         "title": "Create New Password",
@@ -71,7 +75,10 @@
         "email": "Email address",
         "location": "Location",
         "birthday": "Date of Birth",
-        "continue": "Continue"
+        "continue": "Continue",
+        "errorFirstname": "Firstname is required",
+        "errorLastname": "Lastname is required",
+        "errorEmail": "Email format is invalid"
     },
     "Header": {
         "welcome": "Welcome back"
@@ -179,7 +186,8 @@
         "specialty" : "Medical Specialty",
         "descriptionArea" : "Description",
         "familyMember" : "Family member",
-        "shareHistory" : "Share medical history"
+        "shareHistory" : "Share medical history",
+        "errorCreate": "Error on creating request"
     },
     "Appointment" : {
         "title" : "My Appointments",
