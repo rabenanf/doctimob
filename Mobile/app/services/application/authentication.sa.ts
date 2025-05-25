@@ -68,7 +68,7 @@ export const AuthenticationService = () => {
                 return {success : false, message : error.message};
             }
 
-            return {success: true}
+            return {success: true};
         },
 
         getUser : async () => {
@@ -78,7 +78,7 @@ export const AuthenticationService = () => {
                 return {success : false, message : error.message};
             }
 
-            return {success: true, user: user}
+            return {success: true, user: user};
         },
 
         logout : async () => {
@@ -88,7 +88,7 @@ export const AuthenticationService = () => {
                 return {success : false, message : error.message};
             }
 
-            return {success: true}
+            return {success: true};
         },
 
         login : async (email : string, password : string) => {
@@ -103,7 +103,7 @@ export const AuthenticationService = () => {
                 return {success : false, message : error.message};
             }
 
-            return {success: true, user: data}
+            return {success: true, user: data};
         }}
 
 }

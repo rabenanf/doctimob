@@ -1,7 +1,7 @@
 export type Location = {
     id?: string,
     lat?: number,
-    long?: number,
+    lon?: number,
     address?: string,
     location?: string
 }

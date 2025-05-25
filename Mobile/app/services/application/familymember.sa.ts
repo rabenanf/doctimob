@@ -1,22 +1,71 @@
 import { FamilyMember } from "../../data/dto/FamilyMember.type"
+import { supabase } from "../technical/supabase"
 
 export const FamilyMemberService = () => {
 
     return {
 
-        createMember : (member : Partial<FamilyMember>) => {
+        createMember : async (member : Partial<FamilyMember>) => {
+            const { data, error } = await supabase
+                .from('family_members')
+                .insert([ member ])
+                .select();
+            
+            console.log('---------insert member---- : ', data);
+
+            if (error) {
+                return {success : false, message : error.message};
+            }
+
+            return {success: true};
+        },
+
+        getMembersByPatient : async (patientId : string) => {
+            let { data: family_members, error } = await supabase
+                .from('family_members')
+                .select("*")
+                .eq('patient_id', patientId);
+
+            console.log('---------Family members---- : ', family_members);
+
+            if (error) {
+                return {success : false, message : error.message};
+            }
+
+            return {success: true, members: family_members};
 
         },
 
-        getMembersByPatient : (patientId : string) => {
+        updateMember : async (member : Partial<FamilyMember>) => {
+            const { data, error } = await supabase
+                .from('family_members')
+                .update(member)
+                .eq('id', member.id)
+                .select();
+
+            console.log('---------update member---- : ', data);
+
+            if (error) {
+                return {success : false, message : error.message};
+            }
+
+            return {success: true};
 
         },
 
-        updateMember : (member : Partial<FamilyMember>) => {
-        },
+        deleteMember : async (memberId : string) => {
+            const { error } = await supabase
+                .from('family_members')
+                .delete()
+                .eq('id', memberId);
 
-        deleteMember : (memberId : string) => {
+            console.log('---------Error delete---- : ', error);
 
+            if (error) {
+                return {success : false, message : error.message};
+            }
+
+            return {success: true};
         }
 
     }

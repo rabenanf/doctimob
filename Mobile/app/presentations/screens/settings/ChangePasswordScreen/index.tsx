@@ -21,7 +21,7 @@ export const  ChangePasswordScreen = ({navigation}: Props): JSX.Element => {
 
     return (
         <AppLayout>
-            <TitleHeader title={t('Setting.changePasswordTitle')} />
+            <TitleHeader title={t('Setting.changePasswordTitle')} back={() => {navigation.goBack()}} />
             <View style={styles.titleContainer}>
                 <Text style={styles.title}> {t('Setting.changePasswordTitle')} </Text>
                 <Text style={styles.description}> {t('Setting.changePasswordDescription')} </Text>

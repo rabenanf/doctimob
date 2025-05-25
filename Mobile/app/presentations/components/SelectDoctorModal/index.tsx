@@ -3,6 +3,7 @@ import { RoundedButton } from "../RoundedButton";
 import { useTranslation } from "react-i18next";
 import Icon from 'react-native-vector-icons/Ionicons';
 import VideoIcon from '../../../resources/assets/icons/Videocamera.svg';
+import HomeIcon from '../../../resources/assets/icons/home.svg';
 import nobody from '../../../resources/assets/images/nobody.svg';
 import { styles } from './styles';
 
@@ -45,13 +46,13 @@ export const SelectDoctorModal = (Props : SelectDoctorProps) => {
                             <Text style={styles.specialty}> {specialty} </Text>
                         </View>
                         <View style={styles.price}>
-                            <Text style={styles.priceText}>{'$ '} {price} </Text>
+                            <Text style={styles.priceText}>{'VND '} {price} </Text>
                         </View>
                     </View>  
                 </View>
                 <View style={styles.request}>
                     <View style={styles.iconCircle}>
-                        <VideoIcon width={20} height={20} />
+                        {type == 'OFFLINE' ? <HomeIcon width={20} height={20} /> : <VideoIcon width={20} height={20} />}
                     </View>
                     <View style={{flexDirection: 'row', gap: 10}}>
                         <View style={styles.pill}>

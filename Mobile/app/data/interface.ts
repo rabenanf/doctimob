@@ -18,7 +18,7 @@ export type RootStackParamList = {
     RegistrationConfirmation: undefined;
     CreateAccount: undefined;
     ChooseAccountType: undefined;
-    DoctorProfile: undefined;
+    DoctorProfile: {userId : string};
     PaymentCreditCard: undefined;
     AppointmentConfirmed: undefined;
     PaymentCash: undefined;

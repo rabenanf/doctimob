@@ -109,7 +109,7 @@ export const DoctorProfileScreen = ({ navigation }: Props): JSX.Element => {
 
     return (
         <AppLayout>
-            <TitleHeader title={t('DoctorProfile.title')} />
+            <TitleHeader title={t('DoctorProfile.title')} back={() => {navigation.goBack()}} />
             <View style={styles.doctorContainer}>
                 <View style={styles.profile}>
                     <Image source={Photo ? Photo : nobody} style={styles.image} />

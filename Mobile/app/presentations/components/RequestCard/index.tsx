@@ -1,10 +1,12 @@
 import { Text, TouchableOpacity, View } from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons';
 import VideoIcon from '../../../resources/assets/icons/Videocamera.svg';
+import HomeIcon from '../../../resources/assets/icons/home.svg';
 import EyeIcon from '../../../resources/assets/icons/Eye.svg';
 import ReplyIcon from '../../../resources/assets/icons/Auto_reply.svg';
 
 import { styles } from './styles';
+import { useTranslation } from "react-i18next";
 
 export interface RequestCardInputProps {
     nbSeen? : number,
@@ -18,6 +20,8 @@ export interface RequestCardInputProps {
 
 export const RequestCard = (Props : RequestCardInputProps) => {
 
+    const { t } = useTranslation();
+
     let { nbSeen = 0, nbResponded = 0, title, date, time, type, goToDetail } = Props;
 
     return (
@@ -25,7 +29,7 @@ export const RequestCard = (Props : RequestCardInputProps) => {
             <View style={styles.requestHeader}>
                 <View style={styles.requestType}>
                     <View style={styles.iconCircle}>
-                        <VideoIcon width={20} height={20} />
+                        {type == t('NewRequest.homeVisit') ? <HomeIcon width={20} height={20} /> : <VideoIcon width={20} height={20} />}
                     </View>
                     <Text style={styles.typeText}> {type} </Text>
                 </View>  

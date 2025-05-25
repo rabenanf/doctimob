@@ -22,7 +22,7 @@ export const  MedicalRecordDetailScreen = ({navigation}: Props): JSX.Element => 
     
     return (
         <AppLayout>
-            <TitleHeader title={t('RecordDetail.headerTitle')} />
+            <TitleHeader title={t('RecordDetail.headerTitle')} back={() => {navigation.goBack()}} />
             <View style={{flex: 1, paddingHorizontal: 30, paddingTop: 20, rowGap: 20}}>
                 <MedicalRecordCard
                     doctorImage={ Photo }

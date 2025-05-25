@@ -4,7 +4,7 @@ import { View, Text, Image, ImageSourcePropType, TouchableOpacity } from 'react-
 import { styles } from './styles'
 import { TypeConsultation } from '../../../data/enum';
 import HomeIcon from "../../../resources/assets/icons/home.svg";
-import CameraIcon from "../../../resources/assets/icons/Videocamera.svg";
+import VideoIcon from "../../../resources/assets/icons/Videocamera.svg";
 
 type AppointmentCardProps = {
     doctorName: string;
@@ -13,7 +13,7 @@ type AppointmentCardProps = {
     time: string;
     timingInfo?: string;
     source: ImageSourcePropType;
-    type: TypeConsultation;
+    type?: string;
     onPress: () => void;
 };
 
@@ -57,9 +57,9 @@ const AppointmentCard: React.FC<AppointmentCardProps> = ({
                             <Text style={styles.alertText}>{timingInfo}</Text>
                         </View>}
                         <View style={styles.typeIcon}>
-                            { type == TypeConsultation.HOMEVISIT ? 
+                            { type == 'OFFLINE' ? 
                                 <HomeIcon /> :
-                                <CameraIcon />
+                                <VideoIcon />
                             }
                         </View>
                     </View>

@@ -1,4 +1,4 @@
-import React, { JSX, useState } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import { View, Text, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
@@ -62,6 +62,10 @@ export const CreatePasswordScreen = ({navigation}: Props): JSX.Element => {
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
+    
+    useEffect(() => {
+        console.log('-----utilisateur----', user);
+    }, []);
 
     return (
         <AppLayout>

@@ -1,4 +1,5 @@
 const SUPABASE_URL = 'http://51.77.247.28:44092/';
+const PAY_URL = 'http://51.77.247.28:44095/';
 // API_URL : 'http://51.77.247.28:8001/'
 // USERNAME : 'doctimob-supabase'
 // PASSWORD : 'djfjkATR67nvfpokJk'
@@ -8,5 +9,6 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 export default {
     SUPABASE_URL, 
-    SUPABASE_ANON_KEY
+    SUPABASE_ANON_KEY,
+    PAY_URL
 };

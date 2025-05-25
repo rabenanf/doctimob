@@ -5,7 +5,7 @@ export type User = {
     email?: string,
     first_name?: string,
     last_name?: string,
-    address?: string,
+    adresse?: string,
     birth_date?: string,
     gender?: string,
     role?: string,

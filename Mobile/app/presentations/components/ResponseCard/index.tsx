@@ -47,7 +47,7 @@ export const ResponseCard = (Props : ResponseCardInputProps) => {
             </View>
             <View style={styles.responseFooter}>
                 <View style={{alignContent:'center',justifyContent: 'center'}}>
-                    <Text style={styles.price}>{'$ '} {price}</Text> 
+                    <Text style={styles.price}>{'VND '} {price}</Text> 
                 </View>
                 <View style={{flexDirection : 'row', columnGap : 10 }}>
                     <TouchableOpacity style={styles.profil} onPress={() => seeProfil(id)}>

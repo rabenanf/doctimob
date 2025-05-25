@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { JSX, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RootStackParamList } from "../../../../data/interface";
 import { FlatList, Modal, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
@@ -13,15 +13,18 @@ import UserMale from "../../../../resources/assets/icons/User_male.svg";
 import UserFemale from "../../../../resources/assets/icons/User_female.svg";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { RadioButtonContainer } from "../../../components/RadioButtonContainer";
+import { FamilyMemberService } from "../../../../services/application/familymember.sa";
+import useUserStore from "../../../../services/redux/userStore";
 
 type Props = NativeStackScreenProps<RootStackParamList, 'FamilyMember'>;
 
 export const  FamilyMemberScreen = ({navigation}: Props): JSX.Element => {
 
     const { t } = useTranslation();
+    const {createMember, updateMember, deleteMember, getMembersByPatient} = FamilyMemberService();
+    const { user, updateUser } = useUserStore(); 
     const [modalVisible, setModalVisible] = useState(false);
-
-    const members = [
+    const [members, setMembers] = useState([
         {
             id: 1,
             name: 'John Doe',
@@ -40,7 +43,7 @@ export const  FamilyMemberScreen = ({navigation}: Props): JSX.Element => {
             dateOfBirth: '01/01/1993',
             gender: 'male'
         }
-    ];
+    ]);
 
     const gender = [
         {
@@ -50,6 +53,21 @@ export const  FamilyMemberScreen = ({navigation}: Props): JSX.Element => {
           text: "Female",
         }
     ];
+
+    useEffect(() => {
+        const fetchMembers = async () => {
+            try {
+                const response = await getMembersByPatient(user?.id!);
+                if (response.success) {
+                    setMembers(response.members!);
+                }
+            } catch (error) {
+                console.error("Erreur lors du chargement des membres :", error);
+            }
+        };
+
+        fetchMembers();
+    }, []);
 
     const onRadioButtonPress = (itemIdx: number) => {
         console.log("Clicked", itemIdx);
@@ -123,7 +141,7 @@ export const  FamilyMemberScreen = ({navigation}: Props): JSX.Element => {
 
     return (
         <AppLayout>
-            <TitleHeader title={t('FamilyMember.title')} />
+            <TitleHeader title={t('FamilyMember.title')} back={() => {navigation.goBack()}} />
             <View style={styles.titleContainer}>
                 <Text style={styles.title}> {t('FamilyMember.title')} </Text>
                 <Text style={styles.description}> {t('FamilyMember.description')} </Text>

@@ -17,7 +17,7 @@ export const  NewRequestConfirmScreen = ({navigation}: Props): JSX.Element => {
 
     return (
         <AppLayout>
-            <TitleHeader title={t('NewRequest.submittedHeader')} />
+            <TitleHeader title={t('NewRequest.submittedHeader')} back={() => {navigation.goBack()}} />
             <View style={styles.container}>
                 <CongratsIcon width={150} height={150} />
                 <Text style={styles.title}> {t('NewRequest.submittedTitle')} </Text>

@@ -20,6 +20,7 @@ import { Location } from '../../../../data/dto/Location.type';
 import useUserStore from '../../../../services/redux/userStore';
 import { Validator } from '../../../../services/utils/validator';
 import { finishScreenTransition } from 'react-native-reanimated';
+import { User } from '../../../../data/dto/User.type';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CreateAccount'>;
 
@@ -111,7 +112,7 @@ export const CreateAccountScreen = ({ navigation }: Props): JSX.Element => {
 
         Geolocation.getCurrentPosition(
             position => {
-                setLocation({lat: position.coords.latitude, long: position.coords.longitude});
+                setLocation({lat: position.coords.latitude, lon: position.coords.longitude});
             },
             error => {
                 showToast('error', error.code + ' : ' + error.message);
@@ -126,13 +127,14 @@ export const CreateAccountScreen = ({ navigation }: Props): JSX.Element => {
 
     const createAccount = () => {
         if (validate()) {
-            const data = {
-                firstname: firstname,
-                lastname: lastname,
+            const data : Partial<User>= {
+                first_name: firstname,
+                last_name: lastname,
                 email: email,
                 gender: gender,
-                location: location,
-                birthday: birthday.toISOString()      
+                localisation: location,
+                birth_date: birthday.toUTCString(),
+                phone: user?.phone
             };
             updateUser(data);
             navigation.navigate('CreatePassword');
@@ -210,7 +212,7 @@ export const CreateAccountScreen = ({ navigation }: Props): JSX.Element => {
                                     iconName="location"
                                     iconLibrary="Ionicons"
                                     editable={false}
-                                    value={location?.lat +  ', ' + location?.long }
+                                    value={location?.lat +  ', ' + location?.lon }
                                 />
                                 <Text style={{ color: "#999" }}>{t('CreateAccount.birthday')}</Text>
                                 <TouchableOpacity style={styles.birthday} onPress={() => showDatePicker()}>

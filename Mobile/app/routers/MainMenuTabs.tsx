@@ -20,10 +20,13 @@ import { SettingsScreen } from '../presentations/screens/settings/SettingsScreen
 import { BlankScreen } from '../presentations/screens/home/BlankScreen';
 import { HomeScreen } from '../presentations/screens/home/HomeScreen';
 import { RootStackParamList } from '../data/interface';
+import useRequestStore from '../services/redux/requestStore';
 
 const Tab = createBottomTabNavigator();
 
 export const MainMenuTabs = () => {
+
+     const { countRequests } = useRequestStore(); 
 
     return (
         <>
@@ -49,9 +52,15 @@ export const MainMenuTabs = () => {
                             ),
                     }}>
                     {({ navigation }) => (
-                        <BlankScreen
-                            navigation={navigation} 
-                            route={{key: 'Home', name: 'Home'}}                        />
+                        countRequests() === 0 ? (
+                            <BlankScreen
+                                navigation={navigation} 
+                                route={{key: 'Home', name: 'Home'}} /> 
+                        )  : (
+                            <HomeScreen
+                                navigation={navigation} 
+                                route={{key: 'Home', name: 'Home'}} /> 
+                        )                    
                     )} 
                 </Tab.Screen>
                 <Tab.Screen

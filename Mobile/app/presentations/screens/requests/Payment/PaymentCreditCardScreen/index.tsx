@@ -32,7 +32,7 @@ export const  PaymentCreditCardScreen = ({navigation}: Props): JSX.Element => {
 
     return (
         <AppLayout>
-            <TitleHeader title={t('Payment.titleHeader')} />
+            <TitleHeader title={t('Payment.titleHeader')} back={() => {navigation.goBack()}} />
             <View style={styles.paymentContainer}>
                 <View style={styles.paymentTitle}>
                     <CardIcon height={200} width={200} />

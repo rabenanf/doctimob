@@ -1,4 +1,4 @@
-import React, { JSX, useState } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -9,113 +9,82 @@ import Photo from '../../../../../resources/assets/images/photo.png';
 import { useTranslation } from 'react-i18next';
 import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
 import { RequestCard } from '../../../../components/RequestCard';
-import { useNavigation } from '@react-navigation/native';
 import { navigationRef } from '../../../../../routers/NavigationService';
+import useUserStore from '../../../../../services/redux/userStore';
+import useRequestStore from '../../../../../services/redux/requestStore';
+import { RequestService } from '../../../../../services/application/request.sa';
+import { PatientRequest } from '../../../../../data/dto/Request.type';
+import moment from 'moment';
+import { convertToAmPm } from '../../../../../services/utils/dateUtil';
 
-const goToDetail = () => {
-    if (navigationRef.isReady()) {
-        navigationRef.navigate('RequestDetails');
-    }
-    
-    
-}
-
-const ActiveRoute = () => {
+const ActiveRoute = (goToDetail : (id: string) => void, requests : PatientRequest[]) => {
+    const { t } = useTranslation();
     return (
     <ScrollView contentContainerStyle={styles.requestListContainer}>
-        <RequestCard
-            title="Recurring headaches after screen exposure"
-            date="21 March 2025"
-            time="09:30 AM"
-            nbSeen={15}
-            nbResponded={0} 
-            type={'Video consultation'}  
-            goToDetail={() => goToDetail()}                       />
-        <RequestCard
-            title="Skin rash consultation"
-            date="22 March 2025"
-            time="10:15 AM"
-            nbSeen={10}
-            nbResponded={2}
-            type={'Video consultation'} 
-            goToDetail={() => goToDetail()} 
-        />
-        <RequestCard
-            title="Digestive discomfort evaluation"
-            date="23 March 2025"
-            time="11:00 AM"
-            nbSeen={5}
-            nbResponded={1}
-            type={'Video consultation'}
-            goToDetail={() => goToDetail()}  
-        />
+        { requests.length == 0 ?
+            <Text style={styles.noResponse}> {t('MyRequestsList.noResponse')} </Text>
+            :
+            requests.map((request) => {
+                return (<RequestCard
+                    title={request.description!}
+                    date={moment(request.preferred_date!).format('DD MMMM YYYY')}
+                    time={ convertToAmPm(request.preferred_time!)}
+                    nbSeen={0}
+                    nbResponded={0} 
+                    key={request.id}
+                    type={request.consultation_type!.code == 'OFFLINE' ? t('NewRequest.homeVisit') : t('NewRequest.online')}  
+                    goToDetail={() => goToDetail(request.id!)} />)
+                }
+            )
+        }
     </ScrollView>
     )
 }
 
-const ExpiredRoute = () => {
+const ExpiredRoute = (goToDetail : (id : string) => void, requests : PatientRequest[]) => {
+    const { t } = useTranslation();
     return (
     <ScrollView contentContainerStyle={styles.requestListContainer}>
-        <RequestCard
-            title="Recurring headaches after screen exposure"
-            date="21 March 2025"
-            time="09:30 AM"
-            nbSeen={15}
-            nbResponded={0} 
-            type={'Video consultation'}  
-            goToDetail={() => goToDetail()}                       />
-        <RequestCard
-            title="Skin rash consultation"
-            date="22 March 2025"
-            time="10:15 AM"
-            nbSeen={10}
-            nbResponded={2}
-            type={'Video consultation'} 
-            goToDetail={() => goToDetail()} 
-        />
-        <RequestCard
-            title="Digestive discomfort evaluation"
-            date="23 March 2025"
-            time="11:00 AM"
-            nbSeen={5}
-            nbResponded={1}
-            type={'Video consultation'} 
-            goToDetail={() => goToDetail()}
-        />
+        { requests.length == 0 ?
+            <Text style={styles.noResponse}> {t('MyRequestsList.noResponse')} </Text>
+            :
+            requests.map((request) => {
+                return (<RequestCard
+                    title={request.description!}
+                    date={moment(request.preferred_date!).format('DD MMMM YYYY')}
+                    time={ convertToAmPm(request.preferred_time!)}
+                    nbSeen={0}
+                    nbResponded={0} 
+                    key={request.id}
+                    type={request.consultation_type!.code == 'OFFLINE' ? t('NewRequest.homeVisit') : t('NewRequest.online')}  
+                    goToDetail={() => goToDetail(request.id!)} />)
+                }
+            )
+        }
     </ScrollView>
     )
 }
 
-const CancelledRoute = () => {
-
+const CancelledRoute = (goToDetail : (id: string) => void, requests : PatientRequest[]) => {
+    const { t } = useTranslation();
     return (
     <ScrollView contentContainerStyle={styles.requestListContainer}>
-        <RequestCard
-            title="Recurring headaches after screen exposure"
-            date="21 March 2025"
-            time="09:30 AM"
-            nbSeen={15}
-            nbResponded={0} 
-            type={'Video consultation'}
-            goToDetail={() => goToDetail()}                        />
-        <RequestCard
-            title="Skin rash consultation"
-            date="22 March 2025"
-            time="10:15 AM"
-            nbSeen={10}
-            nbResponded={2}
-            type={'Video consultation'} 
-            goToDetail={() => goToDetail()}
-        />
-        <RequestCard
-            title="Digestive discomfort evaluation"
-            date="23 March 2025"
-            time="11:00 AM"
-            nbSeen={5}
-            nbResponded={1}
-            type={'Video consultation'}
-            goToDetail={() => goToDetail()}
-        />
+        { requests.length == 0 ?
+            <Text style={styles.noResponse}> {t('MyRequestsList.noResponse')} </Text>
+            :
+            requests.map((request) => {
+                return (<RequestCard
+                    title={request.description!}
+                    date={moment(request.preferred_date!).format('DD MMMM YYYY')}
+                    time={ convertToAmPm(request.preferred_time!)}
+                    nbSeen={0}
+                    nbResponded={0} 
+                    key={request.id}
+                    type={request.consultation_type!.code == 'OFFLINE' ? t('NewRequest.homeVisit') : t('NewRequest.online')}  
+                    goToDetail={() => goToDetail(request.id!)} />)
+                }
+            )
+        }
     </ScrollView>
     )
 }
@@ -125,17 +94,39 @@ type Props = NativeStackScreenProps<RootStackParamList, 'MyRequestsList'>;
 export const  MyRequestsListScreen = ({navigation}: Props): JSX.Element => {
 
     const { t } = useTranslation();
+
     const [index, setIndex] = useState(0);
     const [routes] = useState([
         { key: 'active', title: t('MyRequestsList.active') },
         { key: 'expired', title: t('MyRequestsList.expired') },
         { key: 'cancelled', title: t('MyRequestsList.cancelled') },
     ]);
+    const { user } = useUserStore();
+    const { requests, setRequests, setCurrent } = useRequestStore(); 
+    const { getRequestsByUser } = RequestService();
     
+    useEffect( () => {
+        const fechData = async() => {
+            let requestResponse = await getRequestsByUser(user!.user_id!);
+            if (requestResponse.success) {
+                setRequests(requestResponse.requests!);
+            }
+        }
+        fechData();
+    }, [])
+
+    const goToDetail = (id : string) => {
+        let current = requests.filter(item => item.id == id)[0];
+        setCurrent(current);
+        if (navigationRef.isReady()) {
+            navigationRef.navigate('RequestDetails');
+        }
+    }
+            
     const renderScene = SceneMap({
-        active: ActiveRoute,
-        expired: ExpiredRoute,
-        cancelled: CancelledRoute
+        active: () => ActiveRoute(goToDetail, requests.filter(item => item.status != 'EXPIRED')),
+        expired: () => ExpiredRoute(goToDetail, requests.filter(item => item.status == 'EXPIRED')),
+        cancelled: () => CancelledRoute(goToDetail, requests.filter(item => item.status == 'CANCELLED'))
     });
 
     const renderTabBar = (props : any) => {
@@ -164,7 +155,7 @@ export const  MyRequestsListScreen = ({navigation}: Props): JSX.Element => {
 
     return (
         <AppLayout> 
-            <ProfilHeader photo={Photo} name={'Therèse Rabe'} />
+            <ProfilHeader photo={Photo} name={user?.first_name + ' ' + user?.last_name} />
             <View style={styles.titleContainer}>
                 <Text style={styles.title}> {t('MyRequestsList.title')} </Text>
                 <Text style={styles.description}> {t('MyRequestsList.description')} </Text>

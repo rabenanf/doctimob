@@ -53,7 +53,7 @@ export const  PaymentMethodScreen = ({navigation}: Props): JSX.Element => {
 
     return (
         <AppLayout>
-            <TitleHeader title={t('PaymentMethod.title')} />
+            <TitleHeader title={t('PaymentMethod.title')} back={() => {navigation.goBack()}} />
             <View style={styles.titleContainer}>
                 <Text style={styles.title}> {t('PaymentMethod.title')} </Text>
                 <Text style={styles.description}> {t('PaymentMethod.description')} </Text>

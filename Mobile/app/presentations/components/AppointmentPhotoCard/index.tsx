@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, ImageSourcePropType, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // pour les icônes (calendar, clock)
 import VideoIcon from '../../../resources/assets/icons/Videocamera.svg'; // ton icône vidéo SVG
+import HomeIcon from '../../../resources/assets/icons/home.svg'; // ton icône vidéo SVG
 
 import { styles } from './styles';
 
@@ -10,13 +11,14 @@ type AppointmentProps = {
     specialty: string;
     date: string;
     time: string;
+    type?: string;
     // image: string;
     image: ImageSourcePropType;
 };
 
 export const AppointmemtPhotoCard = (props: AppointmentProps) => {
 
-    let { name, specialty, date, time, image } = props;
+    let { name, specialty, date, time, image, type } = props;
 
     return (
         <View style={styles.card}>
@@ -26,7 +28,11 @@ export const AppointmemtPhotoCard = (props: AppointmentProps) => {
             
             {/* Bouton vidéo flottant */}
             <TouchableOpacity style={styles.videoButton}>
-                <VideoIcon width={24} height={24} />
+                { type == 'OFFLINE' ? 
+                                <HomeIcon width={24} height={24} /> :
+                                <VideoIcon width={24} height={24} />
+                            }
+                
             </TouchableOpacity>
 
             {/* Info section */}

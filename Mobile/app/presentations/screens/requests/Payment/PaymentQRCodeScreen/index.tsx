@@ -16,7 +16,7 @@ export const  PaymentQRCodeScreen = ({navigation}: Props): JSX.Element => {
 
     return (
         <AppLayout>
-            <TitleHeader title={t('Payment.titleHeader')} />
+            <TitleHeader title={t('Payment.titleHeader')} back={() => {navigation.goBack()}} />
             <View style={styles.paymentContainer}>
                 <View style={styles.paymentTitle}>
                     <View style={styles.imageContainer}>

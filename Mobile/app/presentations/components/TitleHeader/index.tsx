@@ -1,17 +1,17 @@
 import React from 'react';
-import { View, Text} from 'react-native';
+import { View, Text, TouchableOpacity} from 'react-native';
 import BackArrow from '../../../resources/assets/icons/back.svg';
 import { useTranslation } from 'react-i18next';
 import { styles } from './styles';
 
 export const TitleHeader = (Props: any) => {
-    const { title } = Props;
+    const { title, back } = Props;
 
     return (
         <View style={styles.titleContainer}>
-            <View style={styles.arrowContainer}>
+            <TouchableOpacity style={styles.arrowContainer} onPress={back}>
                 <BackArrow style={styles.vectorStroke} />
-            </View>
+            </TouchableOpacity>
             <Text style={styles.title}>
                 {title}
             </Text>

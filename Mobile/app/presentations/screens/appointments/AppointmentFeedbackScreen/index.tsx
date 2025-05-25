@@ -24,7 +24,7 @@ export const  AppointmentFeedbackScreen = ({navigation}: Props): JSX.Element => 
 
     return (
         <AppLayout>
-            <TitleHeader title={t('AppointmentFeedback.titleHeader')} />
+            <TitleHeader title={t('AppointmentFeedback.titleHeader')} back={() => {navigation.goBack()}} />
             <View style={styles.titleContainer}>
                 <Text style={styles.title}> {t('AppointmentFeedback.title')} </Text>
                 <Text style={styles.description}> {t('AppointmentFeedback.description')} </Text>

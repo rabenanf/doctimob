@@ -36,7 +36,7 @@ export const QRCodeScreen = ({ navigation }: Props): JSX.Element => {
 
     return (
         <AppLayout>
-            <TitleHeader title={t('Payment.titleHeader')} />
+            <TitleHeader title={t('Payment.titleHeader')} back={() => {navigation.goBack()}} />
                 <View style={styles.paymentContainer}>
                     { (device == null) ? 
                         (<View>

@@ -19,6 +19,8 @@ import { UserService } from '../../../../services/application/user.sa';
 import useUserStore from '../../../../services/redux/userStore';
 import { User } from '../../../../data/dto/User.type';
 import { CustomActivityIndicator } from '../../../components/CustomActivityIndicator';
+import { RequestService } from '../../../../services/application/request.sa';
+import useRequestStore from '../../../../services/redux/requestStore';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
@@ -32,8 +34,10 @@ export const LoginScreen = ({navigation}: Props): JSX.Element => {
     const [loading, setLoading] = useState(false);
     const { login } = AuthenticationService();
     const { getUserProfile } = UserService();
+    const { getRequestsByUser } = RequestService();
     const { isValidEmail } = Validator(); 
     const { user, updateUser } = useUserStore(); 
+    const { setRequests } = useRequestStore(); 
 
     const form = {
         password: password,
@@ -70,12 +74,17 @@ export const LoginScreen = ({navigation}: Props): JSX.Element => {
             if (! response.success) {
                 let newErrors: Partial<typeof form> = {};
                 newErrors.password = t('Login.errorPassword');
+                setErrors(newErrors);
             }
             else {
                 let userResponse = await getUserProfile(email);
                 if (userResponse.success) {
                     if (userResponse.user) {
                         updateUser(userResponse.user![0] as Partial<User>);
+                        let requestResponse = await getRequestsByUser(user!.user_id!);
+                        if (requestResponse.success) {
+                            setRequests(requestResponse.requests!)
+                        }
                     }
                     setLoading(false);
                     navigation.navigate('TabHome');
@@ -83,6 +92,7 @@ export const LoginScreen = ({navigation}: Props): JSX.Element => {
                 else {
                     let newErrors: Partial<typeof form> = {};
                     newErrors.password = t('Login.errorPassword');
+                    setErrors(newErrors);
                 }
             }
         }

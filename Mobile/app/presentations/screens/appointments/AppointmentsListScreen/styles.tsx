@@ -57,4 +57,11 @@ export const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 400
     },
+    noResponse: {
+        paddingTop: 30,
+        textAlign: "center",
+        color: "rgba(21, 44, 42, 1)",
+        fontSize: 20,
+        fontWeight: 700
+    }
 })

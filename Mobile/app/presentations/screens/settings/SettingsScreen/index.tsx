@@ -19,6 +19,7 @@ import EnglishIcon from '../../../../resources/assets/icons/english.svg';
 import VietIcon from '../../../../resources/assets/icons/vietnam.svg';
 import { RoundedButton } from '../../../components/RoundedButton';
 import { Language } from '../../../../data/enum';
+import useUserStore from '../../../../services/redux/userStore';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
@@ -27,6 +28,7 @@ export const  SettingsScreen = ({navigation}: Props): JSX.Element => {
     const { t } = useTranslation(); 
     const [modalVisible, setModalVisible] = useState(false);
     const [language, setLanguage] = useState(Language.ENGLISH);
+    const { user } = useUserStore();
 
     const changeLanguageModal = () => {
         return (
@@ -69,7 +71,7 @@ export const  SettingsScreen = ({navigation}: Props): JSX.Element => {
 
     return (
         <AppLayout>
-            <ProfilHeader photo={Photo} name={'Therèse Rabe'} />
+            <ProfilHeader photo={Photo} name={user?.first_name + ' ' + user?.last_name} />
             <View style={styles.titleContainer}>
                 <Text style={styles.title}> {t('Setting.title')} </Text>
                 <Text style={styles.description}> {t('Setting.description')} </Text>

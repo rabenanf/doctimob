@@ -6,13 +6,14 @@ export interface IOTPInputProps {
     values: any,
     onPress: (index: number) => void;
     size?: number;
+    selected?: number;
 }
 
 export const RadioButtonContainer = (props : IOTPInputProps) => {
 
-    const { values, onPress, size } = props;
+    const { values, onPress, size, selected } = props;
 
-    const [currentSelectedItem, setCurrentSelectedItem] = useState(0);
+    const [currentSelectedItem, setCurrentSelectedItem] = useState(selected ? selected : 0);
 
     const _onPress = (idx : number) => {
         onPress(idx);

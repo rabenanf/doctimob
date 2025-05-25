@@ -48,5 +48,6 @@ export const styles = StyleSheet.create({
     },
     requestListContainer: {
         paddingHorizontal : 10,
+        paddingBottom: 80
     }    
 });

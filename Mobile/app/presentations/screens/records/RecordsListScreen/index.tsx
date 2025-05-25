@@ -24,7 +24,7 @@ export const  MedicalRecordListScreen = ({navigation}: Props): JSX.Element => {
 
     return (
         <AppLayout>
-            <TitleHeader title={t('RecordList.headerTitle')} />
+            <TitleHeader title={t('RecordList.headerTitle')} back={() => {navigation.goBack()}} />
             <View style={{flex: 1}}>
                 <View style={styles.titleContainer}>
                     <View style={styles.title}>

@@ -1,4 +1,4 @@
-import React, { JSX, useState } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import { View, Text, Touchable, TouchableOpacity, TextInput } from 'react-native';
 import { styles } from './styles';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -29,6 +29,10 @@ import { LanguageService } from '../../../../../services/application/language.sa
 import { RequestService } from '../../../../../services/application/request.sa';
 import { showToast } from '../../../../../services/utils/toast';
 import { CustomActivityIndicator } from '../../../../components/CustomActivityIndicator';
+import { PatientRequest } from '../../../../../data/dto/Request.type';
+import { ConsultationTypeService } from '../../../../../services/application/consultation_type.sa';
+import { SpecialtyService } from '../../../../../services/application/specialty.sa';
+import { PaymentMethodService } from '../../../../../services/application/payment_method.sa';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'NewRequest'>;
 
@@ -37,6 +41,7 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
     const { t } = useTranslation();
     const { getLanguageIdByCode } = LanguageService();
     const { createRequest } = RequestService();
+    const { getAllMethod } = PaymentMethodService();
 
     const formatDate = (date: Date): string => {
         return date.toLocaleDateString('en-US', {
@@ -55,21 +60,21 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
     const [hasInsurance, setHasInsurance] = useState(false);
     const [preferredGender, setPreferredGender] = useState(Gender.NO);
     const [description, setDescription] = useState<string | undefined>(undefined);
+    const [specialties, setSpecialties] = useState<any[]>([]);
+    const [specialtiesName, setSpecialtiesName] =  useState<string[]>([]);
+    const [types, setTypes] = useState<any[]>([]);
+    const [paymentTypes, setPaymentTypes] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
+    const {getAllType} = ConsultationTypeService();
+    const {getAllSpecialty} = SpecialtyService();
 
     const [familyMemberDropdownVisible, setFamilyMemberDropdownVisible] = useState(false);
-    const familyMembers = [
-        'Koto', 'Saka', 'Alika'
-    ]
+    const familyMembers : string[] = [];
     const [familyMember, setFamilyMember] = useState<string | undefined >(undefined);
     const handleFamilyMemberSelect = (member : string) => {
         setFamilyMember(member);
     }
-
     const [specialtyDropdownVisible, setSpecialtyDropdownVisible] = useState(false);
-    const specialtys = [
-        'Pediatrician', 'Cardiologist', 'Neurologist', 'Generalist'
-    ]
     const [specialty, setSpecialty] = useState<string | undefined >(undefined);
     const handleSpecialtySelect = (specialty : string) => {
         setSpecialty(specialty);
@@ -77,25 +82,55 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
 
 
     const createRequestAction = async () => {
-        setLoading(true);
-        const code = preferredlanguage == Language.ENGLISH ? 'en' : Language.VIET ? 'vn' : null,
-        const language_id = code !=  null ? await getLanguageIdByCode(code) : null;
-        let data = {
-            patient_id : user!.id,
+        // setLoading(true);
+        let consultationType = null;
+        if (consultationMethod == TypeConsultation.HOMEVISIT) {
+            let data = types.filter(item => item.code == 'OFFLINE');
+            consultationType = data[0].id;
+        }
+        else if (consultationMethod == TypeConsultation.ONLINE) {
+            let data = types.filter(item => item.code == 'ONLINE');
+            consultationType = data[0].id;
+        }
+        console.log('######', consultationType);
+        let paymentTypeId = null;
+        if (paymentMethod == PaymentMethod.CB) {
+            let data = paymentTypes.filter(item =>item.code == 'CB');
+            paymentTypeId = data[0].id;
+        }
+        else if (paymentMethod == PaymentMethod.QR) {
+            let data = paymentTypes.filter(item =>item.code == 'QR');
+            paymentTypeId = data[0].id;
+        }
+        else {
+            let data = paymentTypes.filter(item =>item.code == 'CP');
+            paymentTypeId = data[0].id;
+        }
+        const code = preferredlanguage == Language.ENGLISH ? 'en' : Language.VIET ? 'vn' : null;
+        const spec = specialty ? specialties.filter((item) => {return item.name == specialty})[0].id : undefined;
+        let language_id = code !=  null ? await getLanguageIdByCode(code) : null;
+        let data : Partial<PatientRequest> = {
+            patient_id : user!.user_id,
             description: description,
             has_insurance: hasInsurance,
             caregiver_gender_preference: preferredGender == Gender.MALE ? 'male' : preferredGender == Gender.FEMALE ? 'female' : 'both',
             preferred_time: selectedTime,
-            preferred_date: selectedDay,
+            preferred_date: selectedDay.toUTCString(),
             preferred_language: language_id,
-            consultation_type: consultationMethod == TypeConsultation.HOMEVISIT ? 'home_visit' : 'phone_call',
-            payment_method: paymentMethod == PaymentMethod.CB ? 'card' : paymentMethod == PaymentMethod.QR ? 'qr_code' : 'cash',
-            family_member: familyMember,
-            specialty_id: specialty,
+            consultation_type: consultationType,
+            payment_method: paymentTypeId,
+            status: 'ACTIVE',
             share_medical_history: true
         }
+        if (familyMember)
+            data.family_mamber_id = familyMember;
 
-        let response = await createRequest(data as Partial<Request>);
+        if (specialty)
+           data.specialty_id = spec,
+            
+        console.log('--data----', data);
+
+        let response = await createRequest(data );
         if (response.success) {
             setLoading(false);
             navigation.navigate('NewRequestConfirm');
@@ -107,9 +142,28 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
         
     }
 
+    useEffect(() => {
+        const fechData = async() => {
+            let response = await getAllSpecialty();
+            if (response.success) {
+                setSpecialties(response.specialties ?? []);
+            }
+            let response1 = await getAllType();
+            if (response1.success) {
+                setTypes(response1.types ?? []);
+            }
+            let response2 = await getAllMethod();
+            if (response1.success) {
+                setPaymentTypes(response2.types ?? []);
+            }
+        }
+        fechData();
+        setSpecialtiesName(specialties.map((item) => { return item.name }));
+    }, [])
+
     return (
         <AppLayout>
-            <ProfilHeader photo={Photo} name={'Therèse Rabe'} />
+            <ProfilHeader photo={Photo} name={user?.first_name + ' ' + user?.last_name} />
             <View style={styles.titleContainer}>
                 <Text style={styles.title}> {t('NewRequest.title')} </Text>
                 <Text style={styles.description}> {t('NewRequest.description')} </Text>
@@ -155,7 +209,7 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
 
                         <Text>{t('NewRequest.specialty')}</Text>
                         <DropDown
-                            data={specialtys}
+                            data={specialtiesName}
                             name="specialty"
                             placeholder={t('NewRequest.specialty')}
                             onSelect={handleSpecialtySelect}

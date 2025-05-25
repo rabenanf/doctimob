@@ -37,9 +37,7 @@ export const UserService = () => {
 
                 const { data : location, error: error1 } = await supabase
                 .from('localisations')
-                .insert([
-                    { lat: user.localisation?.lat, lon: user.localisation?.long}
-                ])
+                .insert({ lat: user.localisation?.lat, lon: user.localisation?.lon})
                 .select();
 
                 console.log('---------Location---- : ', location);
@@ -57,12 +55,12 @@ export const UserService = () => {
                 } 
                 
                 if (location != null) {
-                    userProfil.location_id = location!.id;
+                    userProfil.localisation_id = location!.id;
                 } 
 
                 const { data, error } = await supabase
                 .from('user_profile')
-                .insert([ userProfil ]).select();
+                .insert(userProfil).select();
 
                 if (error) {
                     return {success : false, message : error.message};
@@ -116,6 +114,21 @@ export const UserService = () => {
             }
 
             return {success: true, user: user}
+        },
+
+        getUserProfileByUserid : async ( userId : string ) => {
+            let { data: user, error } = await supabase
+                .from('user_profile')
+                .select(`*, speciality_doctor_id(name)`)
+                .eq('user_id', userId);
+
+            console.log('---------User---- : ', user);
+
+            if (error) {
+                return {success : false, message : error.message};
+            }
+
+            return {success: true, user: user![0] }
         }
     }
 }

@@ -102,7 +102,8 @@
         "description" : "Track all your consultation requests.",
         "active" : "Active",
         "expired" : "Expired",
-        "cancelled" : "Cancelled"
+        "cancelled" : "Cancelled",
+        "noResponse" : "There is no request yet."
     },
     "RequestDetails" : {
         "title" : "Request Details",
@@ -199,7 +200,8 @@
         "language" : "Language",
         "chat" : "Chat with Doctor",
         "chatInfo" : "Chat will open 20 minutes before the consultation.",
-        "chatPlaceholder" : "Enter your message"
+        "chatPlaceholder" : "Enter your message",
+        "noResponse" : "There is no appointment yet."
     },
     "ChooseAccountType" : {
         "title" : "Account Type",

@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
         backgroundColor: '#fff',
         elevation: 4,
         borderColor: "rgba(229, 231, 243, 1)",
+        width: 200
     },
     image: {
         width: '100%',
