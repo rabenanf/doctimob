@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "RNDateTimePickerCGen_autolinked_build",
+		"source" : "/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/@react-native-community/datetimepicker/android/build/generated/source/codegen/jni"
+	}
+}
