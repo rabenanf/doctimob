@@ -11,7 +11,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../../../data/interface";
 import AppLayout from "../../../layout";
 import { ProfilHeader } from "../../../components/ProfilHeader";
-import Photo from "../../../../resources/assets/images/photo.png";
+import Photo from "../../../../resources/assets/images/doctor_man.png";
 import { useTranslation } from "react-i18next";
 import ProfilIcon from "../../../../resources/assets/icons/User.svg";
 import LockIcon from "../../../../resources/assets/icons/Lock.svg";
@@ -19,6 +19,9 @@ import EarthIcon from "../../../../resources/assets/icons/Earth.svg";
 import FamilyIcon from "../../../../resources/assets/icons/Users_Group.svg";
 import HistoryIcon from "../../../../resources/assets/icons/History.svg";
 import CardIcon from "../../../../resources/assets/icons/CardIcon.svg";
+import Professional from "../../../../resources/assets/icons/Professional.svg";
+import Availability from "../../../../resources/assets/icons/Availability.svg";
+import HomeVisit from "../../../../resources/assets/icons/Home_visit.svg";
 import LogoutIcon from "../../../../resources/assets/icons/Logout.svg";
 import AltArrowIcon from "../../../../resources/assets/icons/Alt_Arrow_Down.svg";
 import EnglishIcon from "../../../../resources/assets/icons/english.svg";
@@ -27,10 +30,11 @@ import { RoundedButton } from "../../../components/RoundedButton";
 import { Language } from "../../../../data/enum";
 import useUserStore from "../../../../services/redux/userStore";
 import { AuthenticationService } from "../../../../services/application/authentication.sa";
+import Spacer from "../../../components/Spacer";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Settings">;
 
-export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
+export const DoctorSettingsScreen = ({ navigation }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const [language, setLanguage] = useState(Language.ENGLISH);
@@ -116,23 +120,45 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
         photo={Photo}
         name={user?.first_name + " " + user?.last_name}
       />
+
       <View style={styles.titleContainer}>
-        <Text style={styles.title}> {t("Setting.title")} </Text>
-        <Text style={styles.description}> {t("Setting.description")} </Text>
+        <Text style={styles.title}>{t("Setting.title")}</Text>
+        <Text style={styles.description}>
+          {t("Adjust your consultation preferences and account info.")}
+        </Text>
       </View>
+
+      <Spacer />
+
       <View style={styles.detailContainer}>
         <TouchableOpacity
           style={styles.item}
           onPress={() => navigation.navigate("Profile")}
         >
           <View style={styles.itemIcon}>
-            <ProfilIcon />
-            <Text style={styles.itemText}> {t("Setting.profile")} </Text>
+            <Professional />
+            <Text style={styles.itemText}>
+              {t("Professional Bio & Experience")}{" "}
+            </Text>
           </View>
           <View style={styles.itemArrow}>
             <AltArrowIcon />
           </View>
         </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.item}
+          onPress={() => navigation.navigate("Profile")}
+        >
+          <View style={styles.itemIcon}>
+            <ProfilIcon />
+            <Text style={styles.itemText}> {t("Personal information")} </Text>
+          </View>
+          <View style={styles.itemArrow}>
+            <AltArrowIcon />
+          </View>
+        </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.item}
           onPress={() => navigation.navigate("ChangePassword")}
@@ -145,6 +171,7 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
             <AltArrowIcon />
           </View>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.item}
           onPress={() => setModalVisible(true)}
@@ -159,43 +186,51 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
             <AltArrowIcon />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => navigation.navigate("FamilyMember")}
-        >
-          <View style={styles.itemIcon}>
-            <FamilyIcon />
-            <Text style={styles.itemText}> {t("Setting.familyMember")} </Text>
-          </View>
-          <View style={styles.itemArrow}>
-            <AltArrowIcon />
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => navigation.navigate("MedicalRecordList")}
-        >
-          <View style={styles.itemIcon}>
-            <HistoryIcon />
-            <Text style={styles.itemText}> {t("Setting.records")} </Text>
-          </View>
-          <View style={styles.itemArrow}>
-            <AltArrowIcon />
-          </View>
-        </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.item}
           onPress={() => navigation.navigate("PaymentMethod")}
         >
           <View style={styles.itemIcon}>
             <CardIcon />
-            <Text style={styles.itemText}> {t("Setting.paymentMethods")} </Text>
+            <Text style={styles.itemText}> {t("Payments")} </Text>
+          </View>
+          <View style={styles.itemArrow}>
+            <AltArrowIcon />
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.item}
+          onPress={() => navigation.navigate("FamilyMember")}
+        >
+          <View style={styles.itemIcon}>
+            <HomeVisit />
+            <Text style={styles.itemText}>
+              {t("Home Visit Travel Radius")}{" "}
+            </Text>
+          </View>
+          <View style={styles.itemArrow}>
+            <AltArrowIcon />
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.item}
+          onPress={() => navigation.navigate("MedicalRecordList")}
+        >
+          <View style={styles.itemIcon}>
+            <Availability />
+            <Text style={styles.itemText}>
+              {t("Availability & Hourly Pricing")}{" "}
+            </Text>
           </View>
           <View style={styles.itemArrow}>
             <AltArrowIcon />
           </View>
         </TouchableOpacity>
       </View>
+
       <TouchableOpacity onPress={logout} style={styles.logoutContainer}>
         <View>
           <LogoutIcon />

@@ -1,8 +1,8 @@
-import React, {ReactElement} from 'react';
-import {Platform, SafeAreaView, StatusBar, View} from 'react-native';
-import styles from './styles';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {enableScreens} from 'react-native-screens';
+import React, { ReactElement } from "react";
+import { Platform, SafeAreaView, StatusBar, View } from "react-native";
+import styles from "./styles";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { enableScreens } from "react-native-screens";
 
 enableScreens();
 
@@ -19,13 +19,13 @@ const AppLayout = ({
   children,
   statusBarStyleLight = false,
   isFullScreen = false,
-  backgroundColor = 'rgba(255, 255, 255, 0.0)',
-  appBackgroundColor = 'white',
+  backgroundColor = "rgba(255, 255, 255, 0.0)",
+  appBackgroundColor = "white",
 }: ILayout) => {
   // const [height, setHeight] = useState(0);
   const insets = useSafeAreaInsets();
   const statusBarHeight =
-    Platform.OS === 'ios'
+    Platform.OS === "ios"
       ? 0
       : StatusBar.currentHeight != undefined
       ? StatusBar.currentHeight
@@ -38,16 +38,17 @@ const AppLayout = ({
           animated={true}
           backgroundColor={'green'}
         />*/}
-      <SafeAreaView
-        style={styles.Container}>
+      <SafeAreaView style={styles.Container}>
         {/**/}
         <View
           style={[
             {
               flex: 1,
               paddingBottom: 0,
+              backgroundColor: "white",
             },
-          ]}>
+          ]}
+        >
           {children}
         </View>
       </SafeAreaView>
