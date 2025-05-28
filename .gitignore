@@ -21,3 +21,20 @@ db.sqlite3
 
 # Logs
 *.log
+
+# Android
+/Mobile/android/app/build/intermediates/
+/Mobile/node_modules/
+/Mobile/android/.gradle/
+/Mobile/android/build/
+/Mobile/android/local.properties
+/Mobile/android/.idea
+
+*.iml
+.gradle/
+*.keystore
+
+*.apk
+*.so
+
+
