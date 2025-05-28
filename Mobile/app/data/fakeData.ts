@@ -112,4 +112,52 @@ const doctorRequests = [
   },
 ];
 
-export { doctorAppointments, doctorConsultationRequests, doctorRequests };
+const doctorUpcomingAppointments = [
+  {
+    id: "1",
+    name: "Eva Persson",
+    description: "Child check-up & cough",
+    preferred_date: new Date().setDate(new Date().getDate() + 1),
+    preferred_time: "07:30",
+    rdv_time: "in 05 minutes",
+    profile: Photo_1_img,
+    consultation_type: "ONLINE",
+  },
+  {
+    id: "2",
+    name: "Anton Johnsson",
+    description: "High fever and fatigue",
+    preferred_date: new Date().setDate(new Date().getDate() + 3),
+    preferred_time: "10:30",
+    rdv_time: "in 2 days",
+    profile: Photo_2_img,
+    consultation_type: "OFFLINE",
+  },
+  {
+    id: "3",
+    name: "Alice Hellström",
+    description: "Routine pediatric checkup",
+    preferred_date: new Date().setDate(new Date().getDate() + 7),
+    preferred_time: "14:30",
+    rdv_time: "in 3 days",
+    profile: Photo_3_img,
+    consultation_type: "ONLINE",
+  },
+  {
+    id: "4",
+    name: "Bo Lundgren",
+    description: "Severe migraines, vision blurry",
+    preferred_date: new Date().setDate(new Date().getDate() + 4),
+    preferred_time: "16:30",
+    rdv_time: "in 4 days",
+    profile: Photo_4_img,
+    consultation_type: "OFFLINE",
+  },
+];
+
+export {
+  doctorAppointments,
+  doctorConsultationRequests,
+  doctorRequests,
+  doctorUpcomingAppointments,
+};
