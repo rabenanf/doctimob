@@ -8,10 +8,7 @@ import { convertToAmPm } from "../../../../../services/utils/dateUtil";
 import { DoctorRequestCard } from "../../../../components/RequestCard/DoctorRequestCard";
 import { doctorRequests } from "../../../../../data/fakeData";
 
-export const AvailableRequests = (
-  goToDetail: (id: string) => void,
-  requests: PatientRequest[]
-) => {
+export const AvailableRequests = (goToDetail: (id: string) => void) => {
   const { t } = useTranslation();
   return (
     <ScrollView contentContainerStyle={styles.requestListContainer}>

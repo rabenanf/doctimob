@@ -49,11 +49,7 @@ export const DoctorConsultations = ({ navigation }: Props): JSX.Element => {
   };
 
   const renderScene = SceneMap({
-    available: () =>
-      AvailableRequests(
-        goToDetail,
-        requests.filter((item) => item.status != "EXPIRED")
-      ),
+    available: () => AvailableRequests(goToDetail),
     submitted: () =>
       SubmittedRequests(
         goToDetail,

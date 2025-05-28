@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Text, ScrollView } from "react-native";
+import { Text, ScrollView, FlatList } from "react-native";
 import { styles } from "./styles";
-import AppointmentCard from "../../../../components/AppointmentCard";
 import { useTranslation } from "react-i18next";
-import Doctor from "../../../../../resources/assets/images/doctor_man.png";
 import moment from "moment";
 import { convertToAmPm } from "../../../../../services/utils/dateUtil";
 import { UserService } from "../../../../../services/application/user.sa";
 import { AppointmentService } from "../../../../../services/application/appointment.sa";
 import useUserStore from "../../../../../services/redux/userStore";
+import { DoctorAppointmentCard } from "../../../../components/RequestCard/DoctorAppointmentCard";
+import { doctorUpcomingAppointments } from "../../../../../data/fakeData";
 
 export const UpcomingAppointments = () => {
   const { t } = useTranslation();
@@ -40,41 +40,37 @@ export const UpcomingAppointments = () => {
     fechData();
   }, []);
 
-  const goToDetail = () => {
-    /*if (navigationRef.isReady()) {
-          navigationRef.navigate('AppointmentDetail');
-      } */
-  };
+  const goToDetail = () => {};
 
   return (
-    <ScrollView contentContainerStyle={styles.appointmentListContainer}>
-      {appointments.length == 0 ? (
-        <Text style={styles.noResponse}> {t("Appointment.noResponse")} </Text>
-      ) : (
-        appointments.map((appointment) => {
-          return (
-            <AppointmentCard
-              doctorName={
-                appointment.doctor?.first_name +
-                " " +
-                appointment.doctor?.last_name
-              }
-              specialty={appointment.doctor?.specialty_id?.name}
-              date={moment(appointment.request_id?.preferred_date).format(
-                "DD MMMM YYYY"
-              )}
-              time={
-                appointment.request_id?.preferred_time
-                  ? convertToAmPm(appointment.request_id?.preferred_time!)
-                  : ""
-              }
-              source={Doctor}
-              type={appointment.request_id?.consultation_type!.code}
-              onPress={goToDetail}
-            />
-          );
-        })
-      )}
-    </ScrollView>
+    <>
+      <FlatList
+        data={doctorUpcomingAppointments ?? []}
+        contentContainerStyle={styles.appointmentListContainer}
+        renderItem={({ item }: { item: any }) => (
+          <DoctorAppointmentCard
+            title={item.description!}
+            avatar={item.profile}
+            rdvTime={item.rdv_time}
+            name={item.name}
+            date={moment(item.preferred_date!).format("DD MMMM YYYY")}
+            time={convertToAmPm(item.preferred_time!)}
+            nbSeen={0}
+            nbResponded={0}
+            key={item.id}
+            type={
+              item.consultation_type === "OFFLINE"
+                ? t("NewRequest.homeVisit")
+                : t("Video Consultation")
+            }
+            goToDetail={() => goToDetail()}
+          />
+        )}
+        keyExtractor={(item: any) => item?.id?.toString()}
+        ListEmptyComponent={
+          <Text style={styles.noResponse}> {t("Appointment.noResponse")} </Text>
+        }
+      />
+    </>
   );
 };

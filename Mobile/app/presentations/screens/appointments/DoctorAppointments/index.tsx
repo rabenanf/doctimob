@@ -26,8 +26,8 @@ export const DoctorAppointments = ({ navigation }: Props): JSX.Element => {
   ]);
 
   const renderScene = SceneMap({
-    upcoming: () => PastAppointments(),
-    past: () => UpcomingAppointments(),
+    upcoming: () => UpcomingAppointments(),
+    past: () => PastAppointments(),
   });
 
   const renderTabBar = (props: any) => {
