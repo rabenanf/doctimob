@@ -1,9 +1,0 @@
-/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/CMakeLists.txt
-/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/@react-native-community/datetimepicker/android/build/generated/source/codegen/jni/CMakeLists.txt
-/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-pager-view/android/build/generated/source/codegen/jni/CMakeLists.txt
-/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-reanimated/android/build/generated/source/codegen/jni/CMakeLists.txt
-/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-safe-area-context/android/src/main/jni/CMakeLists.txt
-/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-screens/android/src/main/jni/CMakeLists.txt
-/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-svg/android/src/main/jni/CMakeLists.txt
-/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-vector-icons/android/build/generated/source/codegen/jni/CMakeLists.txt
-/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup/CMakeLists.txt
