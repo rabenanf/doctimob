@@ -1,8 +1,10 @@
 # Node.js (pour FrontWeb et Mobile si React, React Native, etc.)
 node_modules/
+vendor/
 dist/
 .env
 .env.*
+*.lock
 
 # Python / Django (pour Backend si c’est du Django)
 __pycache__/
@@ -21,14 +23,28 @@ db.sqlite3
 
 # Logs
 *.log
+Mobile/node_modules/
 
-# Android
-/Mobile/android/app/build/intermediates/
-/Mobile/node_modules/
-/Mobile/android/.gradle/
-/Mobile/android/build/
-/Mobile/android/local.properties
-/Mobile/android/.idea
+Mobile/android/.gradle/
+Mobile/android/.idea/
+Mobile/android/.kotlin/
+Mobile/android/build/
+Mobile/android/app/build/
+Mobile/android/app/.cxx/
+Mobile/android/app/build/intermediates/
+
+Mobile/ios/build/
+Mobile/ios/.Podfile.lock
+Mobile/ios/Pods/
+
+Mobile/node_modules/
+Mobile/vendor/
+Mobile/dist/
+Mobile/.env
+Mobile/.env.*
+Mobile/*.lock
+Mobile/android/.gradle/
+Mobile/android/app/.cxx/
 
 *.iml
 .gradle/
@@ -36,5 +52,3 @@ db.sqlite3
 
 *.apk
 *.so
-
-
