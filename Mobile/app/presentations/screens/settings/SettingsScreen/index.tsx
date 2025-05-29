@@ -38,6 +38,16 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
     const { user, logout } = useUserStore();
     const { logoutAuth } = AuthenticationService();
 
+    const logoutApp = async () => {
+        let response = await logoutAuth();
+        if (response.success) {
+            logout();
+            navigation.navigate('Login');
+            return;
+        }
+        console.log(response.message);
+    }
+
     const changeLanguageModal = () => {
         return (
             <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
@@ -197,7 +207,7 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
                     </View>
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={() => {logout(); logoutAuth() }} style={styles.logoutContainer}>
+            <TouchableOpacity onPress={logoutApp} style={styles.logoutContainer}>
                 <View>
                     <LogoutIcon />
                 </View>

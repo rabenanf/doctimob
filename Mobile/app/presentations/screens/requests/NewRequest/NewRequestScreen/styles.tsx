@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     detailContainer: {
         flexDirection: 'column',
         flex : 1,
-        paddingBottom : Platform.select({ios : 140, android : 160}),
+        paddingBottom : Platform.select({ios : 140, android : 93}),
         paddingHorizontal: 30
     },
     title : {
@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     },
     btnContainer : {
         position: 'absolute',
-        bottom: Platform.select({ios : 60, android : 90}),
+        bottom: Platform.select({ios : 60, android : 30}),
         left: 0,
         right: 0,
         paddingHorizontal: 30,

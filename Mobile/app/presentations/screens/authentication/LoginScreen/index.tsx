@@ -37,8 +37,8 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
     const { t } = useTranslation();
     const [checked, setChecked] = useState(false);
 
-    const [email, setEmail] = useState("doctor-dermatology@yopmail.com");
-    const [password, setPassword] = useState("doctimob.doctor!!142");
+    const [email, setEmail] = useState("test@test.com");
+    const [password, setPassword] = useState("azerty");
     const [loading, setLoading] = useState(false);
     const { login } = AuthenticationService();
     const { getUserProfile } = UserService();
@@ -99,19 +99,24 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
                 let newErrors: Partial<typeof form> = {};
                 newErrors.password = t('Login.errorPassword');
                 setErrors(newErrors);
+                console.log('mandalo 1');
                 setLoading(false);
             }
             else {
                 let userResponse = await getUserProfile(email);
+                console.log('mandalo 2');
                 if (userResponse.success) {
                     if (userResponse.user) {
                         updateUser(userResponse.user![0] as Partial<User>);
                         let requestResponse = await getRequestsByUser(user!.user_id!);
+                        console.log('mandalo 3');
                         if (requestResponse.success) {
                             setRequests(requestResponse.requests!)
+                            console.log('mandalo 4');
                             setLoading(false);
                         }
                     }
+                    console.log('mandalo 5');
                     setLoading(false);
                     navigation.navigate('TabHome');
                 }
@@ -122,6 +127,7 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
                 }
             }
         }
+        console.log('mandalo 6');
         setLoading(false);
     }
 
