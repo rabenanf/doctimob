@@ -65,7 +65,7 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         columnGap: 5,
-        padding: 15,
+        //padding: 15,
         borderRadius: 10,
         flexDirection: 'row',
         flex : 1
@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         columnGap: 5,
-        padding: 15,
+        //padding: 15,
         borderRadius: 10,
         flexDirection: 'row',
         flex : 1

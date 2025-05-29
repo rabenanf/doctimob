@@ -1,4 +1,4 @@
-import React, { JSX, useEffect, useState } from 'react';
+import React, { JSX, useEffect, useRef, useState } from 'react';
 import { View, Text, Touchable, TouchableOpacity, TextInput } from 'react-native';
 import { styles } from './styles';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -12,6 +12,8 @@ import QRIcon from "../../../../../resources/assets/icons/qr.svg";
 import QRBlackIcon from "../../../../../resources/assets/icons/qr_black.svg";
 import CBIcon from "../../../../../resources/assets/icons/cb.svg";
 import CBBlackIcon from "../../../../../resources/assets/icons/cb_black.svg";
+import CashIcon from "../../../../../resources/assets/icons/cash_white.svg";
+import CashBlackIcon from "../../../../../resources/assets/icons/cash_black.svg";
 import HomeIcon from "../../../../../resources/assets/icons/home.svg";
 import CameraIcon from "../../../../../resources/assets/icons/Videocamera.svg";
 import EnglishIcon from "../../../../../resources/assets/icons/english.svg";
@@ -33,6 +35,8 @@ import { PatientRequest } from '../../../../../data/dto/Request.type';
 import { ConsultationTypeService } from '../../../../../services/application/consultation_type.sa';
 import { SpecialtyService } from '../../../../../services/application/specialty.sa';
 import { PaymentMethodService } from '../../../../../services/application/payment_method.sa';
+import { FamilyMemberService } from '../../../../../services/application/familymember.sa';
+import { convertTo24Hour, getNext30MinuteSlotFormatted } from '../../../../../services/utils/dateUtil';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'NewRequest'>;
 
@@ -43,6 +47,8 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
     const { createRequest } = RequestService();
     const { getAllMethod } = PaymentMethodService();
 
+    const myComponentRef = useRef<any>(null);
+
     const formatDate = (date: Date): string => {
         return date.toLocaleDateString('en-US', {
             weekday: 'long',   // ex: Friday
@@ -52,10 +58,11 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
     };
 
     const { user } = useUserStore(); 
+    const { getMembersByPatient } = FamilyMemberService();
     const [paymentMethod, setPaymentMethod] = useState(PaymentMethod.CB);
     const [consultationMethod, setConsultationMethod] = useState(TypeConsultation.HOMEVISIT);
     const [preferredlanguage, setPreferredLanguage] = useState(Language.BOTH);
-    const [selectedTime, setSelectedTime] = useState("09:00 AM");
+    const [selectedTime, setSelectedTime] = useState<string | undefined>("09:00 AM");
     const [selectedDay, setSelectedDay] = useState(new Date());
     const [hasInsurance, setHasInsurance] = useState(false);
     const [preferredGender, setPreferredGender] = useState(Gender.NO);
@@ -69,16 +76,42 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
     const {getAllSpecialty} = SpecialtyService();
 
     const [familyMemberDropdownVisible, setFamilyMemberDropdownVisible] = useState(false);
-    const familyMembers : string[] = [];
+    const [familyMembers, setFamilyMembers]= useState<any[]>([]);
+    const [familyMembersList, setFamilyMembersList]= useState<any[]>([]);
     const [familyMember, setFamilyMember] = useState<string | undefined >(undefined);
+    const [familyMemberId, setFamilyMemberId] = useState<string | undefined >(undefined);
+
     const handleFamilyMemberSelect = (member : string) => {
-        setFamilyMember(member);
+        let selected = familyMembersList.filter(item => { return item.first_name + ' ' + item.last_name == member})
+        console.log('####', member, '####', selected );
+        setFamilyMemberId(selected[0].id);
+        setFamilyMemberId(member);
     }
     const [specialtyDropdownVisible, setSpecialtyDropdownVisible] = useState(false);
-    const [specialty, setSpecialty] = useState<string | undefined >(undefined);
+    const [specialty, setSpecialty] = useState<string | undefined>(undefined);
     const handleSpecialtySelect = (specialty : string) => {
         setSpecialty(specialty);
     }
+
+    const verifySelectedTime = (time : string) => {
+        const timeString = convertTo24Hour(time);
+        const date = new Date( selectedDay.getFullYear() + '-' + (selectedDay.getMonth() + 1)+ '-' + selectedDay.getDate() + ' ' + timeString)
+        console.log('+++++++++++', date.toISOString());
+        console.log('++', date.getTime() ,'mamdalo ato', Date.now());
+        if (date.getTime() > Date.now()) {
+            console.log('tsy rarahany');
+            setSelectedTime(time);
+        }
+        else {
+            console.log('efa lasa e');
+            setSelectedTime(undefined);
+            myComponentRef.current?.setTime(undefined);
+        }
+    }
+
+    useEffect(() => {
+        if (selectedTime) verifySelectedTime(selectedTime!);
+    }, [selectedDay])    
 
 
     const createRequestAction = async () => {
@@ -123,17 +156,22 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
             share_medical_history: true
         }
         if (familyMember)
-            data.family_mamber_id = familyMember;
+            data.family_mamber_id = familyMemberId;
 
         if (specialty)
            data.specialty_id = spec,
             
         console.log('--data----', data);
 
-        let response = await createRequest(data );
-        if (response.success) {
-            setLoading(false);
-            navigation.navigate('NewRequestConfirm');
+        if (selectedDay && selectedTime && (selectedDay.getTime() > Date.now())) {
+            let response = await createRequest(data );
+            if (response.success) {
+                setLoading(false);
+                navigation.navigate('NewRequestConfirm');
+            }
+            else {
+                showToast('error', t('Global.error'), response.message);
+            }
         }
         else {
             showToast('error', t('Global.error'), t('NewRequest.errorCreate'));
@@ -148,6 +186,13 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
             if (response.success) {
                 setSpecialties(response.specialties ?? []);
             }
+            let responseMember = await getMembersByPatient(user?.user_id!);
+            if (responseMember.success) {
+                let res = responseMember.members ?? [];
+                setFamilyMembersList(res);
+                let list = res.map((item) => { return item.first_name + ' ' + item.last_name});
+                setFamilyMembers(list);
+            }
             let response1 = await getAllType();
             if (response1.success) {
                 setTypes(response1.types ?? []);
@@ -158,8 +203,13 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
             }
         }
         fechData();
-        setSpecialtiesName(specialties.map((item) => { return item.name }));
+        //setSelectedTime(getNext30MinuteSlotFormatted);
     }, [])
+
+    useEffect(() => {
+        let names = specialties.map((item) => { return item.name });
+        setSpecialtiesName(names);
+    }, [specialties])    
 
     return (
         <AppLayout>
@@ -270,15 +320,16 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
                             <Text style={{ fontSize: 12, fontWeight: 700 }}> {selectedTime} </Text>
                         </View>
                         <TimeSelector
+                            ref={myComponentRef}
                             times={Times}
                             initialValue={selectedTime}
-                            onSelect={(time) => setSelectedTime(time)}
+                            onSelect={(time) => verifySelectedTime(time)}
                         />
                     </View>
                     <View style={styles.consultation}>
                         <Text style={styles.sectionTitle}> {t('NewRequest.consultationTitle').toUpperCase()} </Text>
                         <View style={styles.methodContainer}>
-                            <TouchableOpacity style={[consultationMethod == TypeConsultation.HOMEVISIT ? styles.methodSelected : styles.method, {justifyContent : 'space-between'}]}
+                            <TouchableOpacity style={[consultationMethod == TypeConsultation.HOMEVISIT ? styles.methodSelected : styles.method, {justifyContent : 'space-between', paddingHorizontal : 16}]}
                                 onPress={() => setConsultationMethod(TypeConsultation.HOMEVISIT)}>
                                 <View style={consultationMethod == TypeConsultation.HOMEVISIT ? styles.typeSelected : styles.type}>
                                     <HomeIcon />
@@ -286,7 +337,7 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
                                 <Text style={consultationMethod == TypeConsultation.HOMEVISIT ? styles.textSelected : styles.text}> {t('NewRequest.homeVisit')} </Text>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={[consultationMethod == TypeConsultation.ONLINE ? styles.methodSelected : styles.method, , {justifyContent : 'space-between'}]}
+                                style={[consultationMethod == TypeConsultation.ONLINE ? styles.methodSelected : styles.method, , {justifyContent : 'space-between', paddingHorizontal : 16}]}
                                 onPress={() => setConsultationMethod(TypeConsultation.ONLINE)}>
                                 <View style={consultationMethod == TypeConsultation.ONLINE ? styles.typeSelected : styles.type}>
                                     <CameraIcon />
@@ -327,6 +378,12 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
                                 onPress={() => setPaymentMethod(PaymentMethod.QR)}>
                                 {paymentMethod == PaymentMethod.QR ? <QRIcon /> : <QRBlackIcon />}
                                 <Text style={paymentMethod == PaymentMethod.QR ? styles.textSelected : styles.text}> {t('NewRequest.qrCode')} </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={paymentMethod == PaymentMethod.CASH ? styles.methodSelected : styles.method}
+                                onPress={() => setPaymentMethod(PaymentMethod.CASH)}>
+                               {paymentMethod == PaymentMethod.CASH ? <CashIcon height={24} width={24}/> : <CashBlackIcon height={24} width={24} />}
+                                <Text style={paymentMethod == PaymentMethod.CASH ? styles.textSelected : styles.text}> {t('NewRequest.cash')} </Text>
                             </TouchableOpacity>
                         </View>
                     </View>

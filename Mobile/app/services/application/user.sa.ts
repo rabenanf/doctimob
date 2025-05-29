@@ -32,7 +32,9 @@ export const UserService = () => {
                     email: user.email,
                     role: user.role,
                     gender: user.gender,
-                    user_id: authenticationUser.id
+                    user_id: authenticationUser.id,
+                    phone: user.phone,
+                    birth_date: user.birth_date
                 };
 
                 const { data : location, error: error1 } = await supabase

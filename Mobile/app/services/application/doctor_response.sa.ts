@@ -5,8 +5,8 @@ export const DoctorResponseService = () => {
         getDoctorResponseByRequest : async (requestId : string) => {
             let { data: doctor_actions, error } = await supabase
                 .from('doctor_actions')
-                .select(`*, recommendations_id(patient_request_id)`);
-                //.eq("patient_request_id", requestId);
+                .select(`*, recommendations_id(patient_request_id)`)
+                .eq("patient_request_id", requestId);
             
             console.log('---------Doctor Responses------ : ', doctor_actions);
 

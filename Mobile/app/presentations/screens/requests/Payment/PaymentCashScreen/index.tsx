@@ -21,10 +21,10 @@ export const  PaymentCashScreen = ({navigation}: Props): JSX.Element => {
 
     const confirmAppointmentCall = async () => {
         let response = await confirmAppointment (selectedMedicalService.id, current?.payment_method.id); 
-        //if (response.success)
+        if (response.success)
             navigation.navigate('AppointmentConfirmed');
-        //else
-        //    showToast('error', t('Global.error'),response.message);
+        else
+            showToast('error', t('Global.error'),response.message);
     }
 
     return (

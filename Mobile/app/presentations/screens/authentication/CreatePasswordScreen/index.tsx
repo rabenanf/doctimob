@@ -41,7 +41,10 @@ export const CreatePasswordScreen = ({navigation}: Props): JSX.Element => {
         setLoading(true);
         if (validate()) {
             updateUser({password: password})
-            let response = await createUserProfile(user!);
+
+            console.log('######################', user);
+
+            /*let response = await createUserProfile(user!);
             if (response?.success) {
                 updateUser(response.user! as Partial<User>);
                 setLoading(false);
@@ -49,7 +52,7 @@ export const CreatePasswordScreen = ({navigation}: Props): JSX.Element => {
             }
             else {
                 showToast('error', t('Global.error'), t('CreatePassword.createUserError'));
-            }
+            }*/
         }
         setLoading(false);
     }

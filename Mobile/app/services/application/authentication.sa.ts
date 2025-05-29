@@ -81,7 +81,7 @@ export const AuthenticationService = () => {
             return {success: true, user: user};
         },
 
-        logout : async () => {
+        logoutAuth : async () => {
             let { error } = await supabase.auth.signOut()
 
             if (error) {

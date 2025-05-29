@@ -52,7 +52,8 @@
         "confirmPassword": "Confirm Password",
         "createAccount": "Create Account",
         "passwordError": "Password must be at least 6 characters long",
-        "confirmPasswordError": "Passwords do not match"
+        "confirmPasswordError": "Passwords do not match",
+        "createUserError": "Create account error"
     },
     "CreateNewPassword": {
         "title": "Create New Password",
@@ -188,7 +189,8 @@
         "descriptionArea" : "Description",
         "familyMember" : "Family member",
         "shareHistory" : "Share medical history",
-        "errorCreate": "Error on creating request"
+        "errorCreate": "Date anterior of actual time",
+        "cash": "Cash"
     },
     "Appointment" : {
         "title" : "My Appointments",
@@ -241,7 +243,10 @@
         "addDescription" : "Choose the language you want to use in the app.",
         "english" : "English",
         "vietnamese" : "Vietnamese",
-        "save" : "Save"
+        "save" : "Save",
+        "currentPasswordError" : "Incorrect password",
+        "newPasswordError" : "Incorrect password format",
+        "confirmPasswordError" : "Passwords do not match"
     },
     "PaymentMethod" : {
         "title" : "Payment Methods",
@@ -260,7 +265,9 @@
         "firstname": "First name",
         "lastname": "Last name",
         "address":  "Address",
-        "saveMember": "Save Member"
+        "saveMember": "Save Member",
+        "createError": "Save in database error",
+        "deleteError": "Delete member in database error"
     },
     "Profile" : {
         "headerTitle": "Profile",
@@ -273,7 +280,10 @@
         "address": "Address",
         "phone": "Phone",
         "email": "Email address",
-        "birthday": "Date of Birth"
+        "birthday": "Date of Birth",
+        "takePhoto": "📷 Take photo",
+        "fromLibrary": "🖼️ ChooseFromLibrary",
+        "updateError": "Update profil in database error"
     },
     "RecordList" : {
         "headerTitle" : "Medical records",

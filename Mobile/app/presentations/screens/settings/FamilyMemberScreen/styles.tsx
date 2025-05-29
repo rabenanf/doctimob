@@ -137,5 +137,10 @@ export const styles = StyleSheet.create({
     },
     form: {
         rowGap: 10
+    },
+    errorText: {
+        color: 'red',
+        marginTop: 4,
+        fontSize: 13,
     }
 })

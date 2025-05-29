@@ -9,6 +9,11 @@ import AppLayout from "../../../layout";
 import { Theme } from "../../../../resources/themes";
 import Logo from '../../../../resources/assets/images/logo.png'
 import { RoundedButton } from "../../../components/RoundedButton";
+import { UserService } from "../../../../services/application/user.sa";
+import { RequestService } from "../../../../services/application/request.sa";
+import useUserStore from "../../../../services/redux/userStore";
+import useRequestStore from "../../../../services/redux/requestStore";
+import { User } from "../../../../data/dto/User.type";
 
 
 type Props = NativeStackScreenProps<RootStackParamList, 'RegistrationConfirmation'>;
@@ -16,9 +21,27 @@ type Props = NativeStackScreenProps<RootStackParamList, 'RegistrationConfirmatio
 export const RegistrationConfirmationScreen = ({navigation}: Props): JSX.Element => {
 
     const { t } = useTranslation();
+    const { getUserProfile } = UserService();
+    const { getRequestsByUser } = RequestService();
+    const { user, setUser } = useUserStore(); 
+    const { setRequests } = useRequestStore();
 
-    const goToHome = () => {
-        navigation.navigate('TabHome');
+    const goToHome = async () => {
+        let userResponse = await getUserProfile(user?.email!);
+        if (userResponse.success) {
+            if (userResponse.user) {
+                setUser(userResponse.user![0] as Partial<User>);
+                let requestResponse = await getRequestsByUser(user!.user_id!);
+                if (requestResponse.success) {
+                    setRequests(requestResponse.requests!)
+                }
+            }
+            navigation.navigate('TabHome');
+        }
+    }
+
+    const goToLogin = () => {
+        navigation.navigate('Login');
     }
 
     return (
@@ -38,7 +61,7 @@ export const RegistrationConfirmationScreen = ({navigation}: Props): JSX.Element
                     <Text style={styles.descriptionText}> {t('RegistrationConfirm.description')} </Text>
                     <RoundedButton 
                         isPrimary={true}
-                        onButtonPress={ () => { goToHome()}} 
+                        onButtonPress={ () => { goToLogin()}} 
                         textBtn={t('RegistrationConfirm.go')}
                     />
                 </View>

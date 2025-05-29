@@ -1,6 +1,7 @@
 export enum PaymentMethod {
     CB = 'Credit Card',
-    QR = 'QR Code'
+    QR = 'QR Code',
+    CASH = 'Cash'
 }
 
 export enum TypeConsultation {

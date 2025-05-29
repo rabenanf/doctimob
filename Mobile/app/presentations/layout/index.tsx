@@ -1,8 +1,8 @@
-import React, { ReactElement } from "react";
-import { Platform, SafeAreaView, StatusBar, View } from "react-native";
-import styles from "./styles";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { enableScreens } from "react-native-screens";
+import React, {ReactElement} from 'react';
+import {Platform, StatusBar, View} from 'react-native';
+import styles from './styles';
+import { SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
+import {enableScreens} from 'react-native-screens';
 
 enableScreens();
 

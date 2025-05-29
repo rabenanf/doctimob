@@ -1,8 +1,9 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { JSX, useEffect, useState } from "react";
+import React, { JSX, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RootStackParamList } from "../../../../data/interface";
-import { FlatList, Modal, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
+import { FlatList, Modal, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import EditIcon from "../../../../resources/assets/icons/Edit.svg";
 import DeleteIcon from "../../../../resources/assets/icons/Trash.svg";
 import AppLayout from "../../../layout";
@@ -15,6 +16,9 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { RadioButtonContainer } from "../../../components/RadioButtonContainer";
 import { FamilyMemberService } from "../../../../services/application/familymember.sa";
 import useUserStore from "../../../../services/redux/userStore";
+import { showToast } from "../../../../services/utils/toast";
+import moment from "moment";
+import { FamilyMember } from "../../../../data/dto/FamilyMember.type";
 
 type Props = NativeStackScreenProps<RootStackParamList, 'FamilyMember'>;
 
@@ -24,28 +28,19 @@ export const  FamilyMemberScreen = ({navigation}: Props): JSX.Element => {
     const {createMember, updateMember, deleteMember, getMembersByPatient} = FamilyMemberService();
     const { user, updateUser } = useUserStore(); 
     const [modalVisible, setModalVisible] = useState(false);
-    const [members, setMembers] = useState([
-        {
-            id: 1,
-            name: 'John Doe',
-            dateOfBirth: '01/01/1990',
-            gender: 'male'
-        },
-        {
-            id: 2,
-            name: 'John Cathy',
-            dateOfBirth: '01/01/1994',
-            gender: 'female'
-        },
-        {
-            id: 3,
-            name: 'James Doe',
-            dateOfBirth: '01/01/1993',
-            gender: 'male'
-        }
-    ]);
-
-    const gender = [
+    const [members, setMembers] = useState<any[]>([]);
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
+    const [address, setAddress] = useState('');
+    const [birthdate, setBirthdate] = useState<Date>(new Date());
+    const [day, setDay] = useState('');
+    const [month, setMonth] = useState('');
+    const [year, setYear] = useState('');
+    const [gender, setGender] = useState('male');
+    const [update, setUpdate] = useState(false);
+    const [id, setId] = useState('');
+    
+    const genders = [
         {
           text: "Male",
         },
@@ -54,24 +49,143 @@ export const  FamilyMemberScreen = ({navigation}: Props): JSX.Element => {
         }
     ];
 
-    useEffect(() => {
-        const fetchMembers = async () => {
-            try {
-                const response = await getMembersByPatient(user?.id!);
-                if (response.success) {
-                    setMembers(response.members!);
-                }
-            } catch (error) {
-                console.error("Erreur lors du chargement des membres :", error);
-            }
-        };
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
+    const form = {
+            firstname: firstname,
+            lastname: lastname,
+            address: address,
+        }
+        const [errors, setErrors] = useState<Partial<typeof form>>({});
+    
+    
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date?: Date) => {
+        setBirthdate(date!);
+        hideDatePicker();
+    };
+
+    useEffect(() => {
+        let myDate = moment(birthdate);
+        setDay(myDate.format('DD'));
+        setMonth(myDate.format('MM'));
+        setYear(myDate.format('YYYY'));
+    }, [birthdate]);
+
+    const fetchMembers = async () => {
+        const response = await getMembersByPatient(user?.user_id!);
+        if (response.success) {
+            setMembers(response.members!);
+        }
+        else {
+            showToast('error', t('Global.error'), response.message);
+        }
+            
+    };
+
+    useEffect(() => {
         fetchMembers();
     }, []);
 
     const onRadioButtonPress = (itemIdx: number) => {
-        console.log("Clicked", itemIdx);
+        if (itemIdx > 0)
+            setGender('female');
+        else
+            setGender('male');
     };
+
+    const validate = () => {
+        const newErrors: Partial<typeof form> = {};
+        if (!firstname.trim()) newErrors.firstname = t('FamilyMember.errorFirstname');
+        if (!lastname.trim()) newErrors.lastname = t('FamilyMember.errorLastname');
+        if (!address.trim()) newErrors.address = t('FamilyMember.errorAddress');
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const createFamilyMember = async () => {
+        if (validate()) {
+            let data : Partial<FamilyMember> = {
+                patient_id : user?.user_id,
+                first_name : firstname,
+                last_name : lastname,
+                address : address,
+                gender : gender,
+                birth_date : birthdate.toUTCString()
+            }
+            let response = await createMember(data);
+            if (response.success) {
+                fetchMembers();
+                setModalVisible(false);
+            }
+            else {
+                showToast('error', t('Global.error'), t('FamilyMember.createError'));
+            }
+        }
+    }
+
+    const callUpdate = (item : FamilyMember) => {
+        setUpdate(true);
+        setId(item.id!);
+        setFirstname(item.first_name!);
+        setLastname(item.last_name!);
+        setAddress(item.address!);
+        setGender(item.gender!);
+        setBirthdate(new Date(item.birth_date!));
+        setModalVisible(true);
+    }
+
+    const callDelete = async (item : FamilyMember) => {
+        let response = await deleteMember(item.id!);
+        if (response.success) {
+            fetchMembers();
+        }
+        else {
+            showToast('error', t('Global.error'), t('FamilyMember.deleteError'));
+        }
+    }
+
+    const updateFamilyMember = async () => {
+        if (validate()) {
+            let data : Partial<FamilyMember> = {
+                patient_id : user?.user_id,
+                first_name : firstname,
+                last_name : lastname,
+                address : address,
+                gender : gender,
+                birth_date : birthdate.toUTCString()
+            }
+            let response = await updateMember(data, id);
+            if (response.success) {
+                setUpdate(false);
+                setId('');
+                fetchMembers();
+                setModalVisible(false);
+            }
+            else {
+                showToast('error', t('Global.error'), t('FamilyMember.createError'));
+            }
+        }
+    }
+
+    useEffect(() => {
+        if (errors['address']) setErrors({ ...errors, ['address']: undefined });
+    },[address]);
+    
+    useEffect(() => {
+        if (errors['firstname']) setErrors({ ...errors, ['firstname']: undefined });
+    },[firstname]);
+
+    useEffect(() => {
+        if (errors['lastname']) setErrors({ ...errors, ['lastname']: undefined });
+    },[lastname]);
 
     const renderItem = ({ item }) => {
         return (
@@ -79,13 +193,13 @@ export const  FamilyMemberScreen = ({navigation}: Props): JSX.Element => {
                 <View style={styles.containerMember}>
                     { item.gender == 'male' ? <UserMale /> : <UserFemale /> }
                     <View style={styles.containerName}>
-                       <Text style={styles.name}> {item.name} </Text>
-                       <Text style={styles.birthday}> { t('FamilyMember.birthday') } {' : '} {item.dateOfBirth} </Text>
+                       <Text style={styles.name}> {item.first_name + ' ' + item.last_name} </Text>
+                       <Text style={styles.birthday}> { t('FamilyMember.birthday') } {' : '} {item.birth_date} </Text>
                     </View>
                 </View>
                 <View style={styles.action}>
-                    <View style={styles.edit}><EditIcon width={20} height={20} /></View>
-                    <View style={styles.remove}><DeleteIcon width={20} height={20} /></View>
+                    <TouchableOpacity style={styles.edit} onPress={() => callUpdate(item)}><EditIcon width={20} height={20} /></TouchableOpacity>
+                    <TouchableOpacity style={styles.remove} onPress={() => callDelete(item)}><DeleteIcon width={20} height={20} /></TouchableOpacity>
                 </View>
             </View>
             )
@@ -108,26 +222,62 @@ export const  FamilyMemberScreen = ({navigation}: Props): JSX.Element => {
                                 </View>
                                 <View style={styles.form}>
                                     <Text> {t('FamilyMember.gender')} </Text>
-                                    <RadioButtonContainer values={gender} size={15} onPress={onRadioButtonPress} />
+                                    <RadioButtonContainer values={genders} size={15} onPress={onRadioButtonPress} />
                                     <Text> {t('FamilyMember.firstname')} </Text>
-                                    <TextInput style={styles.input}  />
+                                    <TextInput style={styles.input} 
+                                        value={firstname}
+                                        onChangeText={setFirstname}
+                                     />
+                                    { errors.firstname && <Text style={styles.errorText}>{errors.firstname}</Text> } 
                                     <Text> {t('FamilyMember.lastname')} </Text>
-                                    <TextInput style={styles.input}  />
+                                    <TextInput style={styles.input}  
+                                        value={lastname}
+                                        onChangeText={setLastname}
+                                    />
+                                    { errors.lastname && <Text style={styles.errorText}>{errors.lastname}</Text> }
                                     <Text> {t('FamilyMember.address')} </Text>
-                                    <TextInput style={styles.input}  />
+                                    <TextInput style={styles.input} 
+                                        value={address}
+                                        onChangeText={setAddress}
+                                    />
+                                    { errors.address && <Text style={styles.errorText}>{errors.address}</Text> }
                                     <Text> {t('FamilyMember.birthday')} </Text>
-                                    <View style={styles.addBirthday}>
-                                        <TextInput style={styles.input}  />
-                                        <TextInput style={styles.input}  />
-                                        <TextInput style={styles.input}  />
+                                    <TouchableOpacity  style={styles.addBirthday} onPress={() => showDatePicker()}>
+                                        <TextInput style={styles.input}  
+                                            editable={false}
+                                            value={year}
+                                        />
+                                        <TextInput style={styles.input}  
+                                            editable={false}
+                                            value={month}
+                                        />
+                                        <TextInput style={styles.input}
+                                            editable={false}
+                                            value={day}  
+                                        />
+                                    </TouchableOpacity>
+                                    <View>
+                                        <View>
+                                            {<DateTimePickerModal
+                                                isVisible={isDatePickerVisible}
+                                                date={birthdate}
+                                                mode={"date"}
+                                                onConfirm={handleConfirm}
+                                                onCancel={hideDatePicker}
+                                            />}
+                                        </View>
                                     </View>
-                                    
                                 </View>
                             </KeyboardAwareScrollView>
                             <View style={styles.action}>
                                 <RoundedButton
                                     isPrimary={true}
-                                    onButtonPress={() => {setModalVisible(false)}}
+                                    onButtonPress={() => {
+                                        if (update) 
+                                            updateFamilyMember();
+                                        else
+                                            createFamilyMember();
+                                    }}
                                     textBtn={ t('FamilyMember.saveMember') }
                                 />
                             </View>

@@ -90,4 +90,20 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 12,
         marginBottom: 5
     },
+    modalBackground : {
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    modalContainer : {
+        flexDirection : 'column',
+        alignItems: "center",
+        rowGap: 30,
+        borderRadius: 30,
+        backgroundColor : "white",
+        justifyContent: 'center',
+        padding: 20,
+        width : '95%'
+    },
 });

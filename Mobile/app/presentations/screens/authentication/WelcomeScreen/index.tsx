@@ -1,5 +1,5 @@
-import React, { JSX } from 'react';
-import { View, Text, Image } from 'react-native';
+import React, { JSX, useCallback } from 'react';
+import { View, Text, Image, BackHandler } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import { styles } from './styles';
@@ -9,6 +9,7 @@ import AppLayout from '../../../layout';
 import Logo from '../../../../resources/assets/images/logo.png'
 import { RoundedButton } from '../../../components/RoundedButton';
 import { Theme } from '../../../../resources/themes';
+import { useFocusEffect } from '@react-navigation/native';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Welcome'>;
 
@@ -23,6 +24,19 @@ export const WelcomeScreen = ({navigation}: Props): JSX.Element => {
     const goToLogin = () => {
         navigation.navigate('Login');
     }
+
+    useFocusEffect(
+        useCallback(() => {
+            const onBackPress = () => {
+                // Ne fait rien → empêche le retour
+                return true;
+            };
+
+            const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+            return () => subscription.remove();
+        }, [])
+    );
 
     return (
         <AppLayout>

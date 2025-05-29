@@ -29,3 +29,41 @@ export const timeAgo = (dateStr: string): string => {
     const years = Math.floor(days / 365);
     return `${years} year${years > 1 ? 's' : ''} ago`;
 }
+
+export const convertTo24Hour = (time12h: string): string => {
+    const [time, modifier] = time12h.trim().split(' ');
+    let [hours, minutes] = time.split(':').map(Number);
+
+    if (modifier.toLowerCase() === 'pm' && hours < 12) {
+        hours += 12;
+    }
+    if (modifier.toLowerCase() === 'am' && hours === 12) {
+        hours = 0;
+    }
+
+    const hoursStr = hours.toString().padStart(2, '0');
+    const minutesStr = minutes.toString().padStart(2, '0');
+
+    return `${hoursStr}:${minutesStr}`;
+};
+
+export const getNext30MinuteSlotFormatted = (): string => {
+    const now = new Date();
+    const minutes = now.getMinutes();
+    const nextMinutes = minutes < 30 ? 30 : 0;
+    const nextHour = minutes < 30 ? now.getHours() : now.getHours() + 1;
+
+    const date = new Date(now);
+    date.setHours(nextHour);
+    date.setMinutes(nextMinutes);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
+
+    // Format hh:mm AM/PM
+    const hours = date.getHours();
+    const minutesStr = date.getMinutes().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const hours12 = hours % 12 === 0 ? 12 : hours % 12;
+
+    return `${hours12}:${minutesStr} ${ampm}`;
+};
