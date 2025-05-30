@@ -155,9 +155,46 @@ const doctorUpcomingAppointments = [
   },
 ];
 
+const notifications = [
+  {
+    id: "1",
+    icon: require("../resources/assets/icons/Chat_no_dot.svg"), // replace with your asset path
+    title: "New consultation request",
+    time: "5 minutes ago",
+    message: "5-year-old child with recurring fever",
+    avatar: require("./assets/avatars/user1.png"), // replace with your asset path
+  },
+  {
+    id: "2",
+    icon: require("../resources/assets/icons/Calendar_proposal.svg"),
+    title: "Your proposal was selected!",
+    time: "5 minutes ago",
+    message: "Patient Emily Hoang confirmed the consultation",
+    avatar: require("./assets/avatars/user2.png"),
+  },
+  {
+    id: "3",
+    icon: require("../resources/assets/icons/Message_dot_red.svg"),
+    title: "Chat is now open",
+    time: "5 minutes ago",
+    message: "You can now message patient Liam Tran before the consultation.",
+    avatar: require("./assets/avatars/user3.png"),
+  },
+  {
+    id: "4",
+    icon: require("../resources/assets/icons/Calendar_proposal.svg"),
+    title: "Complete your consultation summary",
+    time: "5 minutes ago",
+    message:
+      "Please complete your consultation summary for the appointment with Liam Tran.",
+    avatar: require("./assets/avatars/user4.png"),
+  },
+];
+
 export {
   doctorAppointments,
   doctorConsultationRequests,
   doctorRequests,
   doctorUpcomingAppointments,
+  notifications,
 };
