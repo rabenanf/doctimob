@@ -88,11 +88,10 @@ export const UserService = () => {
             return {success: true}
         },
 
-       updateLanguage : async ( id : string, code : string ) => {
-            const language_id = await getLanguageIdByCode(code);
+        updateLanguage : async ( id : string, code : string ) => {
             const { data, error } = await supabase
                 .from('user_profile')
-                .update({ other_column: 'otherValue' })
+                .update({ language_id: code })
                 .eq('id', id)
                 .select();
 

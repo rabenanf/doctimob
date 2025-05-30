@@ -25,6 +25,20 @@ export const LanguageService = () => {
             }
 
             return {success : true, languages : languages};
+        },
+
+        async getLanguageCodeById(id : string) {
+            let { data: language, error : error2 } = await supabase
+                .from('languages')
+                .select("*")
+                .eq('id', id);
+
+            if (language != null && language.length > 0) {
+                return language[0].code;
+            }
+
+            return undefined;
         }
+
     }
 }
