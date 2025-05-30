@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { verticalScale } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
   titleContainer: {
@@ -24,6 +25,7 @@ export const styles = StyleSheet.create({
     paddingTop: 10,
     paddingHorizontal: 10,
     rowGap: 16,
+    paddingBottom: verticalScale(150),
   },
   tabBar: {
     marginHorizontal: 20,
