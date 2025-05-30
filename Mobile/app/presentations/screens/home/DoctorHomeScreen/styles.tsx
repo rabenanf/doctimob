@@ -1,11 +1,14 @@
 import { StyleSheet } from "react-native";
 import { Theme } from "../../../../resources/themes";
+import { verticalScale } from "react-native-size-matters";
+import { ScreenDimensions } from "../../../../utils/utils";
 
 export const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
+    paddingBottom: verticalScale(ScreenDimensions.height / 2),
   },
   appointmentContainer: {
     height: "50%",

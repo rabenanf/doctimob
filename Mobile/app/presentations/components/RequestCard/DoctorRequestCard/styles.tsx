@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Theme } from "../../../../resources/themes";
+import { moderateScale } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
   requestContainer: {
@@ -36,7 +37,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     // justifyContent: "space-between",
-    gap: 20,
+    gap: moderateScale(10),
   },
   requestType: {
     flexDirection: "row",

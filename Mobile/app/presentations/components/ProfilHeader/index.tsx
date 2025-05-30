@@ -4,22 +4,18 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import nobody from "../../../resources/assets/images/nobody.svg";
 import BellIcon from "../../../resources/assets/icons/Notification.svg";
 import { styles } from "./styles";
-import { BlurView } from "@react-native-community/blur";
+import { useNavigation } from "@react-navigation/native";
 
 export const ProfilHeader = (Props: any) => {
   const { t } = useTranslation();
+  const { navigate }: any = useNavigation();
   const { photo, name, navigation } = Props;
   const handlePressNotification = () => {
-    navigation.navigate("Notifications");
+    navigate("Notifications");
   };
+
   return (
-    // <View style={styles.profilContainer}>
-    <BlurView
-      style={styles.profilContainer}
-      blurType="light"
-      blurAmount={10}
-      reducedTransparencyFallbackColor="white"
-    >
+    <View style={styles.profilContainer}>
       <Image
         style={styles.image}
         source={photo ? photo : nobody}
@@ -38,6 +34,6 @@ export const ProfilHeader = (Props: any) => {
         <BellIcon width={24} height={24} />
         <View style={styles.badge} />
       </TouchableOpacity>
-    </BlurView>
+    </View>
   );
 };

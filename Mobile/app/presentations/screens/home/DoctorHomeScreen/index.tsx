@@ -22,7 +22,7 @@ export const DoctorHomeScreen = ({ navigation, route }: Props): JSX.Element => {
         photo={Photo}
         name={user?.first_name + " " + user?.last_name}
       />
-      <ScrollView contentContainerStyle={{ paddingBottom: verticalScale(150) }}>
+      <ScrollView>
         <View style={styles.homeContainer}>
           <DoctorAppointments navigation={navigation} route={route} />
 

@@ -7,7 +7,6 @@ set(CMAKE_VERBOSE_MAKEFILE on)
 set(REACTNATIVE_MERGED_SO true)
 
 add_subdirectory("/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/@react-native-async-storage/async-storage/android/build/generated/source/codegen/jni/" rnasyncstorage_autolinked_build)
-add_subdirectory("/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/@react-native-community/blur/android/build/generated/source/codegen/jni/" rnblurview_autolinked_build)
 add_subdirectory("/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/@react-native-community/datetimepicker/android/build/generated/source/codegen/jni/" RNDateTimePickerCGen_autolinked_build)
 
 add_subdirectory("/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/generated/source/codegen/jni/" RNImagePickerSpec_autolinked_build)
@@ -23,7 +22,6 @@ add_subdirectory("/media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimo
 
 set(AUTOLINKED_LIBRARIES
   react_codegen_rnasyncstorage
-  react_codegen_rnblurview
   react_codegen_RNDateTimePickerCGen
   
   react_codegen_RNImagePickerSpec

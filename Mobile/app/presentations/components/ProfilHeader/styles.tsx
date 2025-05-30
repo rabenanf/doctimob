@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   image: {
@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     // backgroundColor: "rgba(255, 255, 255, 0.75)",
     backgroundColor: "rgba(255, 255, 255, 0.1)",
+    paddingTop: StatusBar.currentHeight,
   },
   textContainer: {
     flexDirection: "column",
