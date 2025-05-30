@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react';
+import React, { useState, useEffect, FC, useImperativeHandle, forwardRef, RefObject } from 'react';
 import {
     View,
     Text,
@@ -20,14 +20,15 @@ type TimeSelectorProps = {
     containerStyle?: StyleProp<ViewStyle>;
 };
 
-const TimeSelector: FC<TimeSelectorProps> = ({
+const TimeSelector: FC<TimeSelectorProps> = forwardRef(({
     times,
     initialValue,
     onSelect,
     activeColor = Theme.PRIMARY_COLOR,
-    containerStyle,
-}) => {
-    const [selectedTime, setSelectedTime] = useState(initialValue || times[0]);
+    containerStyle, 
+}, ref) => {
+
+    const [selectedTime, setSelectedTime] = useState<string | undefined>(initialValue || undefined);
 
     useEffect(() => {
         if (initialValue) {
@@ -35,9 +36,16 @@ const TimeSelector: FC<TimeSelectorProps> = ({
         }
     }, [initialValue]);
 
+    useImperativeHandle(ref, () => ({
+        setTime(time : string) {
+            console.log('miasa ito');
+            setSelectedTime(time);
+        }
+    }));
+
     const handlePress = (item: string) => {
         setSelectedTime(item);
-        onSelect?.(item);
+        onSelect!(item);
     };
 
     const renderItem = ({ item }: { item: string }) => {
@@ -74,7 +82,7 @@ const TimeSelector: FC<TimeSelectorProps> = ({
             />
         </View>
     );
-};
+});
 
 export default TimeSelector;
 

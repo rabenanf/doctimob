@@ -23,6 +23,23 @@ export const RequestService = () => {
             return {success: true, request: request};
         }, 
 
+        updateRequest : async (request : Partial<PatientRequest>, id : string) => {
+            const { data, error } = await supabase
+                .from('patient_requests')
+                .update(request)
+                .eq('id', id)
+                .select();
+            
+            console.log('---------Request updated---- : ', data);
+            console.log('---------Request updated---- : ', error);
+
+            if (error) {
+                return {success : false, message : error.message};
+            }
+
+            return {success: true, request: request};
+        },
+
         getRequestsByUser : async (patient_id : string) => {
             let { data: patient_requests, error } = await supabase
                 .from('patient_requests')
@@ -30,6 +47,7 @@ export const RequestService = () => {
                 .eq('patient_id', patient_id);
             
             console.log('---------Requests list--- : ', patient_requests);
+            console.log('---------Requests list--- : ', error);
 
             if (error) {
                 return {success : false, message : error.message};

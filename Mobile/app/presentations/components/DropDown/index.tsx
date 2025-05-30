@@ -108,7 +108,8 @@ export default function DropDown({
         <TouchableWithoutFeedback onPress={handleOutsidePress}>
             <View style={styles.container}>
                 {label && <Text style={styles.label}>{label}</Text>}
-                <View
+                <TouchableOpacity
+                    onPress={handlePress}
                     style={[styles.dropdownHeader, { borderColor: colorBorder }]}
                     ref={iconRef}>
                     <Text
@@ -116,14 +117,13 @@ export default function DropDown({
                         {text}
                     </Text>
                     {active && (
-                        <TouchableOpacity
-                            onPress={handlePress}
+                        <View
                             style={styles.touchableStyle}>
                             {/*<Image source={Icons.verticalLine} style={styles.line} />*/}
                             <ArrowDownIcon />
-                        </TouchableOpacity>
+                        </View>
                     )}
-                </View>
+                </TouchableOpacity>
 
                 {isVisible && (
                     <View style={styles.dropdownContainer}>

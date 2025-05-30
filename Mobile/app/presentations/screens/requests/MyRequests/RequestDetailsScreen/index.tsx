@@ -19,6 +19,8 @@ import { convertToAmPm, timeAgo } from '../../../../../services/utils/dateUtil';
 import moment from 'moment';
 import { DoctorResponseService } from '../../../../../services/application/doctor_response.sa';
 import { UserService } from '../../../../../services/application/user.sa';
+import { RequestService } from '../../../../../services/application/request.sa';
+import { showToast } from '../../../../../services/utils/toast';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'RequestDetails'>;
 
@@ -33,6 +35,7 @@ export const  RequestDetailsScreen = ({navigation}: Props): JSX.Element => {
     const [selectedDoctor, setSelectedDoctor] = useState<any>(undefined);
     const { getDoctorResponseByRequest } = DoctorResponseService();
     const { getUserProfileByUserid } = UserService();
+    const { updateRequest } = RequestService();
 
     const goToProfile = (userId : string) => {
         navigation.navigate('DoctorProfile', {userId : userId});
@@ -45,6 +48,17 @@ export const  RequestDetailsScreen = ({navigation}: Props): JSX.Element => {
     const selectDoctor = () => {
         setSelectedMedicalService(selectedDoctor);
         navigation.navigate('PaymentCash');
+    }
+
+    const cancelRequest = async () => {
+        let data = {status : 'CANCELLED'};
+        let response = await updateRequest(data, current?.id!);
+        if (response.success){
+            navigation.navigate('TabHome', {screen: 'MyRequestsList'});
+        } 
+        else {
+            showToast('error', t('Global.error'), response.message);
+        }
     }
 
     useEffect( () => {
@@ -145,7 +159,7 @@ export const  RequestDetailsScreen = ({navigation}: Props): JSX.Element => {
                         </View>
 
                         {/* Cancel */}
-                        <TouchableOpacity style={styles.cancelButton}>
+                        <TouchableOpacity style={styles.cancelButton} onPress={() => cancelRequest()}>
                             <Icon name="close" size={14} color="#fff" style={{ marginRight: 6 }} />
                             <Text style={styles.cancelText}>Cancel</Text>
                         </TouchableOpacity>

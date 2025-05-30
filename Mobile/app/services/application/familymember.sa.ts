@@ -8,10 +8,11 @@ export const FamilyMemberService = () => {
         createMember : async (member : Partial<FamilyMember>) => {
             const { data, error } = await supabase
                 .from('family_members')
-                .insert([ member ])
+                .insert(member)
                 .select();
             
             console.log('---------insert member---- : ', data);
+             console.log('---------insert member---- : ', error);
 
             if (error) {
                 return {success : false, message : error.message};
@@ -36,11 +37,11 @@ export const FamilyMemberService = () => {
 
         },
 
-        updateMember : async (member : Partial<FamilyMember>) => {
+        updateMember : async (member : Partial<FamilyMember>, id : string) => {
             const { data, error } = await supabase
                 .from('family_members')
                 .update(member)
-                .eq('id', member.id)
+                .eq('id', id)
                 .select();
 
             console.log('---------update member---- : ', data);

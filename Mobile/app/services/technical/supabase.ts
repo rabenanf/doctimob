@@ -11,3 +11,12 @@ export const supabase = createClient(Config.SUPABASE_URL, Config.SUPABASE_ANON_K
       detectSessionInUrl: true, // Not needed in mobile apps
     },
 });
+
+export const getPublicImageUrl = (path: string): string => {
+  const { data } = supabase
+    .storage
+    .from('profiles') // nom du bucket
+    .getPublicUrl(path);
+
+  return data.publicUrl;
+};

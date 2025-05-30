@@ -37,7 +37,7 @@ const ActiveRoute = (appointments : any[]) => {
                     return (
                         <AppointmentCard
                             doctorName={appointment.doctor?.first_name + ' '+ appointment.doctor?.last_name}
-                            specialty={appointment.doctor?.specialty_id?.name}
+                            specialty={appointment.doctor?.speciality_doctor_id?.name}
                             date={moment(appointment.request_id?.preferred_date).format('DD MMMM YYYY')}
                             time={ appointment.request_id?.preferred_time ? convertToAmPm(appointment.request_id?.preferred_time!) : ''}
                             //timingInfo="in 15 minutes"
@@ -63,7 +63,7 @@ const CancelledRoute = (appointments : any[]) => {
                     return (
                         <AppointmentCard
                             doctorName={appointment.doctor?.first_name + ' '+ appointment.doctor?.last_name}
-                            specialty={appointment.doctor?.specialty_id?.name}
+                            specialty={appointment.doctor?.speciality_doctor_id?.name}
                             date={moment(appointment.request_id?.preferred_date).format('DD MMMM YYYY')}
                             time={ appointment.request_id?.preferred_time ? convertToAmPm(appointment.request_id?.preferred_time!) : ''}
                             //timingInfo="in 15 minutes"
@@ -94,8 +94,8 @@ export const  AppointmentsListScreen = ({navigation}: Props): JSX.Element => {
     const { getUserProfileByUserid } = UserService();
 
     const renderScene = SceneMap({
-        active: () => ActiveRoute(appointments.filter(item => item.status != 'accepted')),
-        cancelled: () => CancelledRoute(appointments.filter(item => item.status != 'canceled'))
+        active: () => ActiveRoute(appointments.filter(item => item.status == 'accepted')),
+        cancelled: () => CancelledRoute(appointments.filter(item => item.status == 'canceled'))
     });
 
     useEffect(() => {

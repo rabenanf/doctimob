@@ -13,7 +13,7 @@ import { RoundedButton } from '../../../components/RoundedButton';
 import { Theme } from '../../../../resources/themes'
 import { InputWithIcon } from '../../../components/InputWithIcon';
 import { RadioButtonContainer } from '../../../components/RadioButtonContainer';
-import DateTimePickerModal from 'react-native-modal-datetime-picker'
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Geolocation from 'react-native-geolocation-service';
 import { showToast } from '../../../../services/utils/toast';
 import { Location } from '../../../../data/dto/Location.type';
@@ -133,7 +133,7 @@ export const CreateAccountScreen = ({ navigation }: Props): JSX.Element => {
                 email: email,
                 gender: gender,
                 localisation: location,
-                birth_date: birthday.toUTCString(),
+                birth_date: birthday.toISOString(),
                 phone: user?.phone
             };
             updateUser(data);

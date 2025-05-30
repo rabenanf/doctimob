@@ -34,21 +34,30 @@ export const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        borderColor: '#ccc',
+        borderColor: '#E5E7F3',
         borderWidth: 1,
         borderRadius: 10,
-        paddingHorizontal: 12,
-        paddingVertical: 10,
-        backgroundColor: '#fff',
-        marginBottom: 15,
-        marginTop: 8
+        paddingHorizontal: 10,
+        paddingVertical: 0,
+        backgroundColor: '#F7F8FF',
+        marginVertical: 6,
+        gap: 10,
+        height: 40,
     },
     input: {
         flex: 1,
         fontSize: 16,
         color: '#333',
+        height: 40, 
+        padding: 0,
+        textAlignVertical: 'center',
     },
     icon: {
         paddingHorizontal: 6,
+    },
+    errorText: {
+        color: 'red',
+        marginTop: 4,
+        fontSize: 13,
     }
 })
