@@ -8,6 +8,8 @@
 
 #include "autolinking.h"
 #include <rnasyncstorage.h>
+#include <rnblurview.h>
+#include <react/renderer/components/rnblurview/ComponentDescriptors.h>
 #include <RNDateTimePickerCGen.h>
 #include <RNImagePickerSpec.h>
 #include <pagerview.h>
@@ -28,6 +30,10 @@ std::shared_ptr<TurboModule> autolinking_ModuleProvider(const std::string module
 auto module_rnasyncstorage = rnasyncstorage_ModuleProvider(moduleName, params);
 if (module_rnasyncstorage != nullptr) {
 return module_rnasyncstorage;
+}
+auto module_rnblurview = rnblurview_ModuleProvider(moduleName, params);
+if (module_rnblurview != nullptr) {
+return module_rnblurview;
 }
 auto module_RNDateTimePickerCGen = RNDateTimePickerCGen_ModuleProvider(moduleName, params);
 if (module_RNDateTimePickerCGen != nullptr) {
@@ -70,6 +76,9 @@ std::shared_ptr<TurboModule> autolinking_cxxModuleProvider(const std::string mod
 }
 
 void autolinking_registerProviders(std::shared_ptr<ComponentDescriptorProviderRegistry const> providerRegistry) {
+providerRegistry->add(concreteComponentDescriptorProvider<BlurViewComponentDescriptor>());
+providerRegistry->add(concreteComponentDescriptorProvider<AndroidBlurViewComponentDescriptor>());
+providerRegistry->add(concreteComponentDescriptorProvider<VibrancyViewComponentDescriptor>());
 providerRegistry->add(concreteComponentDescriptorProvider<RNCViewPagerComponentDescriptor>());
 providerRegistry->add(concreteComponentDescriptorProvider<RNCSafeAreaProviderComponentDescriptor>());
 providerRegistry->add(concreteComponentDescriptorProvider<RNCSafeAreaViewComponentDescriptor>());

@@ -1,8 +1,12 @@
-import React, {ReactElement} from 'react';
-import {Platform, StatusBar, View} from 'react-native';
-import styles from './styles';
-import { SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
-import {enableScreens} from 'react-native-screens';
+import React, { ReactElement } from "react";
+import { Platform, StatusBar, View } from "react-native";
+import styles from "./styles";
+import {
+  SafeAreaProvider,
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
+import { enableScreens } from "react-native-screens";
 
 enableScreens();
 
@@ -31,28 +35,38 @@ const AppLayout = ({
       ? StatusBar.currentHeight
       : 32;
   return (
-    <>
-      {/*<StatusBar
-          barStyle={'light-content'}
-          translucent={true}
-          animated={true}
-          backgroundColor={'green'}
-        />*/}
-      <SafeAreaView style={styles.Container}>
-        {/**/}
-        <View
-          style={[
-            {
-              flex: 1,
-              paddingBottom: 0,
-              backgroundColor: "white",
-            },
-          ]}
-        >
-          {children}
-        </View>
-      </SafeAreaView>
-    </>
+    // <SafeAreaView style={styles.Container}>
+    //   <View
+    //     style={[
+    //       {
+    //         flex: 1,
+    //         backgroundColor: "white",
+    //         paddingBottom: 0,
+    //       },
+    //     ]}
+    //   >
+    //     {children}
+    //   </View>
+    // </SafeAreaView>
+    <View
+      style={{
+        flex: 1,
+        paddingTop: 0,
+      }}
+    >
+      <StatusBar translucent backgroundColor="transparent" />
+      <View
+        style={[
+          {
+            flex: 1,
+            paddingBottom: 0,
+            backgroundColor: "white",
+          },
+        ]}
+      >
+        {children}
+      </View>
+    </View>
   );
 };
 

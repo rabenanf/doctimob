@@ -14,7 +14,8 @@ export const styles = StyleSheet.create({
     columnGap: 10,
     paddingHorizontal: 20,
     paddingVertical: 10,
-    backgroundColor: "rgba(255, 255, 255, 0.75)",
+    // backgroundColor: "rgba(255, 255, 255, 0.75)",
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
   },
   textContainer: {
     flexDirection: "column",
@@ -93,5 +94,18 @@ export const styles = StyleSheet.create({
     height: 12,
     backgroundColor: "#FF4500",
     borderRadius: 10,
+  },
+  glass: {
+    // width: 300,
+    // padding: 20,
+    // borderRadius: 20,
+    // alignItems: "center",
+
+    // Translucent background color
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+
+    // Optional border
+    // borderColor: 'rgba(255, 255, 255, 0.3)',
+    // borderWidth: 1,
   },
 });
