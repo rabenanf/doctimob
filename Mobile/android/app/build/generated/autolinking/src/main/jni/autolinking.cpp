@@ -9,6 +9,7 @@
 #include "autolinking.h"
 #include <rnasyncstorage.h>
 #include <RNDateTimePickerCGen.h>
+#include <RNImagePickerSpec.h>
 #include <pagerview.h>
 #include <react/renderer/components/pagerview/ComponentDescriptors.h>
 #include <rnreanimated.h>
@@ -31,6 +32,10 @@ return module_rnasyncstorage;
 auto module_RNDateTimePickerCGen = RNDateTimePickerCGen_ModuleProvider(moduleName, params);
 if (module_RNDateTimePickerCGen != nullptr) {
 return module_RNDateTimePickerCGen;
+}
+auto module_RNImagePickerSpec = RNImagePickerSpec_ModuleProvider(moduleName, params);
+if (module_RNImagePickerSpec != nullptr) {
+return module_RNImagePickerSpec;
 }
 auto module_pagerview = pagerview_ModuleProvider(moduleName, params);
 if (module_pagerview != nullptr) {

@@ -1,7 +1,7 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:1:1-29:12
-MERGED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:1:1-29:12
+ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:1:1-31:12
+MERGED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:1:1-31:12
 INJECTED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml:2:1-9:12
 INJECTED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml:2:1-9:12
 INJECTED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml:2:1-9:12
@@ -12,6 +12,7 @@ MERGED from [:react-native-screens] /media/kennedy/3E509D70509D301F/ubuntuProjec
 MERGED from [:react-native-vision-camera] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-vision-camera/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-async-storage_async-storage] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-geolocation-service] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-geolocation-service/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-19:12
 MERGED from [:react-native-linear-gradient] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-linear-gradient/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-reanimated] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-reanimated/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-splash-screen] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-splash-screen/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
@@ -98,11 +99,11 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /media/kennedy/Data/Android
 MERGED from [androidx.tracing:tracing:1.2.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/58e38e560153904accf1e647a2baefde/transformed/jetified-tracing-1.2.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.tracing:tracing-ktx:1.2.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/857ef454a8d1289b8b3c25999c02024b/transformed/jetified-tracing-ktx-1.2.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.facebook.react:hermes-android:0.78.2] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/3811bdfdb66799e659aa3d643c45c971/transformed/jetified-hermes-android-0.78.2-debug/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.3] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/ec3c683505d2134a1dffdebff88233b3/transformed/exifinterface-1.3.3/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cardview:cardview:1.0.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/bac9cbdb3a704c26bcd967ac24bfc87a/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/984950335bc94870fcd23e228bc16008/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/169d5b46f931d1740f660c17d68b3417/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/808fae7e4a08a14ffda1ab938bf58b74/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.exifinterface:exifinterface:1.3.2] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/4a0d98cc662e8004530387085e832c0a/transformed/exifinterface-1.3.2/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/97559111acd405340e300b99fc3b3e9f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/e568343998bc5be6665ac8de4896f141/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:15:1-41:12
 MERGED from [com.google.android.datatransport:transport-api:2.2.1] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/236b4e5d9990195910b9c7a07df23023/transformed/jetified-transport-api-2.2.1/AndroidManifest.xml:15:1-22:12
@@ -147,13 +148,19 @@ uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:7:5-81
 	android:name
 		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:7:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:8:22-77
 application
-ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:8:5-28:19
-MERGED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:8:5-28:19
-MERGED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:8:5-28:19
+ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:10:5-30:19
+MERGED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:10:5-30:19
+MERGED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:10:5-30:19
 INJECTED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml:5:5-8:50
 MERGED from [:react-native-community_datetimepicker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/@react-native-community/datetimepicker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:5-20
 MERGED from [:react-native-community_datetimepicker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/@react-native-community/datetimepicker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:5-20
+MERGED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:5-17:19
+MERGED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:5-17:19
 MERGED from [com.facebook.react:react-android:0.78.2] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/7774150a76eb1b919c48195a8b24c324/transformed/jetified-react-android-0.78.2-debug/AndroidManifest.xml:18:5-22:19
 MERGED from [com.facebook.react:react-android:0.78.2] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/7774150a76eb1b919c48195a8b24c324/transformed/jetified-react-android-0.78.2-debug/AndroidManifest.xml:18:5-22:19
 MERGED from [com.google.android.material:material:1.12.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/f0e690a5d0f1e4fcef81a1daa58073f5/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
@@ -207,56 +214,56 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] /media/kennedy/Data/Andr
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/46363a369f1a282643955c3f201a7c04/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:15:7-33
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:15:7-33
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:17:7-33
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:17:7-33
 	android:label
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:10:7-39
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:10:7-39
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:12:7-39
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:12:7-39
 	tools:ignore
 		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml:8:9-48
 	android:roundIcon
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:12:7-52
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:12:7-52
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:14:7-52
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:14:7-52
 	tools:targetApi
 		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml:7:9-29
 	android:icon
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:11:7-41
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:11:7-41
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:13:7-41
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:13:7-41
 	android:allowBackup
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:13:7-34
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:13:7-34
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:15:7-34
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:15:7-34
 	android:theme
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:14:7-38
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:14:7-38
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:16:7-38
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:16:7-38
 	android:usesCleartextTraffic
 		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml:6:9-44
 	android:name
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:9:7-38
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:9:7-38
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:11:7-38
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:11:7-38
 activity#com.doctimob.MainActivity
-ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:16:7-27:18
+ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:18:7-29:18
 	android:label
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:18:9-41
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:20:9-41
 	android:launchMode
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:20:9-40
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:22:9-40
 	android:windowSoftInputMode
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:21:9-48
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:23:9-48
 	android:exported
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:22:9-32
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:24:9-32
 	android:configChanges
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:19:9-118
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:21:9-118
 	android:name
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:17:9-37
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:19:9-37
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:23:9-26:25
+ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:25:9-28:25
 action#android.intent.action.MAIN
-ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:24:13-65
+ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:26:13-65
 	android:name
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:24:21-62
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:26:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:25:13-73
+ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:27:13-73
 	android:name
-		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:25:23-70
+		ADDED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/main/AndroidManifest.xml:27:23-70
 uses-sdk
 INJECTED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml
@@ -275,6 +282,8 @@ MERGED from [:react-native-async-storage_async-storage] /media/kennedy/3E509D705
 MERGED from [:react-native-async-storage_async-storage] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
 MERGED from [:react-native-geolocation-service] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-geolocation-service/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
 MERGED from [:react-native-geolocation-service] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-geolocation-service/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
 MERGED from [:react-native-linear-gradient] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-linear-gradient/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
 MERGED from [:react-native-linear-gradient] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-linear-gradient/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
 MERGED from [:react-native-reanimated] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-reanimated/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
@@ -447,6 +456,8 @@ MERGED from [androidx.tracing:tracing-ktx:1.2.0] /media/kennedy/Data/AndroidGrad
 MERGED from [androidx.tracing:tracing-ktx:1.2.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/857ef454a8d1289b8b3c25999c02024b/transformed/jetified-tracing-ktx-1.2.0/AndroidManifest.xml:20:5-44
 MERGED from [com.facebook.react:hermes-android:0.78.2] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/3811bdfdb66799e659aa3d643c45c971/transformed/jetified-hermes-android-0.78.2-debug/AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.react:hermes-android:0.78.2] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/3811bdfdb66799e659aa3d643c45c971/transformed/jetified-hermes-android-0.78.2-debug/AndroidManifest.xml:5:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.3] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/ec3c683505d2134a1dffdebff88233b3/transformed/exifinterface-1.3.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.3] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/ec3c683505d2134a1dffdebff88233b3/transformed/exifinterface-1.3.3/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/bac9cbdb3a704c26bcd967ac24bfc87a/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/bac9cbdb3a704c26bcd967ac24bfc87a/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/984950335bc94870fcd23e228bc16008/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
@@ -455,8 +466,6 @@ MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /media/kennedy/Data/And
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/169d5b46f931d1740f660c17d68b3417/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/808fae7e4a08a14ffda1ab938bf58b74/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/808fae7e4a08a14ffda1ab938bf58b74/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.exifinterface:exifinterface:1.3.2] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/4a0d98cc662e8004530387085e832c0a/transformed/exifinterface-1.3.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.exifinterface:exifinterface:1.3.2] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/4a0d98cc662e8004530387085e832c0a/transformed/exifinterface-1.3.2/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/97559111acd405340e300b99fc3b3e9f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/97559111acd405340e300b99fc3b3e9f/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/e568343998bc5be6665ac8de4896f141/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:18:5-20:41
@@ -485,6 +494,22 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] /media/kennedy/Data/Andr
 		INJECTED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/android/app/src/debug/AndroidManifest.xml
+provider#com.imagepicker.ImagePickerProvider
+ADDED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:13-71
+	android:exported
+		ADDED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:13-63
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:13-15:70
+	android:resource
+		ADDED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:17-67
+	android:name
+		ADDED from [:react-native-image-picker] /media/kennedy/3E509D70509D301F/ubuntuProject/doctimob/Doctimob/Mobile/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:17-67
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
 ADDED from [com.facebook.react:react-android:0.78.2] /media/kennedy/Data/AndroidGradle/gradle/caches/8.12/transforms/7774150a76eb1b919c48195a8b24c324/transformed/jetified-react-android-0.78.2-debug/AndroidManifest.xml:16:5-78
 	android:name
