@@ -105,77 +105,7 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
         let newErrors: Partial<typeof form> = {};
         newErrors.password = t("Login.errorPassword");
         setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
-
-    const goToForgotPassword = () => {
-        navigation.navigate("ForgotPassword");
-    };
-
-    useEffect(() => {
-        if (errors["email"]) setErrors({ ...errors, ["email"]: undefined });
-    }, [email]);
-
-    useEffect(() => {
-        if (errors['password']) setErrors({ ...errors, ['password']: undefined });
-    }, [password]);
-
-    useFocusEffect(
-        useCallback(() => {
-            const onBackPress = () => {
-                // Aller à l'écran Welcome
-                navigation.replace('Welcome');
-                return true; // Empêche le comportement par défaut (quitter l'app)
-            };
-
-            const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
-
-            return () => {
-                subscription.remove();
-            };
-        }, [navigation])
-    );
-
-
-    const checkLogin = async () => {
-        setLoading(true);
-        if (validate()) {
-            let response = await login(email, password);
-            if (!response.success) {
-                let newErrors: Partial<typeof form> = {};
-                newErrors.password = t('Login.errorPassword');
-                setErrors(newErrors);
-                console.log('mandalo 1');
-                setLoading(false);
-            }
-            else {
-                let userResponse = await getUserProfile(email);
-                console.log('mandalo 2');
-                if (userResponse.success) {
-                    console.log('mandalo 2d');
-                    if (userResponse.user) {
-                        console.log('mandalo 2a', userResponse.user![0]);
-                        updateUser(userResponse.user![0] as Partial<User>);
-                        let requestResponse = await getRequestsByUser(useUserStore.getState().user?.user_id!);
-                        console.log('mandalo 3', );
-                        if (requestResponse.success) {
-                            setRequests(requestResponse.requests!)
-                            console.log('mandalo 4');
-                            setLoading(false);
-                        }
-                    }
-                    console.log('mandalo 5');
-                    setLoading(false);
-                    navigation.navigate('TabHome');
-                }
-                else {
-                    let newErrors: Partial<typeof form> = {};
-                    newErrors.password = t('Login.errorPassword');
-                    setErrors(newErrors);
-                }
-            }
-        }
-        console.log('mandalo 6');
+        console.log("mandalo 1");
         setLoading(false);
       } else {
         let userResponse = await getUserProfile(email);
