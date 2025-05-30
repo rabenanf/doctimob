@@ -25,7 +25,6 @@ import { useFocusEffect } from "@react-navigation/native";
 
 /******  Patient *******/
 // fitiapatient@yopmail.com | NMbibite.12
-// test@test.com | azerty
 
 /******  Soignant ******/
 // doctor-dermatology@yopmail.com | doctimob.doctor!!142
@@ -38,8 +37,8 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
 
-  const [email, setEmail] = useState("doctor-dermatology@yopmail.com");
-  const [password, setPassword] = useState("doctimob.doctor!!142");
+  const [email, setEmail] = useState("test@test.com");
+  const [password, setPassword] = useState("azerty");
   const [loading, setLoading] = useState(false);
   const { login } = AuthenticationService();
   const { getUserProfile } = UserService();
@@ -94,12 +93,9 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
     }, [navigation])
   );
 
-  console.log({ loading });
-
   const checkLogin = async () => {
     setLoading(true);
     if (validate()) {
-      console.log("Aiza");
       let response = await login(email, password);
       if (!response.success) {
         let newErrors: Partial<typeof form> = {};
@@ -111,9 +107,18 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
         let userResponse = await getUserProfile(email);
         console.log("mandalo 2");
         if (userResponse.success) {
+          console.log("mandalo 2d");
           if (userResponse.user) {
+            console.log("mandalo 2a", userResponse.user![0]);
             updateUser(userResponse.user![0] as Partial<User>);
-            let requestResponse = await getRequestsByUser(user!.user_id!);
+
+            if (useUserStore.getState().user?.role == "doctor") {
+              setLoading(false);
+              return;
+            }
+            let requestResponse = await getRequestsByUser(
+              useUserStore.getState().user?.user_id!
+            );
             console.log("mandalo 3");
             if (requestResponse.success) {
               setRequests(requestResponse.requests!);
@@ -202,7 +207,9 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
         <View style={styles.btnContainer}>
           <RoundedButton
             isPrimary={true}
-            onButtonPress={checkLogin}
+            onButtonPress={() => {
+              checkLogin();
+            }}
             textBtn={t("Login.login")}
           />
         </View>
