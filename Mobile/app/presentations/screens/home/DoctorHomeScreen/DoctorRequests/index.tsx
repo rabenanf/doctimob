@@ -52,7 +52,7 @@ export const DoctorRequests = ({ navigation }: Props): JSX.Element => {
         </TouchableOpacity>
       </View>
 
-      <ScrollView contentContainerStyle={styles.requestListContainer}>
+      <ScrollView contentContainerStyle={styles.requestContentContainerStyle}>
         {doctorConsultationRequests.map((request) => {
           return (
             <DoctorRequestCard

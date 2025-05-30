@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { moderateScale } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
   titleContainer: {
@@ -11,7 +12,7 @@ export const styles = StyleSheet.create({
   title: {
     textAlign: "left",
     color: "rgba(21, 44, 42, 1)",
-    fontSize: 32,
+    fontSize: moderateScale(32),
     fontWeight: 700,
   },
   description: {

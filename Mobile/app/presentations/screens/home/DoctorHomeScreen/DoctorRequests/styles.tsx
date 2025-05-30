@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 import { Theme } from "../../../../../resources/themes";
+import { verticalScale } from "react-native-size-matters";
+import { ScreenDimensions } from "../../../../../utils/utils";
 
 export const styles = StyleSheet.create({
   homeContainer: {
@@ -50,5 +52,9 @@ export const styles = StyleSheet.create({
   requestListContainer: {
     paddingHorizontal: 10,
     paddingBottom: 80,
+  },
+  requestContentContainerStyle: {
+    paddingHorizontal: 10,
+    // paddingBottom: verticalScale(ScreenDimensions.height / 2),
   },
 });

@@ -4,10 +4,16 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import nobody from "../../../resources/assets/images/nobody.svg";
 import BellIcon from "../../../resources/assets/icons/Notification.svg";
 import { styles } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 export const ProfilHeader = (Props: any) => {
   const { t } = useTranslation();
-  const { photo, name } = Props;
+  const { navigate }: any = useNavigation();
+  const { photo, name, navigation } = Props;
+  const handlePressNotification = () => {
+    navigate("Notifications");
+  };
+
   return (
     <View style={styles.profilContainer}>
       <Image
@@ -21,7 +27,10 @@ export const ProfilHeader = (Props: any) => {
         <Text style={styles.name}>{name}</Text>
       </View>
 
-      <TouchableOpacity style={styles.notificationContainer}>
+      <TouchableOpacity
+        onPress={handlePressNotification}
+        style={styles.notificationContainer}
+      >
         <BellIcon width={24} height={24} />
         <View style={styles.badge} />
       </TouchableOpacity>

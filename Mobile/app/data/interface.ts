@@ -35,4 +35,5 @@ export type RootStackParamList = {
   MedicalRecordDetail: undefined;
   DoctorConsultations: undefined;
   DoctorAppointments: undefined;
+  Notifications: undefined;
 };
