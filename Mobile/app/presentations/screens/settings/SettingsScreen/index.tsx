@@ -27,6 +27,7 @@ import { RoundedButton } from "../../../components/RoundedButton";
 import { Language } from "../../../../data/enum";
 import useUserStore from "../../../../services/redux/userStore";
 import { AuthenticationService } from "../../../../services/application/authentication.sa";
+import { UserService } from "../../../../services/application/user.sa";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Settings">;
 
@@ -37,6 +38,12 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
     const [language, setLanguage] = useState(Language.ENGLISH);
     const { user, logout } = useUserStore();
     const { logoutAuth } = AuthenticationService();
+    const { updateLanguage } = UserService();
+
+    const changeLanguage = async () => {
+        // let data = (language == Language.ENGLISH) ? {}
+        // let response = await updateLanguage( user?.id, data)
+    }
 
     const logoutApp = async () => {
         let response = await logoutAuth();
@@ -109,6 +116,7 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
                                 <RoundedButton
                                     isPrimary={true}
                                     onButtonPress={() => {
+                                        changeLanguage();
                                         setModalVisible(false);
                                     }}
                                     textBtn={t("Setting.save")}

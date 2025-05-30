@@ -13,6 +13,18 @@ export const LanguageService = () => {
             }
 
             return undefined;
+        },
+
+        async getAllLanguages() {
+            let { data: languages, error } = await supabase
+            .from('languages')
+            .select('*');
+
+            if (error) {
+                return {success : false, message : error.message};
+            }
+
+            return {success : true, languages : languages};
         }
     }
 }

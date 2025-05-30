@@ -1,4 +1,4 @@
-import React, { JSX, useEffect, useRef, useState } from 'react';
+import React, { JSX, useCallback, useEffect, useRef, useState } from 'react';
 import { View, Text, Touchable, TouchableOpacity, TextInput } from 'react-native';
 import { styles } from './styles';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -36,7 +36,8 @@ import { ConsultationTypeService } from '../../../../../services/application/con
 import { SpecialtyService } from '../../../../../services/application/specialty.sa';
 import { PaymentMethodService } from '../../../../../services/application/payment_method.sa';
 import { FamilyMemberService } from '../../../../../services/application/familymember.sa';
-import { convertTo24Hour, getNext30MinuteSlotFormatted } from '../../../../../services/utils/dateUtil';
+import { convertTo24Hour, formatDate, getNext30MinuteSlotFormatted } from '../../../../../services/utils/dateUtil';
+import { useFocusEffect } from '@react-navigation/native';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'NewRequest'>;
 
@@ -48,14 +49,6 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
     const { getAllMethod } = PaymentMethodService();
 
     const myComponentRef = useRef<any>(null);
-
-    const formatDate = (date: Date): string => {
-        return date.toLocaleDateString('en-US', {
-            weekday: 'long',   // ex: Friday
-            month: 'long',     // ex: March
-            day: 'numeric',    // ex: 14
-        });
-    };
 
     const { user } = useUserStore(); 
     const { getMembersByPatient } = FamilyMemberService();
@@ -180,31 +173,34 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
         
     }
 
-    useEffect(() => {
-        const fechData = async() => {
-            let response = await getAllSpecialty();
-            if (response.success) {
-                setSpecialties(response.specialties ?? []);
+    useFocusEffect(
+        useCallback(() => {
+            const fechData = async() => {
+                let response = await getAllSpecialty();
+                if (response.success) {
+                    setSpecialties(response.specialties ?? []);
+                }
+                let responseMember = await getMembersByPatient(user?.user_id!);
+                if (responseMember.success) {
+                    let res = responseMember.members ?? [];
+                    setFamilyMembersList(res);
+                    let list = res.map((item) => { return item.first_name + ' ' + item.last_name});
+                    setFamilyMembers(list);
+                    console.log('populate family number');
+                }
+                let response1 = await getAllType();
+                if (response1.success) {
+                    setTypes(response1.types ?? []);
+                }
+                let response2 = await getAllMethod();
+                if (response1.success) {
+                    setPaymentTypes(response2.types ?? []);
+                }
             }
-            let responseMember = await getMembersByPatient(user?.user_id!);
-            if (responseMember.success) {
-                let res = responseMember.members ?? [];
-                setFamilyMembersList(res);
-                let list = res.map((item) => { return item.first_name + ' ' + item.last_name});
-                setFamilyMembers(list);
-            }
-            let response1 = await getAllType();
-            if (response1.success) {
-                setTypes(response1.types ?? []);
-            }
-            let response2 = await getAllMethod();
-            if (response1.success) {
-                setPaymentTypes(response2.types ?? []);
-            }
-        }
-        fechData();
-        //setSelectedTime(getNext30MinuteSlotFormatted);
-    }, [])
+            fechData();
+        }, [])
+    );
+
 
     useEffect(() => {
         let names = specialties.map((item) => { return item.name });

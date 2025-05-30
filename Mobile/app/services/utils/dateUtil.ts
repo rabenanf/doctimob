@@ -67,3 +67,11 @@ export const getNext30MinuteSlotFormatted = (): string => {
 
     return `${hours12}:${minutesStr} ${ampm}`;
 };
+
+export const formatDate = (date: Date): string => {
+    return date.toLocaleDateString('en-US', {
+        weekday: 'long',   // ex: Friday
+        month: 'long',     // ex: March
+        day: 'numeric',    // ex: 14
+    });
+};

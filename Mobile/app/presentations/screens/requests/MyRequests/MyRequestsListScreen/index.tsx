@@ -124,7 +124,7 @@ export const  MyRequestsListScreen = ({navigation}: Props): JSX.Element => {
     }
             
     const renderScene = SceneMap({
-        active: () => ActiveRoute(goToDetail, requests.filter(item => item.status != 'EXPIRED')),
+        active: () => ActiveRoute(goToDetail, requests.filter(item => item.status == 'ACTIVE')),
         expired: () => ExpiredRoute(goToDetail, requests.filter(item => item.status == 'EXPIRED')),
         cancelled: () => CancelledRoute(goToDetail, requests.filter(item => item.status == 'CANCELLED'))
     });
