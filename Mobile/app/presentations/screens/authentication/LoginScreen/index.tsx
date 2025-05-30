@@ -24,7 +24,7 @@ import useRequestStore from "../../../../services/redux/requestStore";
 import { useFocusEffect } from "@react-navigation/native";
 
 /******  Patient *******/
-// fitiapatient@yopmail.com | NMbibite.12
+// test1@test.com | azerty
 
 /******  Soignant ******/
 // doctor-dermatology@yopmail.com | doctimob.doctor!!142
@@ -37,7 +37,7 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
 
-  const [email, setEmail] = useState("test@test.com");
+  const [email, setEmail] = useState("test1@test.com");
   const [password, setPassword] = useState("azerty");
   const [loading, setLoading] = useState(false);
   const { login } = AuthenticationService();
