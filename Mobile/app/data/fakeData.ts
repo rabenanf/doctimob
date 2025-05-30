@@ -162,7 +162,7 @@ const notifications = [
     title: "New consultation request",
     time: "5 minutes ago",
     message: "5-year-old child with recurring fever",
-    avatar: require("./assets/avatars/user1.png"), // replace with your asset path
+    avatar: require("../resources/assets/images/Photo_2.png"), // replace with your asset path
   },
   {
     id: "2",
@@ -170,7 +170,7 @@ const notifications = [
     title: "Your proposal was selected!",
     time: "5 minutes ago",
     message: "Patient Emily Hoang confirmed the consultation",
-    avatar: require("./assets/avatars/user2.png"),
+    avatar: require("../resources/assets/images/Photo_1.png"),
   },
   {
     id: "3",
@@ -178,7 +178,7 @@ const notifications = [
     title: "Chat is now open",
     time: "5 minutes ago",
     message: "You can now message patient Liam Tran before the consultation.",
-    avatar: require("./assets/avatars/user3.png"),
+    avatar: require("../resources/assets/images/Photo_3.png"),
   },
   {
     id: "4",
@@ -187,7 +187,7 @@ const notifications = [
     time: "5 minutes ago",
     message:
       "Please complete your consultation summary for the appointment with Liam Tran.",
-    avatar: require("./assets/avatars/user4.png"),
+    avatar: require("../resources/assets/images/Photo_4.png"),
   },
 ];
 

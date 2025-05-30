@@ -7,7 +7,10 @@ import { styles } from "./styles";
 
 export const ProfilHeader = (Props: any) => {
   const { t } = useTranslation();
-  const { photo, name } = Props;
+  const { photo, name, navigation } = Props;
+  const handlePressNotification = () => {
+    navigation.navigate("Notifications");
+  };
   return (
     <View style={styles.profilContainer}>
       <Image
@@ -21,7 +24,10 @@ export const ProfilHeader = (Props: any) => {
         <Text style={styles.name}>{name}</Text>
       </View>
 
-      <TouchableOpacity style={styles.notificationContainer}>
+      <TouchableOpacity
+        onPress={handlePressNotification}
+        style={styles.notificationContainer}
+      >
         <BellIcon width={24} height={24} />
         <View style={styles.badge} />
       </TouchableOpacity>

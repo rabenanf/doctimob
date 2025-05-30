@@ -29,44 +29,76 @@ import { FamilyMemberScreen } from "../presentations/screens/settings/FamilyMemb
 import { ProfileScreen } from "../presentations/screens/settings/ProfileScreen";
 import { MedicalRecordListScreen } from "../presentations/screens/records/RecordsListScreen";
 import { MedicalRecordDetailScreen } from "../presentations/screens/records/RecordDetailScreen";
+import { NotificationsScreen } from "../presentations/screens/notifications";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const AppStack = () => {
-
-    return (
-        <Stack.Navigator
-          screenOptions={{headerShown: false}}
-          initialRouteName="Welcome">
-            <Stack.Screen name= "TabHome" component={MainMenuTabs} />
-            <Stack.Screen name= "Welcome" component={WelcomeScreen} />
-            <Stack.Screen name= "Login" component={LoginScreen} />
-            <Stack.Screen name= "ForgotPassword" component={ForgotPasswordScreen} />
-            <Stack.Screen name= "VerifyNumber" component={VerifyNumberScreen} />
-            <Stack.Screen name= "OTPVerification" component={OTPVerificationScreen} />
-            <Stack.Screen name= "CreateNewPassword" component={CreateNewPasswordScreen} />
-            <Stack.Screen name= "CreatePassword" component={CreatePasswordScreen} />
-            <Stack.Screen name= "CreateAccount" component={CreateAccountScreen} />
-            <Stack.Screen name= "RegistrationConfirmation" component={RegistrationConfirmationScreen} />
-            <Stack.Screen name= "RequestDetails" component={RequestDetailsScreen} />
-            <Stack.Screen name= "DoctorProfile" component={DoctorProfileScreen} />
-            <Stack.Screen name= "PaymentCreditCard" component={PaymentCreditCardScreen} />
-            <Stack.Screen name= "AppointmentConfirmed" component={AppointmentConfirmedScreen} />
-            <Stack.Screen name= "PaymentCash" component={PaymentCashScreen} />
-            <Stack.Screen name= "PaymentQRCode" component={PaymentQRCodeScreen} />
-            <Stack.Screen name= "QRCode" component={QRCodeScreen} />
-            <Stack.Screen name= "NewRequestConfirm" component={NewRequestConfirmScreen} />
-            <Stack.Screen name= "AppointmentDetail" component={AppointmentDetailScreen} />
-            <Stack.Screen name= "ChooseAccountType" component={ChooseAccountTypeScreen} />
-            <Stack.Screen name= "AppointmentChat" component={AppointmentChatScreen} />
-            <Stack.Screen name= "AppointmentCall" component={AppointmentCallScreen} />
-            <Stack.Screen name= "AppointmentFeedback" component={AppointmentFeedbackScreen} />
-            <Stack.Screen name= "PaymentMethod" component={PaymentMethodScreen} />
-            <Stack.Screen name= "ChangePassword" component={ChangePasswordScreen} />
-            <Stack.Screen name= "FamilyMember" component={FamilyMemberScreen} />
-            <Stack.Screen name= "Profile" component={ProfileScreen} />
-            <Stack.Screen name= "MedicalRecordList" component={MedicalRecordListScreen} />
-            <Stack.Screen name= "MedicalRecordDetail" component={MedicalRecordDetailScreen} />
-        </Stack.Navigator>
-    )
-} 
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Welcome"
+    >
+      <Stack.Screen name="TabHome" component={MainMenuTabs} />
+      <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+      <Stack.Screen name="VerifyNumber" component={VerifyNumberScreen} />
+      <Stack.Screen name="OTPVerification" component={OTPVerificationScreen} />
+      <Stack.Screen
+        name="CreateNewPassword"
+        component={CreateNewPasswordScreen}
+      />
+      <Stack.Screen name="CreatePassword" component={CreatePasswordScreen} />
+      <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
+      <Stack.Screen
+        name="RegistrationConfirmation"
+        component={RegistrationConfirmationScreen}
+      />
+      <Stack.Screen name="RequestDetails" component={RequestDetailsScreen} />
+      <Stack.Screen name="DoctorProfile" component={DoctorProfileScreen} />
+      <Stack.Screen
+        name="PaymentCreditCard"
+        component={PaymentCreditCardScreen}
+      />
+      <Stack.Screen
+        name="AppointmentConfirmed"
+        component={AppointmentConfirmedScreen}
+      />
+      <Stack.Screen name="PaymentCash" component={PaymentCashScreen} />
+      <Stack.Screen name="PaymentQRCode" component={PaymentQRCodeScreen} />
+      <Stack.Screen name="QRCode" component={QRCodeScreen} />
+      <Stack.Screen
+        name="NewRequestConfirm"
+        component={NewRequestConfirmScreen}
+      />
+      <Stack.Screen
+        name="AppointmentDetail"
+        component={AppointmentDetailScreen}
+      />
+      <Stack.Screen
+        name="ChooseAccountType"
+        component={ChooseAccountTypeScreen}
+      />
+      <Stack.Screen name="AppointmentChat" component={AppointmentChatScreen} />
+      <Stack.Screen name="AppointmentCall" component={AppointmentCallScreen} />
+      <Stack.Screen
+        name="AppointmentFeedback"
+        component={AppointmentFeedbackScreen}
+      />
+      <Stack.Screen name="PaymentMethod" component={PaymentMethodScreen} />
+      <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
+      <Stack.Screen name="FamilyMember" component={FamilyMemberScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen
+        name="MedicalRecordList"
+        component={MedicalRecordListScreen}
+      />
+      <Stack.Screen
+        name="MedicalRecordDetail"
+        component={MedicalRecordDetailScreen}
+      />
+      <Stack.Screen name="Notifications" component={NotificationsScreen} />
+    </Stack.Navigator>
+  );
+};
