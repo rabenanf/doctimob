@@ -36,7 +36,8 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
         const fechData = async() => {
             let requestResponse = await getRequestsByUser(user!.user_id!);
             if (requestResponse.success && requestResponse.requests) {
-                setRequests(requestResponse.requests);
+                let activeRequests = requestResponse.requests.filter(item => item.status == 'ACTIVE');
+                setRequests(activeRequests);
             }
         }
         fechData();
@@ -80,7 +81,7 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
                             <Text style={styles.txtNew}> {t('Home.next')} </Text>
                             <Text style={styles.txtTitle}> {t('Home.appointments')}</Text>
                         </View>
-                        <TouchableOpacity style={styles.headerViewAll}>
+                        <TouchableOpacity style={styles.headerViewAll} onPress={() => navigation.navigate('AppointmentsList')}>
                             <Text style={styles.txtViewAll}> {t('Home.viewAll')} </Text>
                         </TouchableOpacity>
                     </View>
@@ -134,7 +135,7 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
                             <Text style={styles.txtNew}> {t('Home.my')} </Text>
                             <Text style={styles.txtTitle}> {t('Home.requests')} </Text>
                         </View>
-                        <TouchableOpacity style={styles.headerViewAll}>
+                        <TouchableOpacity style={styles.headerViewAll} onPress={() => navigation.navigate('MyRequestsList')}>
                             <Text style={styles.txtViewAll}> {t('Home.viewAll')} </Text>
                         </TouchableOpacity>
                     </View>

@@ -106,10 +106,12 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
                 let userResponse = await getUserProfile(email);
                 console.log('mandalo 2');
                 if (userResponse.success) {
+                    console.log('mandalo 2d');
                     if (userResponse.user) {
+                        console.log('mandalo 2a', userResponse.user![0]);
                         updateUser(userResponse.user![0] as Partial<User>);
-                        let requestResponse = await getRequestsByUser(user!.user_id!);
-                        console.log('mandalo 3');
+                        let requestResponse = await getRequestsByUser(useUserStore.getState().user?.user_id!);
+                        console.log('mandalo 3', );
                         if (requestResponse.success) {
                             setRequests(requestResponse.requests!)
                             console.log('mandalo 4');
