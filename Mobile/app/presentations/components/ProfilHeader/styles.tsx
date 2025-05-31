@@ -15,8 +15,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     // backgroundColor: "rgba(255, 255, 255, 0.75)",
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    paddingTop: StatusBar.currentHeight,
+    //backgroundColor: "rgba(255, 255, 255, 0.1)",
+    //paddingTop: StatusBar.currentHeight,
   },
   textContainer: {
     flexDirection: "column",

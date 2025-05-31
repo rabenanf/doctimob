@@ -44,7 +44,7 @@ export const CreatePasswordScreen = ({navigation}: Props): JSX.Element => {
 
             console.log('######################', user);
 
-            /*let response = await createUserProfile(user!);
+            let response = await createUserProfile(user!);
             if (response?.success) {
                 updateUser(response.user! as Partial<User>);
                 setLoading(false);
@@ -52,7 +52,7 @@ export const CreatePasswordScreen = ({navigation}: Props): JSX.Element => {
             }
             else {
                 showToast('error', t('Global.error'), t('CreatePassword.createUserError'));
-            }*/
+            }
         }
         setLoading(false);
     }
@@ -71,7 +71,7 @@ export const CreatePasswordScreen = ({navigation}: Props): JSX.Element => {
     }, []);
 
     return (
-        <AppLayout>
+        <AppLayout isFullScreen={true} >
             <LinearGradient 
                 style={styles.container} 
                 colors={[Theme.BACKGROUND_COLOR, 'white']}

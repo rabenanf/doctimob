@@ -34,187 +34,187 @@ import { useFocusEffect } from "@react-navigation/native";
 type Props = NativeStackScreenProps<RootStackParamList, "Login">;
 
 export const LoginScreen = ({ navigation }: Props): JSX.Element => {
-  const { t } = useTranslation();
-  const [checked, setChecked] = useState(false);
+    const { t } = useTranslation();
+    const [checked, setChecked] = useState(false);
 
-  const [email, setEmail] = useState("test@test.com");
-  const [password, setPassword] = useState("azerty");
-  const [loading, setLoading] = useState(false);
-  const { login } = AuthenticationService();
-  const { getUserProfile } = UserService();
-  const { getRequestsByUser } = RequestService();
-  const { isValidEmail } = Validator();
-  const { user, updateUser } = useUserStore();
-  const { setRequests } = useRequestStore();
+    const [email, setEmail] = useState("test@test.com");
+    const [password, setPassword] = useState("azerty");
+    const [loading, setLoading] = useState(false);
+    const { login } = AuthenticationService();
+    const { getUserProfile } = UserService();
+    const { getRequestsByUser } = RequestService();
+    const { isValidEmail } = Validator();
+    const { user, updateUser } = useUserStore();
+    const { setRequests } = useRequestStore();
 
-  const form = {
-    password: password,
-    email: email,
-  };
+    const form = {
+        password: password,
+        email: email,
+    };
 
-  const [errors, setErrors] = useState<Partial<typeof form>>({});
+    const [errors, setErrors] = useState<Partial<typeof form>>({});
 
-  const validate = () => {
-    const newErrors: Partial<typeof form> = {};
-    if (!isValidEmail(email)) newErrors.email = t("Login.errorEmail");
+    const validate = () => {
+        const newErrors: Partial<typeof form> = {};
+        if (!isValidEmail(email)) newErrors.email = t("Login.errorEmail");
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const goToForgotPassword = () => {
-    navigation.navigate("ForgotPassword");
-  };
-
-  useEffect(() => {
-    if (errors["email"]) setErrors({ ...errors, ["email"]: undefined });
-  }, [email]);
-
-  useEffect(() => {
-    if (errors["password"]) setErrors({ ...errors, ["password"]: undefined });
-  }, [password]);
-
-  useFocusEffect(
-    useCallback(() => {
-      const onBackPress = () => {
-        // Aller à l'écran Welcome
-        navigation.replace("Welcome");
-        return true; // Empêche le comportement par défaut (quitter l'app)
-      };
-
-      const subscription = BackHandler.addEventListener(
-        "hardwareBackPress",
-        onBackPress
-      );
-
-      return () => {
-        subscription.remove();
-      };
-    }, [navigation])
-  );
-
-  const checkLogin = async () => {
-    setLoading(true);
-    if (validate()) {
-      let response = await login(email, password);
-      if (!response.success) {
-        let newErrors: Partial<typeof form> = {};
-        newErrors.password = t("Login.errorPassword");
         setErrors(newErrors);
-        console.log("mandalo 1");
-        setLoading(false);
-      } else {
-        let userResponse = await getUserProfile(email);
-        console.log("mandalo 2");
-        if (userResponse.success) {
-          console.log("mandalo 2d");
-          if (userResponse.user) {
-            console.log("mandalo 2a", userResponse.user![0]);
-            updateUser(userResponse.user![0] as Partial<User>);
+        return Object.keys(newErrors).length === 0;
+    };
 
-            if (useUserStore.getState().user?.role == "doctor") {
-              setLoading(false);
-              return;
-            }
-            let requestResponse = await getRequestsByUser(
-              useUserStore.getState().user?.user_id!
+    const goToForgotPassword = () => {
+        navigation.navigate("ForgotPassword");
+    };
+
+    useEffect(() => {
+        if (errors["email"]) setErrors({ ...errors, ["email"]: undefined });
+    }, [email]);
+
+    useEffect(() => {
+        if (errors["password"]) setErrors({ ...errors, ["password"]: undefined });
+    }, [password]);
+
+    useFocusEffect(
+        useCallback(() => {
+            const onBackPress = () => {
+                // Aller à l'écran Welcome
+                navigation.replace("Welcome");
+                return true; // Empêche le comportement par défaut (quitter l'app)
+            };
+
+            const subscription = BackHandler.addEventListener(
+                "hardwareBackPress",
+                onBackPress
             );
-            console.log("mandalo 3");
-            if (requestResponse.success) {
-              setRequests(requestResponse.requests!);
-              console.log("mandalo 4");
-              setLoading(false);
-            }
-          }
-          console.log("mandalo 5");
-          setLoading(false);
-          navigation.navigate("TabHome");
-        } else {
-          let newErrors: Partial<typeof form> = {};
-          newErrors.password = t("Login.errorPassword");
-          setErrors(newErrors);
-        }
-      }
-    }
-    console.log("mandalo 6");
-    setLoading(false);
-  };
 
-  return (
-    <AppLayout>
-      <LinearGradient
-        style={styles.container}
-        colors={[Theme.BACKGROUND_COLOR, "white"]}
-        start={{ x: 0.5, y: 0 }}
-        end={{ x: 0.5, y: 1 }}
-        locations={[0, 0.4]}
-      >
-        <View style={{ flex: 1 }}>
-          <KeyboardAwareScrollView
-            style={styles.formContainer}
-            contentContainerStyle={{ flexGrow: 1 }}
-            enableOnAndroid={true}
-            keyboardShouldPersistTaps="handled"
-          >
-            <View style={styles.imageContainer}>
-              <Image style={styles.image} resizeMode="contain" source={Logo} />
-            </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.welcomeText}> {t("Login.title")} </Text>
-              <Text style={styles.descriptionText}>
-                {" "}
-                {t("Login.description")}{" "}
-              </Text>
-            </View>
-            <View style={styles.form}>
-              <InputWithIcon
-                placeholder={t("Login.email")}
-                iconName="mail"
-                iconLibrary="Ionicons"
-                value={email}
-                onChangeText={setEmail}
-                error={errors.email}
-              />
-              <PasswordWithIcon
-                iconName="bag"
-                placeholder={t("Login.password")}
-                value={password}
-                onChangeText={setPassword}
-                error={errors.password}
-              />
-              <View style={styles.footer}>
-                <CheckBox
-                  checked={checked}
-                  onPress={() => setChecked(!checked)}
-                  iconType="material-community"
-                  checkedIcon="checkbox-marked"
-                  uncheckedIcon="checkbox-blank-outline"
-                  checkedColor="black"
-                  title={t("Login.rememberMe")}
-                  textStyle={styles.remeberStyle}
-                  fontFamily="Rubik"
-                  containerStyle={{ margin: 0, padding: 0, marginLeft: 0 }}
-                />
-                <TouchableOpacity onPress={() => goToForgotPassword()}>
-                  <Text style={styles.forgotStyle}>
-                    {t("Login.forgotPassword")}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </KeyboardAwareScrollView>
-        </View>
-        <View style={styles.btnContainer}>
-          <RoundedButton
-            isPrimary={true}
-            onButtonPress={() => {
-              checkLogin();
-            }}
-            textBtn={t("Login.login")}
-          />
-        </View>
-        {loading && <CustomActivityIndicator />}
-      </LinearGradient>
-    </AppLayout>
-  );
+            return () => {
+                subscription.remove();
+            };
+        }, [navigation])
+    );
+
+    const checkLogin = async () => {
+        setLoading(true);
+        if (validate()) {
+            let response = await login(email, password);
+            if (!response.success) {
+                let newErrors: Partial<typeof form> = {};
+                newErrors.password = t("Login.errorPassword");
+                setErrors(newErrors);
+                console.log("mandalo 1");
+                setLoading(false);
+            } else {
+                let userResponse = await getUserProfile(email);
+                console.log("mandalo 2");
+                if (userResponse.success) {
+                    console.log("mandalo 2d");
+                    if (userResponse.user) {
+                        console.log("mandalo 2a", userResponse.user![0]);
+                        updateUser(userResponse.user![0] as Partial<User>);
+
+                        /*if (useUserStore.getState().user?.role == "doctor") {
+                            setLoading(false);
+                            return;
+                        }*/
+                        let requestResponse = await getRequestsByUser(
+                            useUserStore.getState().user?.user_id!
+                        );
+                        console.log("mandalo 3");
+                        if (requestResponse.success) {
+                            setRequests(requestResponse.requests!);
+                            console.log("mandalo 4");
+                            setLoading(false);
+                        }
+                    }
+                    console.log("mandalo 5");
+                    setLoading(false);
+                    navigation.navigate("TabHome");
+                } else {
+                    let newErrors: Partial<typeof form> = {};
+                    newErrors.password = t("Login.errorPassword");
+                    setErrors(newErrors);
+                }
+            }
+        }
+        console.log("mandalo 6");
+        setLoading(false);
+    };
+
+    return (
+        <AppLayout isFullScreen={true} >
+            <LinearGradient
+                style={styles.container}
+                colors={[Theme.BACKGROUND_COLOR, "white"]}
+                start={{ x: 0.5, y: 0 }}
+                end={{ x: 0.5, y: 1 }}
+                locations={[0, 0.4]}
+            >
+                <View style={{ flex: 1 }}>
+                    <KeyboardAwareScrollView
+                        style={styles.formContainer}
+                        contentContainerStyle={{ flexGrow: 1 }}
+                        enableOnAndroid={true}
+                        keyboardShouldPersistTaps="handled"
+                    >
+                        <View style={styles.imageContainer}>
+                            <Image style={styles.image} resizeMode="contain" source={Logo} />
+                        </View>
+                        <View style={styles.textContainer}>
+                            <Text style={styles.welcomeText}> {t("Login.title")} </Text>
+                            <Text style={styles.descriptionText}>
+                                {" "}
+                                {t("Login.description")}{" "}
+                            </Text>
+                        </View>
+                        <View style={styles.form}>
+                            <InputWithIcon
+                                placeholder={t("Login.email")}
+                                iconName="mail"
+                                iconLibrary="Ionicons"
+                                value={email}
+                                onChangeText={setEmail}
+                                error={errors.email}
+                            />
+                            <PasswordWithIcon
+                                iconName="bag"
+                                placeholder={t("Login.password")}
+                                value={password}
+                                onChangeText={setPassword}
+                                error={errors.password}
+                            />
+                            <View style={styles.footer}>
+                                <CheckBox
+                                    checked={checked}
+                                    onPress={() => setChecked(!checked)}
+                                    iconType="material-community"
+                                    checkedIcon="checkbox-marked"
+                                    uncheckedIcon="checkbox-blank-outline"
+                                    checkedColor="black"
+                                    title={t("Login.rememberMe")}
+                                    textStyle={styles.remeberStyle}
+                                    fontFamily="Rubik"
+                                    containerStyle={{ margin: 0, padding: 0, marginLeft: 0 }}
+                                />
+                                <TouchableOpacity onPress={() => goToForgotPassword()}>
+                                    <Text style={styles.forgotStyle}>
+                                        {t("Login.forgotPassword")}
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </KeyboardAwareScrollView>
+                </View>
+                <View style={styles.btnContainer}>
+                    <RoundedButton
+                        isPrimary={true}
+                        onButtonPress={() => {
+                            checkLogin();
+                        }}
+                        textBtn={t("Login.login")}
+                    />
+                </View>
+                {loading && <CustomActivityIndicator />}
+            </LinearGradient>
+        </AppLayout>
+    );
 };

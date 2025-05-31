@@ -41,7 +41,7 @@ export const OTPVerificationScreen = ({navigation}: Props): JSX.Element => {
     }
 
     return (
-        <AppLayout>
+        <AppLayout isFullScreen={true} >
             <LinearGradient 
                 style={styles.container} 
                 colors={[Theme.BACKGROUND_COLOR, 'white']}
