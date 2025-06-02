@@ -37,7 +37,7 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
 
-  const [email, setEmail] = useState("test1@test.com");
+  const [email, setEmail] = useState("test@test.com");
   const [password, setPassword] = useState("azerty");
   const [loading, setLoading] = useState(false);
   const { login } = AuthenticationService();
@@ -112,10 +112,10 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
             console.log("mandalo 2a", userResponse.user![0]);
             updateUser(userResponse.user![0] as Partial<User>);
 
-            if (useUserStore.getState().user?.role == "doctor") {
-              setLoading(false);
-              return;
-            }
+            /*if (useUserStore.getState().user?.role == "doctor") {
+                            setLoading(false);
+                            return;
+                        }*/
             let requestResponse = await getRequestsByUser(
               useUserStore.getState().user?.user_id!
             );
@@ -141,7 +141,7 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
   };
 
   return (
-    <AppLayout>
+    <AppLayout isFullScreen={true}>
       <LinearGradient
         style={styles.container}
         colors={[Theme.BACKGROUND_COLOR, "white"]}
@@ -160,12 +160,12 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
               <Image style={styles.image} resizeMode="contain" source={Logo} />
             </View>
             <View style={styles.textContainer}>
-              <Text style={styles.welcomeText}>{t("Login.title")}</Text>
+              <Text style={styles.welcomeText}> {t("Login.title")} </Text>
               <Text style={styles.descriptionText}>
+                {" "}
                 {t("Login.description")}{" "}
               </Text>
             </View>
-
             <View style={styles.form}>
               <InputWithIcon
                 placeholder={t("Login.email")}

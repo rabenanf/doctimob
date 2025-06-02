@@ -19,7 +19,7 @@ export const ForgotPasswordScreen = ({navigation}: Props): JSX.Element => {
     const { t } = useTranslation();
 
     return (
-        <AppLayout>
+        <AppLayout isFullScreen={true} >
             <LinearGradient 
                 style={styles.container} 
                 colors={[Theme.BACKGROUND_COLOR, 'white']}

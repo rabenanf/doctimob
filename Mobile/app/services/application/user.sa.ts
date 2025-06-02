@@ -36,7 +36,7 @@ export const UserService = () => {
                     phone: user.phone,
                     birth_date: user.birth_date
                 };
-
+                
                 const { data : location, error: error1 } = await supabase
                 .from('localisations')
                 .insert({ lat: user.localisation?.lat, lon: user.localisation?.lon})
@@ -58,17 +58,22 @@ export const UserService = () => {
                 
                 if (location != null) {
                     userProfil.localisation_id = location!.id;
-                } 
+                }
+
+                console.log('---------ProfilUser---- : ', userProfil);
 
                 const { data, error } = await supabase
                 .from('user_profile')
                 .insert(userProfil).select();
 
+                console.log('---------User---- : ', data);
+                console.log('---------User---- : ', error);
+
                 if (error) {
                     return {success : false, message : error.message};
                 }
 
-                console.log('---------User---- : ', user);
+                
 
                 return {success: true, user: user}
             }
@@ -88,11 +93,10 @@ export const UserService = () => {
             return {success: true}
         },
 
-       updateLanguage : async ( id : string, code : string ) => {
-            const language_id = await getLanguageIdByCode(code);
+        updateLanguage : async ( id : string, code : string ) => {
             const { data, error } = await supabase
                 .from('user_profile')
-                .update({ other_column: 'otherValue' })
+                .update({ language_id: code })
                 .eq('id', id)
                 .select();
 

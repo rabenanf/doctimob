@@ -1,4 +1,4 @@
-import React, { JSX, useState } from "react";
+import React, { JSX, useEffect, useState } from "react";
 import {
     View,
     Text,
@@ -28,6 +28,8 @@ import { Language } from "../../../../data/enum";
 import useUserStore from "../../../../services/redux/userStore";
 import { AuthenticationService } from "../../../../services/application/authentication.sa";
 import { UserService } from "../../../../services/application/user.sa";
+import { LanguageService } from "../../../../services/application/language.sa";
+import { showToast } from "../../../../services/utils/toast";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Settings">;
 
@@ -39,10 +41,18 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
     const { user, logout } = useUserStore();
     const { logoutAuth } = AuthenticationService();
     const { updateLanguage } = UserService();
+    const { getLanguageIdByCode, getLanguageCodeById } = LanguageService();
 
     const changeLanguage = async () => {
-        // let data = (language == Language.ENGLISH) ? {}
-        // let response = await updateLanguage( user?.id, data)
+        let data = await getLanguageIdByCode(language == Language.ENGLISH ? 'en' : 'vn');
+
+        if (data) {
+            let response = await updateLanguage( user?.id!, data);
+            setModalVisible(false);
+            if (!response.success) {
+                showToast('error', t('Global.error'), response.message);
+            }
+        }
     }
 
     const logoutApp = async () => {
@@ -54,6 +64,17 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
         }
         console.log(response.message);
     }
+
+    useEffect(() => {
+        const fetchData = async() => {
+            var response = await getLanguageCodeById(user?.language_id!);
+            if (response) {
+                setLanguage( response == 'en' ? Language.ENGLISH : Language.VIET);
+            }
+        }
+
+        fetchData();
+    }, [])
 
     const changeLanguageModal = () => {
         return (
@@ -173,8 +194,8 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
                         <Text style={styles.itemText}> {t("Setting.language")} </Text>
                     </View>
                     <View style={styles.itemArrow}>
-                        <EnglishIcon />
-                        <Text> {"English"} </Text>
+                        { language == Language.ENGLISH ? <EnglishIcon /> : <VietIcon/>}
+                        <Text> {language == Language.ENGLISH ? 'English' : 'Vietnamese'} </Text>
                         <AltArrowIcon />
                     </View>
                 </TouchableOpacity>

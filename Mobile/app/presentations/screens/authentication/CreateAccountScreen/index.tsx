@@ -154,7 +154,7 @@ export const CreateAccountScreen = ({ navigation }: Props): JSX.Element => {
     },[lastname]);
 
     return (
-        <AppLayout>
+        <AppLayout isFullScreen={true} >
             <LinearGradient
                 style={styles.container}
                 colors={[Theme.BACKGROUND_COLOR, 'white']}
