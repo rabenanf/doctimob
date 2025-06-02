@@ -4133,11 +4133,6 @@ globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
-google-libphonenumber@^3.2.10:
-  version "3.2.41"
-  resolved "https://registry.yarnpkg.com/google-libphonenumber/-/google-libphonenumber-3.2.41.tgz#eaec8c38e7191b4c7cc28fe10beb80c1912aee42"
-  integrity sha512-jJ97X9Qbp9ekgufJTOcrbAKsIg5Nw+89tcjiRa74hNSEM4zkoDGnO/7OKz0Og6uiH55816AoUvv3vAQE/Fw0Ow==
-
 gopd@^1.0.1, gopd@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/gopd/-/gopd-1.2.0.tgz#89f56b8217bdbc8802bd299df6d7f1081d7e51a1"
@@ -6233,14 +6228,6 @@ react-native-paper@^5.14.5:
     "@callstack/react-theme-provider" "^3.0.9"
     color "^3.1.2"
     use-latest-callback "^0.2.3"
-
-react-native-phone-number-input@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-phone-number-input/-/react-native-phone-number-input-2.1.0.tgz#e9743d391d438d33b91ae3d03482b291b3d20ea5"
-  integrity sha512-EItzeDH6QUw6Kd1uwqFgcUl1YstxULB1M3HuCMHTvHVLoPE3ddjiuHyx+EHs0+4FcZtaXLQzLuC4cC/c4XIEuA==
-  dependencies:
-    google-libphonenumber "^3.2.10"
-    react-native-country-picker-modal "^2.0.0"
 
 react-native-ratings@^8.1.0:
   version "8.1.0"
