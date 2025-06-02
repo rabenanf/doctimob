@@ -42,7 +42,7 @@ export const WelcomeScreen = ({ navigation }: Props): JSX.Element => {
   );
 
   return (
-    <AppLayout isFullScreen={true} statusBarColor="transparent">
+    <AppLayout isFullScreen>
       <LinearGradient
         style={styles.container}
         colors={[Theme.BACKGROUND_COLOR, "white"]}

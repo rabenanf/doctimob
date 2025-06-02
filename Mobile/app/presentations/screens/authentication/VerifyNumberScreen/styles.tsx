@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { Theme } from "../../../../resources/themes";
 import { normalizeFont } from "../../../../services/utils/fontSize";
-import { verticalScale } from "react-native-size-matters";
+import { moderateScale, verticalScale } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
   container: {
@@ -50,7 +50,7 @@ export const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     flex: 1,
-    gap: 15,
+    // gap: 15,
   },
   txtHaveAccount: {
     fontSize: 16,
@@ -70,5 +70,20 @@ export const styles = StyleSheet.create({
     right: 0,
     paddingHorizontal: 30,
     // backgroundColor: "white",
+  },
+
+  phoneInputContainer: {
+    alignItems: "center",
+    fontSize: moderateScale(12),
+  },
+  phoneContainer: {
+    width: "100%",
+    height: verticalScale(65),
+    backgroundColor: "#f6f8ff",
+    borderRadius: 10,
+  },
+  textInput: {
+    backgroundColor: "transparent",
+    color: "red",
   },
 });
