@@ -292,7 +292,6 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
               defaultState={false}
             />
           </View>
-
           <Text>{t("NewRequest.descriptionArea")}</Text>
           <TextInput
             value={description}
@@ -627,9 +626,7 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
         <View style={styles.btnContainer}>
           <RoundedButton
             isPrimary={true}
-            onButtonPress={() => {
-              createRequestAction();
-            }}
+            onButtonPress={createRequestAction}
             textBtn={t("NewRequest.createRequest")}
           />
         </View>

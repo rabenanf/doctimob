@@ -161,7 +161,9 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
         locations={[0, 0.4]}
       >
         <ScrollView
-          contentContainerStyle={{ paddingBottom: verticalScale(150) }}
+          contentContainerStyle={{
+            paddingBottom: verticalScale(150),
+          }}
         >
           <KeyboardAwareScrollView
             style={styles.formContainer}
