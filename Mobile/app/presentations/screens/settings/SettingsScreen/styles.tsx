@@ -60,7 +60,7 @@ export const styles = StyleSheet.create({
     columnGap: 10,
   },
   itemText: {
-    fontSize: 12,
+    fontSize: moderateScale(12),
     fontWeight: 400,
     alignSelf: "center",
   },
