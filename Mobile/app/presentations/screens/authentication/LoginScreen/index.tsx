@@ -105,7 +105,7 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
   const checkLogin = async () => {
     setLoading(true);
     if (validate()) {
-      navigation.navigate("TabHome");
+      // navigation.navigate("TabHome");
 
       let response = await login(email, password);
       if (!response.success) {
@@ -224,13 +224,12 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
 
         <View style={styles.btnContainer}>
           <RoundedButton
-            isPrimary={true}
-            onButtonPress={() => {
-              checkLogin();
-            }}
+            isPrimary
+            onButtonPress={checkLogin}
             textBtn={t("Login.login")}
           />
         </View>
+
         {loading && <CustomActivityIndicator />}
       </LinearGradient>
     </AppLayout>

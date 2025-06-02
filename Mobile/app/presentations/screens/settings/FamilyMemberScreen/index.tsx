@@ -195,12 +195,10 @@ export const FamilyMemberScreen = ({ navigation }: Props): JSX.Element => {
           {item.gender == "male" ? <UserMale /> : <UserFemale />}
           <View style={styles.containerName}>
             <Text style={styles.name}>
-              {" "}
-              {item.first_name + " " + item.last_name}{" "}
+              {item.first_name + " " + item.last_name}
             </Text>
             <Text style={styles.birthday}>
-              {" "}
-              {t("FamilyMember.birthday")} {" : "} {item.birth_date}{" "}
+              {t("FamilyMember.birthday")} {" : "} {item.birth_date}
             </Text>
           </View>
         </View>
@@ -235,20 +233,20 @@ export const FamilyMemberScreen = ({ navigation }: Props): JSX.Element => {
               >
                 <View style={styles.addTitleContainer}>
                   <Text style={styles.addTitle}>
-                    {t("FamilyMember.addTitle")}{" "}
+                    {t("FamilyMember.addTitle")}
                   </Text>
                   <Text style={styles.addDescription}>
-                    {t("FamilyMember.addDescription")}{" "}
+                    {t("FamilyMember.addDescription")}
                   </Text>
                 </View>
                 <View style={styles.form}>
-                  <Text> {t("FamilyMember.gender")} </Text>
+                  <Text>{t("FamilyMember.gender")}</Text>
                   <RadioButtonContainer
                     values={genders}
                     size={15}
                     onPress={onRadioButtonPress}
                   />
-                  <Text> {t("FamilyMember.firstname")} </Text>
+                  <Text>{t("FamilyMember.firstname")}</Text>
                   <TextInput
                     style={styles.input}
                     value={firstname}
@@ -257,7 +255,7 @@ export const FamilyMemberScreen = ({ navigation }: Props): JSX.Element => {
                   {errors.firstname && (
                     <Text style={styles.errorText}>{errors.firstname}</Text>
                   )}
-                  <Text> {t("FamilyMember.lastname")} </Text>
+                  <Text>{t("FamilyMember.lastname")}</Text>
                   <TextInput
                     style={styles.input}
                     value={lastname}
@@ -266,7 +264,7 @@ export const FamilyMemberScreen = ({ navigation }: Props): JSX.Element => {
                   {errors.lastname && (
                     <Text style={styles.errorText}>{errors.lastname}</Text>
                   )}
-                  <Text> {t("FamilyMember.address")} </Text>
+                  <Text>{t("FamilyMember.address")}</Text>
                   <TextInput
                     style={styles.input}
                     value={address}
@@ -275,7 +273,7 @@ export const FamilyMemberScreen = ({ navigation }: Props): JSX.Element => {
                   {errors.address && (
                     <Text style={styles.errorText}>{errors.address}</Text>
                   )}
-                  <Text> {t("FamilyMember.birthday")} </Text>
+                  <Text>{t("FamilyMember.birthday")}</Text>
                   <TouchableOpacity
                     style={styles.addBirthday}
                     onPress={() => showDatePicker()}
@@ -298,20 +296,17 @@ export const FamilyMemberScreen = ({ navigation }: Props): JSX.Element => {
                   </TouchableOpacity>
                   <View>
                     <View>
-                      {
-                        <DateTimePickerModal
-                          isVisible={isDatePickerVisible}
-                          date={birthdate}
-                          mode={"date"}
-                          onConfirm={handleConfirm}
-                          onCancel={hideDatePicker}
-                        />
-                      }
+                      <DateTimePickerModal
+                        isVisible={isDatePickerVisible}
+                        date={birthdate}
+                        mode={"date"}
+                        onConfirm={handleConfirm}
+                        onCancel={hideDatePicker}
+                      />
                     </View>
                   </View>
                 </View>
               </KeyboardAwareScrollView>
-
               <View style={styles.action}>
                 <RoundedButton
                   isPrimary={true}
@@ -337,12 +332,10 @@ export const FamilyMemberScreen = ({ navigation }: Props): JSX.Element => {
           navigation.goBack();
         }}
       />
-
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{t("FamilyMember.title")}</Text>
+        <Text style={styles.title}> {t("FamilyMember.title")}</Text>
         <Text style={styles.description}>{t("FamilyMember.description")}</Text>
       </View>
-
       <View style={styles.detailContainer}>
         <FlatList
           data={members}

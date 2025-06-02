@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
-    alignItems: "center",
+    // alignItems: "center",
   },
   imageContainer: {
     justifyContent: "center",
@@ -64,10 +64,11 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   btnContainer: {
-    position: "absolute",
-    bottom: 10,
-    left: 0,
-    right: 0,
+    // position: "absolute",
+    // bottom: 10,
+    // left: 0,
+    // right: 0,
     paddingHorizontal: scale(30),
+    // width: "100%",
   },
 });
