@@ -14,9 +14,14 @@ type ILayout = {
   children: ReactElement[] | ReactElement;
   navigation?: any;
   isFullScreen?: boolean;
+  statusBarColor?: string;
 };
 
-const AppLayout = ({ children, isFullScreen = false }: ILayout) => {
+const AppLayout = ({
+  children,
+  isFullScreen = false,
+  statusBarColor,
+}: ILayout) => {
   const insets = useSafeAreaInsets();
   const statusBarHeight =
     Platform.OS === "ios"
@@ -27,7 +32,11 @@ const AppLayout = ({ children, isFullScreen = false }: ILayout) => {
   return (
     <SafeAreaView style={styles.Container}>
       {isFullScreen ? (
-        <StatusBar hidden={true} translucent backgroundColor="transparent" />
+        <StatusBar
+          translucent
+          backgroundColor={statusBarColor ?? "#57CFC8"}
+          barStyle="dark-content"
+        /> // #57CFC8
       ) : (
         <StatusBar
           hidden={false}
@@ -48,25 +57,6 @@ const AppLayout = ({ children, isFullScreen = false }: ILayout) => {
         {children}
       </View>
     </SafeAreaView>
-    /*<View
-          style={{
-            flex: 1,
-            paddingTop: 0,
-          }}
-        >
-          <StatusBar translucent backgroundColor="transparent" />
-          <View
-            style={[
-              {
-                flex: 1,
-                paddingBottom: 0,
-                backgroundColor: "white",
-              },
-            ]}
-          >
-            {children}
-          </View>
-        </View>*/
   );
 };
 

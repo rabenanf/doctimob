@@ -152,7 +152,7 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
   };
 
   return (
-    <AppLayout isFullScreen={true}>
+    <AppLayout isFullScreen>
       <LinearGradient
         style={styles.container}
         colors={[Theme.BACKGROUND_COLOR, "white"]}

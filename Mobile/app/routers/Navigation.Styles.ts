@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
   container: {
     position: "relative",
     paddingTop: 0,
-    paddingBottom: verticalScale(50),
+    paddingBottom: verticalScale(30),
     display: "flex",
     alignItems: "center",
     paddingHorizontal: 0,

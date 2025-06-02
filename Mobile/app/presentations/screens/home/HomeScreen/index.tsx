@@ -73,11 +73,12 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
   };
 
   return (
-    <AppLayout>
+    <AppLayout isFullScreen statusBarColor="transparent">
       <ProfilHeader
         photo={Photo}
         name={user?.first_name + " " + user?.last_name}
       />
+
       <ScrollView style={styles.homeContainer}>
         <View style={styles.appointmentContainer}>
           <View style={styles.headerHome}>

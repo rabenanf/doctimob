@@ -45,7 +45,9 @@ export const AppointmemtPhotoCard = (props: AppointmentProps) => {
         <View style={styles.infoContainer}>
           <View style={styles.headerRow}>
             <View style={{ flex: 1 / 2 }}>
-              <Text style={styles.name}>{name}</Text>
+              <Text numberOfLines={2} style={styles.name}>
+                {name}
+              </Text>
             </View>
 
             <View style={[styles.specialtyTag, { flex: 1 / 2 }]}>

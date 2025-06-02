@@ -10,8 +10,6 @@ import { ProfilHeader } from "../../../components/ProfilHeader";
 import Photo from "../../../../resources/assets/images/photo.png";
 import Doctor from "../../../../resources/assets/images/doctor.png";
 import { SceneMap, TabView } from "react-native-tab-view";
-import { navigationRef } from "../../../../routers/NavigationService";
-import { TypeConsultation } from "../../../../data/enum";
 import useUserStore from "../../../../services/redux/userStore";
 import { AppointmentService } from "../../../../services/application/appointment.sa";
 import { UserService } from "../../../../services/application/user.sa";
