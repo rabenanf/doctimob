@@ -1,60 +1,69 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, ImageSourcePropType, ImageBackground } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons'; // pour les icônes (calendar, clock)
-import VideoIcon from '../../../resources/assets/icons/Videocamera.svg'; // ton icône vidéo SVG
-import HomeIcon from '../../../resources/assets/icons/home.svg'; // ton icône vidéo SVG
-
-import { styles } from './styles';
+import React from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ImageSourcePropType,
+  ImageBackground,
+} from "react-native";
+import VideoIcon from "../../../resources/assets/icons/Videocamera.svg"; // ton icône vidéo SVG
+import HomeIcon from "../../../resources/assets/icons/home.svg"; // ton icône vidéo SVG
+import { styles } from "./styles";
+import MiniClockIcon from "../../../resources/assets/icons/Min_clock.svg";
+import MiniCalendarIcon from "../../../resources/assets/icons/Mini_calendar.svg";
 
 type AppointmentProps = {
-    name: string;
-    specialty: string;
-    date: string;
-    time: string;
-    type?: string;
-    // image: string;
-    image: ImageSourcePropType;
+  name: string;
+  specialty: string;
+  date: string;
+  time: string;
+  type?: string;
+  // image: string;
+  image: ImageSourcePropType;
 };
 
 export const AppointmemtPhotoCard = (props: AppointmentProps) => {
+  const { name, specialty, date, time, image, type } = props;
 
-    let { name, specialty, date, time, image, type } = props;
+  return (
+    <TouchableOpacity activeOpacity={0.7} style={styles.card}>
+      <ImageBackground source={image} style={styles.image}>
+        <View style={styles.videoContainer}>
+          <View />
 
-    return (
-        <View style={styles.card}>
-
-            {/* <Image source={{ uri: image }} style={styles.image} /> */}
-            <ImageBackground source={image} style={styles.image} />
-            
-            {/* Bouton vidéo flottant */}
-            <TouchableOpacity style={styles.videoButton}>
-                { type == 'OFFLINE' ? 
-                                <HomeIcon width={24} height={24} /> :
-                                <VideoIcon width={24} height={24} />
-                            }
-                
-            </TouchableOpacity>
-
-            {/* Info section */}
-            <View style={styles.infoContainer}>
-                <View style={styles.headerRow}>
-                    <Text style={styles.name}>Dr. {name}</Text>
-                    <View style={styles.specialtyTag}>
-                        <Text style={styles.specialtyText}>{specialty}</Text>
-                    </View>
-                </View>
-
-                <View style={styles.detailRow}>
-                    <View style={styles.detailBox}>
-                        <Icon name="calendar" size={10} color="#000" />
-                        <Text style={styles.detailText}>{date}</Text>
-                    </View>
-                    <View style={styles.detailBox}>
-                        <Icon name="time" size={10} color="#000" />
-                        <Text style={styles.detailText}>{time}</Text>
-                    </View>
-                </View>
-            </View>
+          <TouchableOpacity style={styles.videoButton}>
+            {type == "OFFLINE" ? (
+              <HomeIcon width={24} height={24} />
+            ) : (
+              <VideoIcon width={24} height={24} />
+            )}
+          </TouchableOpacity>
         </View>
-    );
+
+        <View style={styles.infoContainer}>
+          <View style={styles.headerRow}>
+            <View style={{ flex: 1 / 2 }}>
+              <Text style={styles.name}>{name}</Text>
+            </View>
+
+            <View style={[styles.specialtyTag, { flex: 1 / 2 }]}>
+              <Text style={styles.specialtyText}>{specialty}</Text>
+            </View>
+          </View>
+
+          <View style={styles.detailRow}>
+            <View style={styles.detailBox}>
+              <MiniCalendarIcon />
+              <Text style={styles.detailText}>{date}</Text>
+            </View>
+
+            <View style={styles.detailBox}>
+              <MiniClockIcon />
+              <Text style={styles.detailText}>{time}</Text>
+            </View>
+          </View>
+        </View>
+      </ImageBackground>
+    </TouchableOpacity>
+  );
 };
