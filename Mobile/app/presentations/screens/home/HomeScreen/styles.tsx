@@ -11,12 +11,17 @@ export const styles = StyleSheet.create({
   appointmentContainer: {
     // height: "50%",
   },
+  rowContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
   requestContainer: {
     flex: 1,
   },
   headerHome: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    // flexDirection: "row",
+    // justifyContent: "space-between",
     width: "100%",
     paddingHorizontal: scale(20),
     paddingTop: verticalScale(20),

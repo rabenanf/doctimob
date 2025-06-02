@@ -83,15 +83,18 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
           <View style={styles.headerHome}>
             <View style={styles.sectionTitle}>
               <Text style={styles.txtNew}>{t("Home.next")}</Text>
-              <Text style={styles.txtTitle}>{t("Home.appointments")}</Text>
             </View>
 
-            <TouchableOpacity
-              style={styles.headerViewAll}
-              onPress={() => navigation.navigate("AppointmentsList")}
-            >
-              <Text style={styles.txtViewAll}>{t("Home.viewAll")}</Text>
-            </TouchableOpacity>
+            <View style={styles.rowContent}>
+              <Text style={styles.txtTitle}>{t("Home.appointments")}</Text>
+
+              <TouchableOpacity
+                style={styles.headerViewAll}
+                onPress={() => navigation.navigate("AppointmentsList")}
+              >
+                <Text style={styles.txtViewAll}>{t("Home.viewAll")}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
 
           <ScrollView
@@ -129,15 +132,18 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
           <View style={styles.headerHome}>
             <View style={styles.sectionTitle}>
               <Text style={styles.txtNew}>{t("Home.my")}</Text>
-              <Text style={styles.txtTitle}>{t("Home.requests")}</Text>
             </View>
 
-            <TouchableOpacity
-              style={styles.headerViewAll}
-              onPress={() => navigation.navigate("MyRequestsList")}
-            >
-              <Text style={styles.txtViewAll}>{t("Home.viewAll")}</Text>
-            </TouchableOpacity>
+            <View style={styles.rowContent}>
+              <Text style={styles.txtTitle}>{t("Home.requests")}</Text>
+
+              <TouchableOpacity
+                style={styles.headerViewAll}
+                onPress={() => navigation.navigate("MyRequestsList")}
+              >
+                <Text style={styles.txtViewAll}>{t("Home.viewAll")}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
 
           <ScrollView contentContainerStyle={styles.requestListContainer}>

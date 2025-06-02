@@ -39,7 +39,11 @@ export const RequestCard = (Props: RequestCardInputProps) => {
   } = Props;
 
   return (
-    <View style={styles.requestContainer}>
+    <TouchableOpacity
+      onPress={goToDetail}
+      activeOpacity={0.5}
+      style={styles.requestContainer}
+    >
       <View style={styles.requestHeader}>
         <View style={styles.requestType}>
           {type == t("NewRequest.homeVisit") ? (
@@ -80,6 +84,6 @@ export const RequestCard = (Props: RequestCardInputProps) => {
           <RightPurpleIcon />
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };

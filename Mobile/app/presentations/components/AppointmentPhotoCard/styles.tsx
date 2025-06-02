@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     borderColor: "rgba(229, 231, 243, 1)",
     width: scale(256),
     height: verticalScale(350),
+    marginVertical: verticalScale(5),
   },
   videoContainer: {
     margin: moderateScale(20),
