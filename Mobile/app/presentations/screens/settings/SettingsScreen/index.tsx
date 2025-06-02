@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Modal,
   TouchableWithoutFeedback,
+  ScrollView,
 } from "react-native";
 import { styles } from "./styles";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";

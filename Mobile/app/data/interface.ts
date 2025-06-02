@@ -36,4 +36,5 @@ export type RootStackParamList = {
   DoctorConsultations: undefined;
   DoctorAppointments: undefined;
   Notifications: undefined;
+  CreateAccountStepTwo: undefined;
 };

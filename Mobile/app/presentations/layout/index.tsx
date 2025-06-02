@@ -7,6 +7,7 @@ import {
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 import { enableScreens } from "react-native-screens";
+import { Theme } from "../../resources/themes";
 
 enableScreens();
 
