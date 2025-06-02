@@ -7,7 +7,6 @@ import RequestIcon from "../resources/assets/icons/Request_active.svg";
 import RequestInactiveIcon from "../resources/assets/icons/Request_inactive.svg";
 import SettingsIcon from "../resources/assets/icons/Settings_active.svg";
 import SettingsInactiveIcon from "../resources/assets/icons/Settings_inactive.svg";
-import NewRequestIcon from "../resources/assets/icons/plus.svg";
 import { styles } from "./Navigation.Styles";
 import { MyRequestsListScreen } from "../presentations/screens/requests/MyRequests/MyRequestsListScreen";
 import { NewRequestScreen } from "../presentations/screens/requests/NewRequest/NewRequestScreen";
@@ -16,6 +15,9 @@ import { SettingsScreen } from "../presentations/screens/settings/SettingsScreen
 import { BlankScreen } from "../presentations/screens/home/BlankScreen";
 import { HomeScreen } from "../presentations/screens/home/HomeScreen";
 import useRequestStore from "../services/redux/requestStore";
+import CalendarActiveIcon from "../resources/assets/icons/Calendar_active.svg";
+import CalendarInactiveIcon from "../resources/assets/icons/Calendar_inactive.svg";
+import NewRequestIcon from "../resources/assets/icons/NewRequestIcon.svg";
 
 const Tab = createBottomTabNavigator();
 
@@ -85,11 +87,7 @@ export const PatientMenuTabs = () => {
             headerShown: false,
             tabBarIcon: ({}) => (
               <View style={styles.container}>
-                <View style={styles.customTabBarStyle}>
-                  <View style={styles.contentTabBarStyle}>
-                    <NewRequestIcon style={styles.plusTabBarstyle} />
-                  </View>
-                </View>
+                <NewRequestIcon />
               </View>
             ),
           }}
@@ -107,9 +105,9 @@ export const PatientMenuTabs = () => {
             headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <RequestIcon width={24} height={24} />
+                <CalendarActiveIcon width={24} height={24} />
               ) : (
-                <RequestInactiveIcon width={24} height={24} />
+                <CalendarInactiveIcon width={24} height={24} />
               ),
           }}
         >

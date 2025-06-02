@@ -1,11 +1,13 @@
 import { StyleSheet } from "react-native";
+import { scale, verticalScale } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
   titleContainer: {
     alignItems: "center",
     justifyContent: "space-between",
     flexDirection: "row",
-    paddingHorizontal: 30,
+    paddingHorizontal: scale(20),
+    paddingVertical: verticalScale(10),
   },
   arrowContainer: {
     height: 40,

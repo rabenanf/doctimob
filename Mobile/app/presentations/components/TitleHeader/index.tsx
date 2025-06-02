@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import BackArrow from "../../../resources/assets/icons/back.svg";
-import { useTranslation } from "react-i18next";
+import GoBackIcon from "../../../resources/assets/icons/GoBackIcon.svg";
 import { styles } from "./styles";
 
 export const TitleHeader = (Props: any) => {
@@ -10,7 +9,7 @@ export const TitleHeader = (Props: any) => {
   return (
     <View style={styles.titleContainer}>
       <TouchableOpacity style={styles.arrowContainer} onPress={back}>
-        <BackArrow style={styles.vectorStroke} />
+        <GoBackIcon />
       </TouchableOpacity>
 
       <Text style={styles.title}>{title}</Text>

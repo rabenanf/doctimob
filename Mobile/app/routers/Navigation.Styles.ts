@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { verticalScale } from "react-native-size-matters";
+import { scale, verticalScale } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
   //   tabBarStyle: {
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
 
   tabBarStyle: {
     backgroundColor: "rgba(255, 255, 255, 0.5)",
-    height: verticalScale(70),
+    height: verticalScale(55),
     paddingTop: 10,
     shadowColor: "rgba(0, 0, 0, 0.08)",
     shadowOpacity: 0.05,
@@ -29,20 +29,20 @@ export const styles = StyleSheet.create({
   container: {
     position: "relative",
     paddingTop: 0,
-    paddingBottom: 50,
+    paddingBottom: verticalScale(30),
     display: "flex",
     alignItems: "center",
     paddingHorizontal: 0,
   },
   customTabBarStyle: {
-    height: 60,
-    width: 60,
+    height: verticalScale(60),
+    width: scale(60),
     borderStyle: "solid",
     backgroundColor: "rgba(87, 207, 200, 1)",
     shadowColor: "rgba(87, 207, 200, 0.5)",
     shadowOffset: {
       width: 0,
-      height: 30,
+      height: verticalScale(30),
     },
     shadowRadius: 30,
     alignItems: "center",
