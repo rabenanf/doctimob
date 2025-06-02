@@ -45,23 +45,36 @@ export const RequestCard = (Props: RequestCardInputProps) => {
       style={styles.requestContainer}
     >
       <View style={styles.requestHeader}>
-        <View style={styles.requestType}>
-          {type == t("NewRequest.homeVisit") ? (
-            <HomeBlueIcon />
-          ) : (
-            <BlueVisioIcon />
-          )}
-          <Text style={styles.typeText}>{type}</Text>
+        <View style={[{ flex: 2 / 3 }]}>
+          <View style={styles.requestType}>
+            {type == t("NewRequest.homeVisit") ? (
+              <HomeBlueIcon />
+            ) : (
+              <BlueVisioIcon />
+            )}
+            <Text style={styles.typeText}>{type}</Text>
+          </View>
         </View>
 
-        <View style={styles.requestSeen}>
-          <PurpleEyesIcon />
-          <Text style={styles.statText}>{nbSeen}</Text>
-        </View>
+        <View
+          style={[
+            {
+              flex: 1.25 / 3,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            },
+          ]}
+        >
+          <View style={styles.requestSeen}>
+            <PurpleEyesIcon />
+            <Text style={styles.statText}>{nbSeen}</Text>
+          </View>
 
-        <View style={styles.requestResponded}>
-          <YellowMessageIcon />
-          <Text style={styles.statText}>{nbResponded}</Text>
+          <View style={styles.requestResponded}>
+            <YellowMessageIcon />
+            <Text style={styles.statText}>{nbResponded}</Text>
+          </View>
         </View>
       </View>
 
