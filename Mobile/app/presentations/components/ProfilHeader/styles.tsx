@@ -1,4 +1,5 @@
 import { StatusBar, StyleSheet } from "react-native";
+import { verticalScale } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
   image: {
@@ -13,7 +14,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     columnGap: 10,
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: verticalScale(10),
     // backgroundColor: "rgba(255, 255, 255, 0.75)",
     //backgroundColor: "rgba(255, 255, 255, 0.1)",
     //paddingTop: StatusBar.currentHeight,

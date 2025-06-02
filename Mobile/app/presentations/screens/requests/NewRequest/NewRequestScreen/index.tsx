@@ -255,6 +255,8 @@ export const NewRequestScreen = ({ navigation }: Props): JSX.Element => {
         name={user?.first_name + " " + user?.last_name}
       />
 
+      <Spacer />
+
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{t("NewRequest.title")}</Text>
         <Text style={styles.description}>{t("NewRequest.description")}</Text>
