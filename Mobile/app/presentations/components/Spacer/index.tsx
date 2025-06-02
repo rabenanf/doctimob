@@ -1,4 +1,5 @@
 import { View } from "react-native";
+import { scale, verticalScale } from "react-native-size-matters";
 
 type SpacerProps = React.PropsWithChildren<{
   width?: number;
@@ -9,8 +10,8 @@ const Spacer = ({ height, width }: SpacerProps) => {
   return (
     <View
       style={{
-        height: height ?? 20,
-        width: width ?? 0,
+        height: verticalScale(height ?? 20),
+        width: scale(width ?? 0),
       }}
     />
   );

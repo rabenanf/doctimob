@@ -1,5 +1,12 @@
 import React, { JSX, useCallback, useEffect, useState } from "react";
-import { View, Text, Image, TouchableOpacity, BackHandler } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  BackHandler,
+  ScrollView,
+} from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { useTranslation } from "react-i18next";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -22,6 +29,8 @@ import { CustomActivityIndicator } from "../../../components/CustomActivityIndic
 import { RequestService } from "../../../../services/application/request.sa";
 import useRequestStore from "../../../../services/redux/requestStore";
 import { useFocusEffect } from "@react-navigation/native";
+import Spacer from "../../../components/Spacer";
+import { verticalScale } from "react-native-size-matters";
 
 /******  Patient *******/
 // test1@test.com | azerty
@@ -151,7 +160,9 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
         end={{ x: 0.5, y: 1 }}
         locations={[0, 0.4]}
       >
-        <View style={{ flex: 1 }}>
+        <ScrollView
+          contentContainerStyle={{ paddingBottom: verticalScale(150) }}
+        >
           <KeyboardAwareScrollView
             style={styles.formContainer}
             contentContainerStyle={{ flexGrow: 1 }}
@@ -161,13 +172,14 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
             <View style={styles.imageContainer}>
               <Image style={styles.image} resizeMode="contain" source={Logo} />
             </View>
+
             <View style={styles.textContainer}>
-              <Text style={styles.welcomeText}> {t("Login.title")} </Text>
+              <Text style={styles.welcomeText}>{t("Login.title")}</Text>
               <Text style={styles.descriptionText}>
-                {" "}
-                {t("Login.description")}{" "}
+                {t("Login.description")}
               </Text>
             </View>
+
             <View style={styles.form}>
               <InputWithIcon
                 placeholder={t("Login.email")}
@@ -184,6 +196,9 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
                 onChangeText={setPassword}
                 error={errors.password}
               />
+
+              <Spacer />
+
               <View style={styles.footer}>
                 <CheckBox
                   checked={checked}
@@ -205,7 +220,8 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
               </View>
             </View>
           </KeyboardAwareScrollView>
-        </View>
+        </ScrollView>
+
         <View style={styles.btnContainer}>
           <RoundedButton
             isPrimary={true}

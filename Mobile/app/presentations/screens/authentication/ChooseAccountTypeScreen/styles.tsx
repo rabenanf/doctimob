@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
   textContainer: {
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 30,
+    paddingBottom: verticalScale(10),
     paddingHorizontal: 30,
   },
   welcomeText: {
@@ -36,7 +36,9 @@ export const styles = StyleSheet.create({
     color: Theme.SECONDARY_FONT_COLOR,
     fontSize: normalizeFont(40),
     fontWeight: 800,
-    paddingBottom: 20,
+    // paddingBottom: 20,
+    paddingBottom: verticalScale(5),
+    paddingHorizontal: scale(40),
   },
   descriptionText: {
     textAlign: "center",
