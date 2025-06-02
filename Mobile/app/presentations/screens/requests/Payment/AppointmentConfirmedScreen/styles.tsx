@@ -58,7 +58,9 @@ export const styles = StyleSheet.create({
     },
     name : {
         fontSize: 12,
-        fontWeight: 700
+        fontWeight: 700,
+        flexWrap: 'wrap',
+        width: '50%'
     },
     specialty : {
         backgroundColor: "rgba(229, 231, 243, 1)",
