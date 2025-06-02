@@ -160,12 +160,12 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
               <Image style={styles.image} resizeMode="contain" source={Logo} />
             </View>
             <View style={styles.textContainer}>
-              <Text style={styles.welcomeText}> {t("Login.title")} </Text>
+              <Text style={styles.welcomeText}>{t("Login.title")}</Text>
               <Text style={styles.descriptionText}>
-                {" "}
                 {t("Login.description")}{" "}
               </Text>
             </View>
+
             <View style={styles.form}>
               <InputWithIcon
                 placeholder={t("Login.email")}
