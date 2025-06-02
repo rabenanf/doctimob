@@ -16,6 +16,8 @@ import { SettingsScreen } from "../presentations/screens/settings/SettingsScreen
 import { BlankScreen } from "../presentations/screens/home/BlankScreen";
 import { HomeScreen } from "../presentations/screens/home/HomeScreen";
 import useRequestStore from "../services/redux/requestStore";
+import CalendarActiveIcon from "../resources/assets/icons/Calendar_active.svg";
+import CalendarInactiveIcon from "../resources/assets/icons/Calendar_inactive.svg";
 
 const Tab = createBottomTabNavigator();
 
@@ -107,9 +109,9 @@ export const PatientMenuTabs = () => {
             headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <RequestIcon width={24} height={24} />
+                <CalendarActiveIcon width={24} height={24} />
               ) : (
-                <RequestInactiveIcon width={24} height={24} />
+                <CalendarInactiveIcon width={24} height={24} />
               ),
           }}
         >
