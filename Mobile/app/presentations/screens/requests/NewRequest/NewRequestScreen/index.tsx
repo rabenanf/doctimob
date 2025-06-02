@@ -51,7 +51,6 @@ import { FamilyMemberService } from "../../../../../services/application/familym
 import {
   convertTo24Hour,
   formatDate,
-  getNext30MinuteSlotFormatted,
 } from "../../../../../services/utils/dateUtil";
 import { useFocusEffect } from "@react-navigation/native";
 import Spacer from "../../../../components/Spacer";

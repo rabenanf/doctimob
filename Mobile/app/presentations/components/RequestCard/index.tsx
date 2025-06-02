@@ -7,6 +7,13 @@ import ReplyIcon from "../../../resources/assets/icons/Auto_reply.svg";
 
 import { styles } from "./styles";
 import { useTranslation } from "react-i18next";
+import MiniClockIcon from "../../../resources/assets/icons/Min_clock.svg";
+import MiniCalendarIcon from "../../../resources/assets/icons/Mini_calendar.svg";
+import PurpleEyesIcon from "../../../resources/assets/icons/PurpleEyesIcon.svg";
+import YellowMessageIcon from "../../../resources/assets/icons/YellowMessageIcon.svg";
+import HomeBlueIcon from "../../../resources/assets/icons/HomeBlueIcon.svg";
+import BlueVisioIcon from "../../../resources/assets/icons/BlueVisioIcon.svg";
+import RightPurpleIcon from "../../../resources/assets/icons/RightPurpleIcon.svg";
 
 export interface RequestCardInputProps {
   nbSeen?: number;
@@ -35,44 +42,42 @@ export const RequestCard = (Props: RequestCardInputProps) => {
     <View style={styles.requestContainer}>
       <View style={styles.requestHeader}>
         <View style={styles.requestType}>
-          <View style={styles.iconCircle}>
-            {type == t("NewRequest.homeVisit") ? (
-              <HomeIcon width={20} height={20} />
-            ) : (
-              <VideoIcon width={20} height={20} />
-            )}
-          </View>
-          <Text style={styles.typeText}> {type} </Text>
+          {type == t("NewRequest.homeVisit") ? (
+            <HomeBlueIcon />
+          ) : (
+            <BlueVisioIcon />
+          )}
+          <Text style={styles.typeText}>{type}</Text>
         </View>
+
         <View style={styles.requestSeen}>
-          <View style={styles.iconSeen}>
-            <EyeIcon width={20} height={20} />
-          </View>
+          <PurpleEyesIcon />
           <Text style={styles.statText}>{nbSeen}</Text>
         </View>
 
         <View style={styles.requestResponded}>
-          <View style={styles.iconResponded}>
-            <ReplyIcon width={20} height={20} />
-          </View>
+          <YellowMessageIcon />
           <Text style={styles.statText}>{nbResponded}</Text>
         </View>
       </View>
 
       <View style={styles.requestDetail}>
-        <Text style={styles.requestTitle}> {title} </Text>
+        <Text style={styles.requestTitle}>{title}</Text>
       </View>
+
       <View style={styles.requestInfo}>
         <View style={styles.requestDate}>
-          <Icon name="calendar" size={14} color="#000" />
+          <MiniCalendarIcon />
           <Text style={styles.typeText}>{date}</Text>
         </View>
+
         <View style={styles.requestTime}>
-          <Icon name="time" size={14} color="#000" />
+          <MiniClockIcon />
           <Text style={styles.typeText}>{time}</Text>
         </View>
+
         <TouchableOpacity style={styles.requestGo} onPress={goToDetail}>
-          <Icon name="arrow-forward" size={18} color="#444" />
+          <RightPurpleIcon />
         </TouchableOpacity>
       </View>
     </View>

@@ -72,8 +72,6 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
     }
   };
 
-  console.log({ doctor: appointments?.[0]?.doctor });
-
   return (
     <AppLayout>
       <ProfilHeader
@@ -133,6 +131,7 @@ export const HomeScreen = ({ navigation }: Props): JSX.Element => {
               <Text style={styles.txtNew}>{t("Home.my")}</Text>
               <Text style={styles.txtTitle}>{t("Home.requests")}</Text>
             </View>
+
             <TouchableOpacity
               style={styles.headerViewAll}
               onPress={() => navigation.navigate("MyRequestsList")}

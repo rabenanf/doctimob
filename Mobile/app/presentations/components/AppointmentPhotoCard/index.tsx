@@ -11,6 +11,8 @@ import HomeIcon from "../../../resources/assets/icons/home.svg"; // ton icône v
 import { styles } from "./styles";
 import MiniClockIcon from "../../../resources/assets/icons/Min_clock.svg";
 import MiniCalendarIcon from "../../../resources/assets/icons/Mini_calendar.svg";
+import WhiteBorderedVisionIcon from "../../../resources/assets/icons/WhiteBorderedVisionIcon.svg";
+import { moderateScale } from "react-native-size-matters";
 
 type AppointmentProps = {
   name: string;
@@ -24,7 +26,7 @@ type AppointmentProps = {
 
 export const AppointmemtPhotoCard = (props: AppointmentProps) => {
   const { name, specialty, date, time, image, type } = props;
-
+  const iconSize = moderateScale(15);
   return (
     <TouchableOpacity activeOpacity={0.7} style={styles.card}>
       <ImageBackground source={image} style={styles.image}>
@@ -33,9 +35,9 @@ export const AppointmemtPhotoCard = (props: AppointmentProps) => {
 
           <TouchableOpacity style={styles.videoButton}>
             {type == "OFFLINE" ? (
-              <HomeIcon width={24} height={24} />
+              <HomeIcon width={iconSize} height={iconSize} />
             ) : (
-              <VideoIcon width={24} height={24} />
+              <VideoIcon width={iconSize} height={iconSize} />
             )}
           </TouchableOpacity>
         </View>
