@@ -7,6 +7,7 @@ import {
     useSafeAreaInsets,
 } from "react-native-safe-area-context";
 import { enableScreens } from "react-native-screens";
+import { Theme } from "../../resources/themes";
 
 enableScreens();
 
@@ -29,13 +30,13 @@ const AppLayout = ({
                 : 32;
     return (
         <SafeAreaView style={styles.Container}>
-            {isFullScreen ? <StatusBar hidden={true} translucent backgroundColor="transparent" /> : <StatusBar hidden={false} translucent backgroundColor="transparent" barStyle="dark-content" />}
+            {isFullScreen ? <StatusBar hidden={true} translucent backgroundColor={Theme.BACKGROUND_COLOR} /> : <StatusBar hidden={false} translucent backgroundColor="transparent" barStyle="dark-content" />}
             <View
                 style={[
                     {
                         flex: 1,
                         backgroundColor: "white",
-                        paddingBottom: insets.bottom,
+                        paddingBottom: 0
                     },
                 ]}
             >

@@ -5,6 +5,7 @@ import {
     TouchableOpacity,
     Modal,
     TouchableWithoutFeedback,
+    ScrollView,
 } from "react-native";
 import { styles } from "./styles";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -160,91 +161,92 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
                 <Text style={styles.title}> {t("Setting.title")} </Text>
                 <Text style={styles.description}> {t("Setting.description")} </Text>
             </View>
-            <View style={styles.detailContainer}>
-                <TouchableOpacity
-                    style={styles.item}
-                    onPress={() => navigation.navigate("Profile")}
-                >
-                    <View style={styles.itemIcon}>
-                        <ProfilIcon />
-                        <Text style={styles.itemText}> {t("Setting.profile")} </Text>
-                    </View>
-                    <View style={styles.itemArrow}>
-                        <AltArrowIcon />
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.item}
-                    onPress={() => navigation.navigate("ChangePassword")}
-                >
-                    <View style={styles.itemIcon}>
-                        <LockIcon />
-                        <Text style={styles.itemText}> {t("Setting.changePassword")} </Text>
-                    </View>
-                    <View style={styles.itemArrow}>
-                        <AltArrowIcon />
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.item}
-                    onPress={() => setModalVisible(true)}
-                >
-                    <View style={styles.itemIcon}>
-                        <EarthIcon />
-                        <Text style={styles.itemText}> {t("Setting.language")} </Text>
-                    </View>
-                    <View style={styles.itemArrow}>
-                        { language == Language.ENGLISH ? <EnglishIcon /> : <VietIcon/>}
-                        <Text> {language == Language.ENGLISH ? 'English' : 'Vietnamese'} </Text>
-                        <AltArrowIcon />
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.item}
-                    onPress={() => navigation.navigate("FamilyMember")}
-                >
-                    <View style={styles.itemIcon}>
-                        <FamilyIcon />
-                        <Text style={styles.itemText}> {t("Setting.familyMember")} </Text>
-                    </View>
-                    <View style={styles.itemArrow}>
-                        <AltArrowIcon />
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.item}
-                    onPress={() => navigation.navigate("MedicalRecordList")}
-                >
-                    <View style={styles.itemIcon}>
-                        <HistoryIcon />
-                        <Text style={styles.itemText}> {t("Setting.records")} </Text>
-                    </View>
-                    <View style={styles.itemArrow}>
-                        <AltArrowIcon />
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.item}
-                    onPress={() => navigation.navigate("PaymentMethod")}
-                >
-                    <View style={styles.itemIcon}>
-                        <CardIcon />
-                        <Text style={styles.itemText}> {t("Setting.paymentMethods")} </Text>
-                    </View>
-                    <View style={styles.itemArrow}>
-                        <AltArrowIcon />
-                    </View>
-                </TouchableOpacity>
-            </View>
-            <TouchableOpacity onPress={logoutApp} style={styles.logoutContainer}>
-                <View>
-                    <LogoutIcon />
+            <ScrollView>
+                <View style={styles.detailContainer}>
+                    <TouchableOpacity
+                        style={styles.item}
+                        onPress={() => navigation.navigate("Profile")}
+                    >
+                        <View style={styles.itemIcon}>
+                            <ProfilIcon />
+                            <Text style={styles.itemText}> {t("Setting.profile")} </Text>
+                        </View>
+                        <View style={styles.itemArrow}>
+                            <AltArrowIcon />
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.item}
+                        onPress={() => navigation.navigate("ChangePassword")}
+                    >
+                        <View style={styles.itemIcon}>
+                            <LockIcon />
+                            <Text style={styles.itemText}> {t("Setting.changePassword")} </Text>
+                        </View>
+                        <View style={styles.itemArrow}>
+                            <AltArrowIcon />
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.item}
+                        onPress={() => setModalVisible(true)}
+                    >
+                        <View style={styles.itemIcon}>
+                            <EarthIcon />
+                            <Text style={styles.itemText}> {t("Setting.language")} </Text>
+                        </View>
+                        <View style={styles.itemArrow}>
+                            { language == Language.ENGLISH ? <EnglishIcon /> : <VietIcon/>}
+                            <Text> {language == Language.ENGLISH ? 'English' : 'Vietnamese'} </Text>
+                            <AltArrowIcon />
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.item}
+                        onPress={() => navigation.navigate("FamilyMember")}
+                    >
+                        <View style={styles.itemIcon}>
+                            <FamilyIcon />
+                            <Text style={styles.itemText}> {t("Setting.familyMember")} </Text>
+                        </View>
+                        <View style={styles.itemArrow}>
+                            <AltArrowIcon />
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.item}
+                        onPress={() => navigation.navigate("MedicalRecordList")}
+                    >
+                        <View style={styles.itemIcon}>
+                            <HistoryIcon />
+                            <Text style={styles.itemText}> {t("Setting.records")} </Text>
+                        </View>
+                        <View style={styles.itemArrow}>
+                            <AltArrowIcon />
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.item}
+                        onPress={() => navigation.navigate("PaymentMethod")}
+                    >
+                        <View style={styles.itemIcon}>
+                            <CardIcon />
+                            <Text style={styles.itemText}> {t("Setting.paymentMethods")} </Text>
+                        </View>
+                        <View style={styles.itemArrow}>
+                            <AltArrowIcon />
+                        </View>
+                    </TouchableOpacity>
                 </View>
-                <View>
-                    <Text style={styles.itemText}> {t("Setting.logout")} </Text>
-                </View>
-            </TouchableOpacity>
-
+                <TouchableOpacity onPress={logoutApp} style={styles.logoutContainer}>
+                    <View>
+                        <LogoutIcon />
+                    </View>
+                    <View>
+                        <Text style={styles.itemText}> {t("Setting.logout")} </Text>
+                    </View>
+                </TouchableOpacity>
+            </ScrollView>
             <Modal
                 animationType="slide"
                 transparent={true}

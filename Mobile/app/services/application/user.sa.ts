@@ -17,11 +17,12 @@ export const UserService = () => {
                 password: user.password!
             })
 
+            console.log('---------UserCreated---- : ', userCreated);
+            console.log('---------UserCreated---- : ', error);
+
             if (error) {
                 return {success : false, message : error.message};
             }
-
-            console.log('---------UserCreated---- : ', userCreated);
 
             if (userCreated.user != null) {
                 authenticationUser = userCreated.user;
