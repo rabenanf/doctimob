@@ -5,8 +5,9 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 50,
+    // paddingTop: 50,
     // paddingHorizontal: 20,
+    paddingVertical: verticalScale(10),
   },
   closeIcon: {
     width: scale(40),

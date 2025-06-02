@@ -8,6 +8,7 @@ import ChatDotIcon from "../../../resources/assets/icons/Chat_no_dot.svg";
 import CalendarProposalIcon from "../../../resources/assets/icons/Calendar_proposal.svg";
 import MessageDotRedIcon from "../../../resources/assets/icons/Message_dot_red.svg";
 import { Divider } from "react-native-paper";
+import AppLayout from "../../layout";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Notifications">;
 
@@ -67,26 +68,28 @@ export const NotificationsScreen = ({ navigation }: Props): JSX.Element => {
   );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <View />
+    <AppLayout>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <View />
 
-        <Text style={styles.headerText}>Notifications</Text>
+          <Text style={styles.headerText}>Notifications</Text>
 
-        <TouchableOpacity onPress={goBack} style={styles.closeIcon}>
-          <Text style={styles.closeButton}>✕</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={goBack} style={styles.closeIcon}>
+            <Text style={styles.closeButton}>✕</Text>
+          </TouchableOpacity>
+        </View>
+
+        <Divider style={styles.divider} />
+
+        <FlatList
+          data={notifications}
+          keyExtractor={(item) => item.id}
+          renderItem={renderItem}
+          contentContainerStyle={{ paddingBottom: 20 }}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
-
-      <Divider style={styles.divider} />
-
-      <FlatList
-        data={notifications}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        contentContainerStyle={{ paddingBottom: 20 }}
-        showsVerticalScrollIndicator={false}
-      />
-    </View>
+    </AppLayout>
   );
 };
