@@ -52,7 +52,7 @@ const AppLayout = ({
           {
             flex: 1,
             backgroundColor: "white",
-            paddingBottom: insets.bottom,
+            paddingBottom: 0,
           },
         ]}
       >

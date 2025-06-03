@@ -42,9 +42,9 @@ export const CreatePasswordScreen = ({navigation}: Props): JSX.Element => {
         if (validate()) {
             updateUser({password: password})
 
-            console.log('######################', user);
+            console.log('######################', useUserStore.getState().user!);
 
-            let response = await createUserProfile(user!);
+            let response = await createUserProfile(useUserStore.getState().user!);
             if (response?.success) {
                 updateUser(response.user! as Partial<User>);
                 setLoading(false);

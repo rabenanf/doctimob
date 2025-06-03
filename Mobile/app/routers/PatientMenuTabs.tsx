@@ -26,6 +26,8 @@ export const PatientMenuTabs = () => {
   const { countRequests } = useRequestStore();
   const insets = useSafeAreaInsets();
 
+  console.log('##############tabbottom', insets)
+
   return (
     <>
       <Tab.Navigator
@@ -34,7 +36,8 @@ export const PatientMenuTabs = () => {
           tabBarShowLabel: false,
           tabBarStyle: {
             ...styles.tabBarStyle,
-            paddingBottom : insets.bottom
+            position: 'absolute',
+            bottom : insets.bottom
           },
         }}
         initialRouteName={"Home"}
