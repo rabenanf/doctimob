@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import { styles } from './styles';
 import { RoundedButton } from "../RoundedButton";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -21,7 +21,7 @@ export const AddCardModal = (Props: AddCardProps) => {
             <View style={styles.modalBackground}>
                 <TouchableWithoutFeedback>
                     <View style={styles.addContainer}>
-                        <View style={styles.rectangle}></View>
+                        <TouchableOpacity style={styles.rectangle} onPress={closeModal}></TouchableOpacity>
                         <View style={styles.keyboardContainer}>
                             <KeyboardAwareScrollView >
                                 <View style={styles.titleContainer}>

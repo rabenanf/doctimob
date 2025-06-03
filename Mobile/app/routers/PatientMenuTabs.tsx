@@ -18,11 +18,13 @@ import useRequestStore from "../services/redux/requestStore";
 import CalendarActiveIcon from "../resources/assets/icons/Calendar_active.svg";
 import CalendarInactiveIcon from "../resources/assets/icons/Calendar_inactive.svg";
 import NewRequestIcon from "../resources/assets/icons/NewRequestIcon.svg";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const Tab = createBottomTabNavigator();
 
 export const PatientMenuTabs = () => {
   const { countRequests } = useRequestStore();
+  const insets = useSafeAreaInsets();
 
   return (
     <>
@@ -32,6 +34,7 @@ export const PatientMenuTabs = () => {
           tabBarShowLabel: false,
           tabBarStyle: {
             ...styles.tabBarStyle,
+            paddingBottom : insets.bottom
           },
         }}
         initialRouteName={"Home"}

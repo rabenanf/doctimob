@@ -35,10 +35,10 @@ const AppLayout = ({
       {isFullScreen ? (
         <StatusBar
           translucent
-          hidden={true}
-          backgroundColor={statusBarColor ?? "#57CFC8"}
-          barStyle="dark-content"
-        /> // #57CFC8
+          hidden={false}
+          backgroundColor={statusBarColor ?? Theme.BACKGROUND_COLOR}
+          barStyle="light-content"
+        /> 
       ) : (
         <StatusBar
           hidden={false}

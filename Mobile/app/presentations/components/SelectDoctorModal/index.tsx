@@ -31,7 +31,7 @@ export const SelectDoctorModal = (Props : SelectDoctorProps) => {
     return (
         <View style={styles.modalBackground}>
             <View style={styles.selectContainer}>
-                <View style={styles.rectangle}></View>
+                <TouchableOpacity style={styles.rectangle} onPress={closeModal}></TouchableOpacity>
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}> {t('SelectDoctor.title')} </Text>
                     <Text style={styles.description}> {t('SelectDoctor.description')} </Text>
