@@ -226,7 +226,7 @@ export const FamilyMemberScreen = ({ navigation }: Props): JSX.Element => {
         <View style={styles.modalBackground}>
           <TouchableWithoutFeedback>
             <View style={styles.addContainer}>
-              <View style={styles.rectangle}></View>
+              <TouchableOpacity style={styles.rectangle} onPress={() => setModalVisible(false)}></TouchableOpacity>
               <KeyboardAwareScrollView
                 enableOnAndroid={true}
                 keyboardShouldPersistTaps="handled"

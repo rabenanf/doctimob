@@ -47,7 +47,7 @@ export const DoctorSettingsScreen = ({ navigation }: Props): JSX.Element => {
         <View style={styles.modalBackground}>
           <TouchableWithoutFeedback>
             <View style={styles.addContainer}>
-              <View style={styles.rectangle}></View>
+              <TouchableOpacity style={styles.rectangle} onPress={() => setModalVisible(false)}></TouchableOpacity>
               <View style={styles.addTitleContainer}>
                 <Text style={styles.addTitle}> {t("Setting.addTitle")} </Text>
                 <Text style={styles.addDescription}>

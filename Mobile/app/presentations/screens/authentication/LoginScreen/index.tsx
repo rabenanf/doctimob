@@ -46,8 +46,8 @@ export const LoginScreen = ({ navigation }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
 
-  const [email, setEmail] = useState("test1@test.com");
-  const [password, setPassword] = useState("azerty");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = AuthenticationService();
   const { getUserProfile } = UserService();

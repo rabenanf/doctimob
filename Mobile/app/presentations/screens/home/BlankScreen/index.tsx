@@ -1,4 +1,4 @@
-import React, { JSX } from 'react';
+import React, { JSX, useEffect, useRef, useState } from 'react';
 import { View, Text } from 'react-native';
 import { styles } from './styles';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -34,8 +34,8 @@ export const  BlankScreen = ({navigation}: Props): JSX.Element => {
                     <Text style={styles.create}> {t('BlankHome.create')} </Text>
                     <Text style={styles.request}> {t('BlankHome.request')} </Text>
                 </View>
-                <View style={styles.imageArrow}>
-                    <Hand_Drawn_Arrow height="100%" />
+                <View style={styles.imageArrow} >
+                    <Hand_Drawn_Arrow height={70} />
                 </View>
             </View>    
         </AppLayout>
