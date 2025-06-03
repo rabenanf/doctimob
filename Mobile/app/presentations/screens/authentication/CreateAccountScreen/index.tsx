@@ -1,5 +1,5 @@
 import React, { JSX, useEffect, useState } from 'react';
-import { View, Text, Image, TextInput, ScrollView, Platform, TouchableOpacity, PermissionsAndroid } from 'react-native';
+import { View, Text, Image, TextInput, ScrollView, Platform, TouchableOpacity, PermissionsAndroid, useWindowDimensions } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -21,6 +21,7 @@ import useUserStore from '../../../../services/redux/userStore';
 import { Validator } from '../../../../services/utils/validator';
 import { finishScreenTransition } from 'react-native-reanimated';
 import { User } from '../../../../data/dto/User.type';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CreateAccount'>;
 
@@ -37,6 +38,8 @@ export const CreateAccountScreen = ({ navigation }: Props): JSX.Element => {
     const [day, setDay] = useState('');
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
+    const { width, height } = useWindowDimensions();
+    const insets = useSafeAreaInsets();
 
     const form = {
         firstname: firstname,
@@ -162,7 +165,7 @@ export const CreateAccountScreen = ({ navigation }: Props): JSX.Element => {
                 end={{ x: 0.5, y: 1 }}
                 locations={[0, 0.40]}
             >
-                <View style={{ height: "88%" }}>
+                <View style={{ height: height - 70 - insets.top }}>
                     <KeyboardAwareScrollView
                         style={{ flex: 1 }}
                         contentContainerStyle={{ flexGrow: 1, paddingBottom: 150 }}

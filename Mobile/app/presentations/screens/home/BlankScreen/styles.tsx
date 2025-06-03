@@ -53,9 +53,10 @@ export const styles = StyleSheet.create({
         fontWeight: 800,
     },
     imageArrow : {
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         flex: 1,
-        paddingBottom: 120
+        paddingBottom: 120,
+        overflow: 'hidden',
     }
 });
