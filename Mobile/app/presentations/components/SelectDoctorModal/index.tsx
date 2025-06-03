@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import Icon from 'react-native-vector-icons/Ionicons';
 import VideoIcon from '../../../resources/assets/icons/Videocamera.svg';
 import HomeIcon from '../../../resources/assets/icons/home.svg';
+import MiniClockIcon from "../../../resources/assets/icons/Min_clock_inv.svg";
+import MiniCalendarIcon from "../../../resources/assets/icons/Mini_calendar_inv.svg";
 import nobody from '../../../resources/assets/images/nobody.svg';
 import { styles } from './styles';
 
@@ -41,7 +43,7 @@ export const SelectDoctorModal = (Props : SelectDoctorProps) => {
                         resizeMode={"cover"}
                         />
                     <View style={styles.nameContainer}>
-                        <View style={{flexDirection : 'column', rowGap : 5}}>
+                        <View style={{flexDirection : 'column', rowGap : 5, flex : 3/4}}>
                             <Text style={styles.name}> {'Dr. '} {name}</Text>
                             <Text style={styles.specialty}> {specialty} </Text>
                         </View>
@@ -56,13 +58,13 @@ export const SelectDoctorModal = (Props : SelectDoctorProps) => {
                     </View>
                     <View style={{flexDirection: 'row', gap: 10}}>
                         <View style={styles.pill}>
-                            <Icon name="calendar" size={16} color="#fff" style={{ marginRight: 6 }} />
+                            <MiniCalendarIcon />
                             <Text style={styles.pillText}> {date} </Text>
                         </View>
 
                         {/* Time */}
                         <View style={styles.pill}>
-                            <Icon name="time" size={16} color="#fff" style={{ marginRight: 6 }} />
+                            <MiniClockIcon />
                             <Text style={styles.pillText}> {time} </Text>
                         </View>
                     </View>
