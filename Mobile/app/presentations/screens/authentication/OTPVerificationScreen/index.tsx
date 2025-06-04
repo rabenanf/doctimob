@@ -25,7 +25,7 @@ export const OTPVerificationScreen = ({navigation}: Props): JSX.Element => {
     const { user, setPhone } = useUserStore();
     const [pinCode, setPinCode] = useState('');
     const [loading, setLoading] = useState(false);
-    const { verifyCode } = AuthenticationService();
+    const { verifyCode, verifyNumber } = AuthenticationService();
 
     const verify = async () => {
         setLoading(true);
@@ -39,6 +39,16 @@ export const OTPVerificationScreen = ({navigation}: Props): JSX.Element => {
         }
         setLoading(false)
     }
+
+    const sendNumber = async () => {
+        setLoading(true);
+        const response = await verifyNumber(user?.phone!);
+        console.log("valiny : ", response);
+        if (! response.success) {
+            showToast("error", t("Global.error"), t("OTP.errorSend"));
+        }
+        setLoading(false);
+    };
 
     return (
         <AppLayout isFullScreen={true} >
@@ -71,7 +81,7 @@ export const OTPVerificationScreen = ({navigation}: Props): JSX.Element => {
                     </View>
                     <View style={styles.resend}>
                         <Text style={styles.txtNotReceive}> {t('OTP.notReceive')} </Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => {sendNumber()}}>
                             <Text style={styles.txtResend}> {t('OTP.resend')} </Text>
                         </TouchableOpacity>
                     </View>

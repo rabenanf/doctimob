@@ -5,7 +5,7 @@ import { scale, verticalScale } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
+    //flexGrow: 0.2,
     justifyContent: "flex-start",
     alignItems: "center",
     // paddingBottom: verticalScale(150),

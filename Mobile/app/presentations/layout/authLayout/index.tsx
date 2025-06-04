@@ -15,7 +15,7 @@ type ILayout = {
 
 const AuthLayout = ({ children, isFullScreen, footer }: ILayout) => {
   return (
-    <AppLayout isFullScreen={isFullScreen} statusBarColor="#57CFC8">
+    <AppLayout isFullScreen={isFullScreen} statusBarColor={Theme.BACKGROUND_COLOR}>
       <LinearGradient
         style={styles.container}
         colors={[Theme.BACKGROUND_COLOR, "white"]}
